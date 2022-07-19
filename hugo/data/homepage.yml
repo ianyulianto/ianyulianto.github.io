@@ -1,0 +1,259 @@
+# showcase
+showcase:
+  enable: true
+  title: "Information Business Consultancy"
+  # subtitle: ""
+  description: |
+    With more than 20 years of experience combined, 
+    Etherval focuses on creating the best strategy for you to 
+    bring efficiency and faster information delivery
+  image:
+    x: "img/showcase/showcase.png"
+  imageMobile:
+    x: "img/showcase/showcase-mobile.png"
+
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Contact"
+    URL: "https://wa.me/628113078217"
+
+  # socialLinks:
+  #   - icon: "linkedin"
+  #     URL: "https://www.linkedin.com/company/radity/"
+
+  #   - icon: "github"
+  #     URL: "https://github.com/radity"
+
+  #   - icon: "twitter"
+  #     URL: "https://twitter.com/radity"
+
+  #   - icon: "dribbble"
+  #     URL: "https://dribbble.com/radity"
+
+  #   - icon: "behance"
+  #     URL: "https://www.behance.net/radity-digital"
+
+  #   - icon: "youtube"
+  #     URL: "https://www.youtube.com/channel/UCojEc6SPO-W1_CoeHhK9-Zw"
+
+  #   - icon: "instagram"
+  #     URL: "https://www.instagram.com/teamradity/"
+
+  #   - icon: "facebook"
+  #     URL: "https://www.facebook.com/raditycom/"
+
+  #   - icon: "codepen"
+  #     URL: "#"
+
+  #   - icon: "yelp"
+  #     URL: "https://www.yelp.com/"
+
+# about
+about:
+  enable: true
+  title: "About"
+  content: |
+    <p class="lead">
+    We have a passion to bring efficiency and faster information delivery to you and your organization. 
+    With more than 20 years of experience combined and the broad type of cases that we handled, 
+    we will take your load and create the best strategy for your organization to work with.
+    </p>    
+
+    <p class="lead">
+    In addition, not only create a strategy that is efficient, 
+    but we'll also educate your organization about the current stack and technology 
+    that provides Operational Excellence, Security, Reliability, Performance Efficiency, 
+    Cost Optimization, and Sustainability.
+    </p>
+
+    <p class="lead">
+    Finally, we love to hear your story and talk over a cup of coffee. 
+    Perhaps we can create a magnificent journey together.
+    </p>
+
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Contact"
+    URL: "https://wa.me/628113078217"
+  image:
+    x: "logo-white.png"
+    _2x: "logo-white.png"
+
+# education
+education:
+  enable: true
+  title: "Services"
+  items:
+    - university: "Solution Architect Consultancy"
+      degree: |
+        Help you to review and architecting an efficient infrastructure your information system. 
+        Even more, we will help you to understand the infrastructure and your information system data flow
+        with an easy-to-understand explanation. 
+
+    - university: "AWS Cloud Migration"
+      degree: |
+        Help you to migrate to migrate your current infrastructure to the powerfull cloud computing provider.
+        Our team, consist of several Certified AWS Solution Architect, will at your service. 
+
+
+    - university: "Build Submodule"
+      degree: |
+        We understand if you already have your own system, but you eiger to develop some more features. 
+        We can help you to build a submodule that will work seamless with your current system.
+
+    - university: "Build from Scratch"
+      degree: |
+        Have an idea to build an entirely new project that suits your needs and specification? 
+        We can help you to build a system that well-architected and secure your entire sensitive data.
+        Our team has experience to build a new project with more than 20 years of experience combined. 
+# experience
+experience:
+  enable: false
+  title: "Experience"
+  description: "Over 15+ years of experience working with companies from all over the world. I design & develop digital products to help businesses and improve people's lives."
+  button:
+    icon: "icon-linkedin-fill"
+    btnText: "Linkedin"
+    URL: "https://www.linkedin.com/company/radity/"
+  button2:
+    icon: "icon-profile-fill"
+    btnText: "Download My Resume"
+    URL: "#"
+
+  items:
+    - title: "Sr. Front-End Developer"
+      company: "Radity"
+      duration: "Feb 2011 - Sep 2019"
+
+    - title: "Sr. Front-End Developer"
+      company: "Textic"
+      duration: "Apr 2010 - Jan 2011"
+
+    - title: "Jr. Front-End Developer"
+      company: "Cyberse"
+      duration: "Jun 2009 - Mar 2010"
+
+# Client & Work
+client_and_work:
+  enable: true
+  title: "Our Clients"
+
+  clients:
+    - logo:
+        x: "img/clients/stellar.png"
+        _2x: "img/clients/stellar.png"
+      alt: "Stellar Powerhouse"
+      url: https://gostellar.id/
+
+    - logo:
+        x: "img/clients/next-basis.png"
+        _2x: "img/clients/next-basis.png"
+      alt: "NEXT Basis"
+
+    - logo:
+        x: "img/clients/empty.png"
+
+    - logo:
+        x: "img/clients/empty.png"
+
+    - logo:
+        x: "img/clients/empty.png"
+
+    - logo:
+        x: "img/clients/empty.png"
+
+    - logo:
+        x: "img/clients/empty.png"
+
+    - logo:
+        x: "img/clients/empty.png"
+
+  # works:
+  #   - title: "Radity Finance - UI Kit"
+  #     description: "We have been receiving a lot of requests for a Finance Kit recently due to the popularity of Fintech."
+  #     button:
+  #       icon: "icon-arrow-right"
+  #       btnText: "Case Study"
+  #       URL: "#"
+  #     image:
+  #       x: "img/works/radity-finance.jpg"
+  #       _2x: "img/works/radity-finance@2x.jpg"
+  #     is_even: true
+
+    # - title: "Swiss Fintech Website"
+    #   description: "The Swiss Finance + Technology Association is the leading FinTech hub in Switzerland."
+    #   button:
+    #     icon: "icon-arrow-right"
+    #     btnText: "Case Study"
+    #     URL: "#"
+    #   image:
+    #     x: "img/works/swissfintech.jpg"
+    #     _2x: "img/works/swissfintech@2x.jpg"
+    #   is_even: false
+
+    # - title: "Robo Advisor"
+    #   description: "Robo Advisor is a Swiss Wealth Manager and wants to create the best digital experience for its UNHW clients across the world. We started with a whiteboard."
+    #   button:
+    #     icon: "icon-arrow-right"
+    #     btnText: "Case Study"
+    #     URL: "#"
+    #   image:
+    #     x: "img/works/robo-advisor.jpg"
+    #     _2x: "img/works/robo-advisor@2x.jpg"
+    #   is_even: true
+
+# testimonial
+testimonial:
+  enable: true
+  title: "Testimonials"
+  items:
+    - name: "Dedy D. G."
+      position: "Stellar Powerhouse, CEO & Founder"
+      content: |
+        This is the right place to seek a help for companies set up AWS servers. 
+        They can provide input and work very quickly, besides that Etherval can also conduct training clearly and use easy-to-understand language. 
+        Overall very satisfied with the service and highly recommended!
+      image:
+        x: "img/testimonials/dedy-d-g.png"
+        _2x: "img/testimonials/dedy-d-g.png"
+
+    - name: "Andy Saputra"
+      position: "NEXT Basis, CTO"
+      content: |
+        They was helping us on analyzing our server architecture when we were having a bottleneck issue on our server.
+        Finally we found out the main problem that caused our server work inappropriately.
+        Not only that, at the end of the session, 
+        They helped us by providing us comprehensive report about the problems and the suggestions to be taken in order to make our server more scalable in the future.
+      image:
+        x: "img/testimonials/andy-saputra.jpeg"
+        _2x: "img/testimonials/andy-saputra.jpeg"
+
+# contact
+contact:
+  enable: true
+  title: "Contact"
+  form:
+    action: "mailto:info@etherval.id"
+    full_name: "Full Name"
+    email: "Email Address"
+    message: "Type Your Message Here"
+  phone:
+    title: "Phone Number"
+    number: "+62 8113078217"
+  email:
+    title: "Email"
+    email: '<a href="mailto:info@etherval.id">info@etherval.id</a>'
+  address:
+    title: "Address"
+    address: "Surabaya, Indonesia"
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Send Message"
+
+# newsletter
+newsletter:
+  enable: false
+  title: "Newsletter subscription"
+  success_message: "Successfully subscribed"
+  error_message: "Error while subscribing."
+  note: "We'll never share your email with anyone else."

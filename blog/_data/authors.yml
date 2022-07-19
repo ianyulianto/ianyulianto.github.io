@@ -1,0 +1,14 @@
+Ian Yulianto:
+  name        : "Ian Yulianto"
+  bio         : "Courage to improve, serenity to understand, and wisdom to know one from the other"
+  avatar      : "/assets/images/author.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:ian.yulianto@live.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://etherval.github.io"
+    - label: "Linked In"
+      icon: "fab fa-fw fa-linkedin-square"
+      url: "https://www.linkedin.com/in/ianyulianto/"
