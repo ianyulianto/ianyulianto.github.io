@@ -1,0 +1,59 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const normalizePath = (path: string = '/') => {
+  if (!path) return '/';
+  return path !== '/' ? path.replace(/\/$/, '') : '/';
+};
+
+const currentPath = normalizePath(Astro.url?.pathname ?? '/');
+---
+
+<header class="w-full border-b border-black/10 bg-[rgba(247,247,242,0.95)] backdrop-blur-md sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-10 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div>
+      <a href="/" class="text-2xl font-extrabold tracking-tight group">
+        <span class="relative inline-flex items-center gap-3">
+          <span class="h-8 w-8 border border-black/60 flex items-center justify-center text-xs font-semibold tracking-[0.3em]">
+            IY
+          </span>
+          <span class="group-hover:translate-x-1 transition-transform">IAN YULIANTO</span>
+        </span>
+      </a>
+      <div class="mt-2 accent-chip">DevOps & AWS Strategist</div>
+    </div>
+
+    <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-end">
+      <nav>
+        <ul class="flex flex-wrap gap-3 md:gap-4">
+          {navItems.map(item => {
+            const isActive = normalizePath(item.href) === currentPath;
+            return (
+              <li>
+                <a 
+                  href={item.href} 
+                  class:list=[
+                    'px-5 py-2 text-[0.65rem] uppercase tracking-[0.35em] border transition-all duration-200 inline-flex items-center gap-2 shadow-[3px_3px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:-translate-x-1',
+                    isActive
+                      ? 'bg-black text-white border-black shadow-[4px_4px_0_rgba(0,0,0,0.7)]'
+                      : 'bg-white/70 border-black/30 hover:bg-black hover:text-white hover:shadow-[4px_4px_0_rgba(0,0,0,0.5)]'
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <span class="text-[0.65rem] uppercase tracking-[0.3em] border border-black/20 px-3 py-1 inline-flex items-center gap-2 bg-white/60 shadow-[3px_3px_0_rgba(0,0,0,0.15)]">
+        <span class="inline-flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+        Available
+      </span>
+    </div>
+  </div>
+</header>
