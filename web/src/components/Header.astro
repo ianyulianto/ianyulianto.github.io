@@ -36,7 +36,7 @@ const currentPath = normalizePath(Astro.url?.pathname ?? '/');
               <li>
                 <a 
                   href={item.href} 
-                  class:list=[
+                  class:list={[
                     'px-5 py-2 text-[0.65rem] uppercase tracking-[0.35em] border transition-all duration-200 inline-flex items-center gap-2 shadow-[3px_3px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:-translate-x-1',
                     isActive
                       ? 'bg-black text-white border-black shadow-[4px_4px_0_rgba(0,0,0,0.7)]'
