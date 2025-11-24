@@ -1,8 +1,8 @@
 ---
 const navItems = [
-  { label: 'Home', path: '/', href: 'index.html' },
-  { label: 'About', path: '/about/', href: 'about/index.html' },
-  { label: 'Contact', path: '/contact/', href: 'contact/index.html' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 const normalizePath = (path: string = '/') => {
@@ -11,9 +11,6 @@ const normalizePath = (path: string = '/') => {
 };
 
 const currentPath = normalizePath(Astro.url?.pathname ?? '/');
-const segments = Astro.url.pathname.split('/').filter(Boolean);
-const baseHref = segments.length ? '../'.repeat(segments.length) : './';
-const buildHref = (href: string) => `${baseHref}${href}`;
 ---
 
 <header class="w-full border-b border-black/10 bg-[rgba(247,247,242,0.95)] backdrop-blur-md sticky top-0 z-50">
@@ -34,11 +31,11 @@ const buildHref = (href: string) => `${baseHref}${href}`;
       <nav>
         <ul class="flex flex-wrap gap-4 md:gap-6">
           {navItems.map(item => {
-            const isActive = normalizePath(item.path) === currentPath;
+            const isActive = normalizePath(item.href) === currentPath;
             return (
               <li>
                 <a 
-                  href={buildHref(item.href)} 
+                  href={item.href} 
                   class:list={[
                     'text-[0.7rem] uppercase tracking-[0.35em] inline-flex items-center gap-2 transition-colors duration-200 border-b border-transparent pb-1',
                     isActive
