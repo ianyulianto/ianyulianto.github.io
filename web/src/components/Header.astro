@@ -1,8 +1,8 @@
 ---
 const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about/' },
-  { label: 'Contact', path: '/contact/' },
+  { label: 'Home', path: '/', href: 'index.html' },
+  { label: 'About', path: '/about/', href: 'about/index.html' },
+  { label: 'Contact', path: '/contact/', href: 'contact/index.html' },
 ];
 
 const normalizePath = (path: string = '/') => {
@@ -13,10 +13,7 @@ const normalizePath = (path: string = '/') => {
 const currentPath = normalizePath(Astro.url?.pathname ?? '/');
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const baseHref = segments.length ? '../'.repeat(segments.length) : './';
-const buildHref = (path: string) => {
-  if (path === '/') return baseHref;
-  return `${baseHref}${path.replace(/^\//, '')}`;
-};
+const buildHref = (href: string) => `${baseHref}${href}`;
 ---
 
 <header class="w-full border-b border-black/10 bg-[rgba(247,247,242,0.95)] backdrop-blur-md sticky top-0 z-50">
@@ -41,7 +38,7 @@ const buildHref = (path: string) => {
             return (
               <li>
                 <a 
-                  href={buildHref(item.path)} 
+                  href={buildHref(item.href)} 
                   class:list={[
                     'text-[0.7rem] uppercase tracking-[0.35em] inline-flex items-center gap-2 transition-colors duration-200 border-b border-transparent pb-1',
                     isActive

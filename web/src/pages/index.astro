@@ -18,8 +18,8 @@ const playbook = [
 
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const baseHref = segments.length ? '../'.repeat(segments.length) : './';
-const projectsHref = `${baseHref}projects/`;
-const contactHref = `${baseHref}contact/`;
+const projectsHref = `${baseHref}projects/index.html`;
+const contactHref = `${baseHref}contact/index.html`;
 ---
 
 <Layout title="Ian Yulianto - DevOps Engineer & AWS Cloud Specialist">
