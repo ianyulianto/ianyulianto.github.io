@@ -10,6 +10,8 @@ interface Props {
 }
 
 const { title, description = "Personal DevOps & AWS Portfolio" } = Astro.props;
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const baseHref = segments.length ? '../'.repeat(segments.length) : './';
 ---
 
 <!doctype html>
@@ -18,7 +20,8 @@ const { title, description = "Personal DevOps & AWS Portfolio" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <base href={baseHref} />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />

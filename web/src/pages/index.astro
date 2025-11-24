@@ -15,6 +15,11 @@ const playbook = [
   'Automate delivery with IaC & CI/CD',
   'Translate ops lessons into narratives'
 ];
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const baseHref = segments.length ? '../'.repeat(segments.length) : './';
+const projectsHref = `${baseHref}projects/`;
+const contactHref = `${baseHref}contact/`;
 ---
 
 <Layout title="Ian Yulianto - DevOps Engineer & AWS Cloud Specialist">
@@ -38,8 +43,8 @@ const playbook = [
           </p>
         </div>
         <div class="flex flex-wrap gap-4">
-        <Button href="./projects/">See My Work</Button>
-        <Button href="./contact/">Contact Me</Button>
+        <Button href={projectsHref}>See My Work</Button>
+        <Button href={contactHref}>Contact Me</Button>
         </div>
         <div class="grid grid-cols-2 gap-6 pt-4">
           {heroStats.map((stat) => (
@@ -137,7 +142,7 @@ const playbook = [
       </p>
     </div>
     <div class="mt-12 flex justify-center">
-      <Button href="./projects/">View All Projects</Button>
+      <Button href={projectsHref}>View All Projects</Button>
     </div>
   </section>
 
