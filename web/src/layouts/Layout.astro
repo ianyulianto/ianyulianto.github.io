@@ -9,7 +9,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Personal DevOps & AWS Portfolio" } = Astro.props;
+const { title, description = 'Personal DevOps & AWS Portfolio' } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,7 +24,10 @@ const { title, description = "Personal DevOps & AWS Portfolio" } = Astro.props;
     <ClientRouter />
   </head>
   <body class="text-[#050505] flex flex-col min-h-screen relative overflow-x-hidden">
-    <div class="pointer-events-none fixed inset-0 z-[-1] bg-gradient-to-b from-white/70 via-transparent to-transparent"></div>
+    <div
+      class="pointer-events-none fixed inset-0 z-[-1] bg-gradient-to-b from-white/70 via-transparent to-transparent"
+    >
+    </div>
     <Header />
     <main class="flex-grow w-full max-w-5xl mx-auto px-6 md:px-10 py-12">
       <slot />

@@ -1,0 +1,13 @@
+repos:
+  - repo: local
+    hooks:
+      - id: prettier-format-check
+        name: Run Prettier format check
+        entry: npm
+        language: system
+        pass_filenames: false
+        args:
+          - '--prefix'
+          - 'web'
+          - 'run'
+          - 'format:check'
