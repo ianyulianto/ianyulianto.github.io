@@ -1,0 +1,18 @@
+---
+const { variant = "page" } = Astro.props;
+// variant: "page" (1200) | "content" (720)
+const max = variant === "content" ? "var(--max-content)" : "var(--max-page)";
+---
+<div class="container" style={`max-width:${max};`}>
+  <slot />
+</div>
+
+<style>
+  .container{
+    margin: 0 auto;
+    padding-left: var(--s-2);
+    padding-right: var(--s-2);
+    width: 100%;
+    box-sizing: border-box;
+  }
+</style>

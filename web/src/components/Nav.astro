@@ -1,0 +1,83 @@
+---
+import Container from "./Container.astro";
+---
+<nav id="main-nav">
+  <Container>
+    <div class="nav-content">
+      <a href="/" class="brand">Samya Studio</a>
+      <div class="links">
+        <a href="/services">Services</a>
+        <a href="/case-studies">Case Studies</a>
+        <a href="/insights">Insights</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </Container>
+</nav>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  
+  if (nav) {
+    const handleScroll = () => {
+      // Threshold 10px
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Determine state immediately on load/reload
+    handleScroll();
+  }
+</script>
+
+<style>
+  nav {
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg); /* Solid white initially */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Permanent shadow as requested */
+    transition: all 0.3s ease;
+  }
+  
+  nav.scrolled {
+    background-color: rgba(255, 255, 255, 0.85); /* Glassy on scroll */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    font-weight: bold;
+    color: var(--text);
+    font-size: var(--body);
+  }
+  .links {
+    display: flex;
+    gap: var(--s-3);
+  }
+  .links a {
+    color: var(--text-2);
+    font-size: var(--small);
+    padding: 6px 12px;
+    border-radius: 99px; /* Chip/Pill shape */
+    transition: all 0.2s ease;
+  }
+  .links a:hover {
+    color: white;
+    background-color: var(--accent);
+    text-decoration: none;
+  }
+</style>

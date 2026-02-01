@@ -1,0 +1,181 @@
+{
+  "color": {
+    "background": {
+      "primary": {
+        "value": "#FFFFFF"
+      },
+      "muted": {
+        "value": "#F9FAFB"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#111111"
+      },
+      "secondary": {
+        "value": "#555555"
+      },
+      "muted": {
+        "value": "#6B7280"
+      }
+    },
+    "border": {
+      "default": {
+        "value": "#E5E7EB"
+      }
+    },
+    "accent": {
+      "primary": {
+        "value": "#3730A3"
+      },
+      "hover": {
+        "value": "#312E81"
+      },
+      "soft": {
+        "value": "#EEF2FF"
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "primary": {
+        "value": "Inter"
+      },
+      "mono": {
+        "value": "JetBrains Mono"
+      }
+    },
+    "size": {
+      "xs": {
+        "value": "14px"
+      },
+      "sm": {
+        "value": "16px"
+      },
+      "md": {
+        "value": "18px"
+      },
+      "lg": {
+        "value": "24px"
+      },
+      "xl": {
+        "value": "32px"
+      },
+      "2xl": {
+        "value": "40px"
+      },
+      "3xl": {
+        "value": "48px"
+      }
+    },
+    "weight": {
+      "regular": {
+        "value": "400"
+      },
+      "medium": {
+        "value": "500"
+      },
+      "semibold": {
+        "value": "600"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "value": "1.2"
+      },
+      "normal": {
+        "value": "1.5"
+      },
+      "relaxed": {
+        "value": "1.7"
+      }
+    }
+  },
+  "spacing": {
+    "xs": {
+      "value": "8px"
+    },
+    "sm": {
+      "value": "16px"
+    },
+    "md": {
+      "value": "24px"
+    },
+    "lg": {
+      "value": "40px"
+    },
+    "xl": {
+      "value": "64px"
+    },
+    "2xl": {
+      "value": "96px"
+    }
+  },
+  "radius": {
+    "sm": {
+      "value": "4px"
+    },
+    "md": {
+      "value": "6px"
+    },
+    "lg": {
+      "value": "8px"
+    }
+  },
+  "shadow": {
+    "none": {
+      "value": "none"
+    },
+    "subtle": {
+      "value": "0px 1px 2px rgba(0, 0, 0, 0.04)"
+    }
+  },
+  "button": {
+    "primary": {
+      "background": {
+        "value": "{color.accent.primary}"
+      },
+      "text": {
+        "value": "#FFFFFF"
+      },
+      "radius": {
+        "value": "{radius.md}"
+      },
+      "paddingY": {
+        "value": "{spacing.sm}"
+      },
+      "paddingX": {
+        "value": "{spacing.md}"
+      }
+    }
+  },
+  "card": {
+    "background": {
+      "value": "{color.background.primary}"
+    },
+    "border": {
+      "value": "{color.border.default}"
+    },
+    "radius": {
+      "value": "{radius.lg}"
+    },
+    "padding": {
+      "value": "{spacing.md}"
+    }
+  },
+  "layout": {
+    "maxWidth": {
+      "content": {
+        "value": "720px"
+      },
+      "page": {
+        "value": "1200px"
+      }
+    },
+    "sectionPadding": {
+      "vertical": {
+        "value": "{spacing.xl}"
+      }
+    }
+  }
+}

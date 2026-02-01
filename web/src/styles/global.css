@@ -1,0 +1,41 @@
+@import "./tokens.css";
+
+html,
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary-hover);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: var(--s-4) 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Utilities */
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-small {
+    font-size: var(--small);
+}

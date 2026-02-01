@@ -1,0 +1,301 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import CTA from "../components/CTA.astro";
+import { getCollection } from 'astro:content';
+import heroImage from "../assets/hero-wireframe.png";
+import imgWebsite from "../assets/expertise-website.png";
+import imgCustomApp from "../assets/expertise-mobile-app.png";
+import imgErp from "../assets/expertise-erp.png";
+import imgHowWeWork from "../assets/what-is-a-route.png";
+import { Image } from "astro:assets";
+
+const insights = await getCollection('insights', ({ data }) => {
+  return data.draft !== true;
+});
+// Sort by date and take 3
+const latestInsights = insights.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()).slice(0, 3);
+
+const title = "Samya Studio";
+const description = "We build digital products that matter.";
+---
+
+<BaseLayout title={title} description={description}>
+  
+  {/* 1. Hero */}
+  <Section pad="normal">
+    <Container variant="page">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">Refining digital ideas into clarity.</h1>
+          <p class="hero-subtitle">We are a design & development studio focused on building clean, effective, and scalable digital products.</p>
+          <div class="hero-actions">
+            <CTA href="/contact">Start a Project</CTA>
+            <a href="/services" class="text-link">View Services &rarr;</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <Image src={heroImage} alt="Modern digital product wireframes and dashboards" class="img-fluid" />
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  {/* 2. Audience */}
+  <Section style="background-color: var(--primary); color: white;">
+    <Container variant="content">
+      <div class="audience-content">
+        <h2 style="color: white">For founders and visionaries</h2>
+        <p style="color: rgba(255,255,255,0.9)">You need a partner who understands not just code, but the product. We bridge the gap between design, engineering, and business goals.</p>
+      </div>
+    </Container>
+  </Section>
+
+  {/* 3. Services */}
+  <Section>
+    <Container variant="page">
+      <div class="services-header">
+        <h2>Our Expertise</h2>
+        <p>Holistic approach to product building.</p>
+      </div>
+      <div class="grid-3">
+        <Card href="/services/website" image={imgWebsite} alt="Modern marketing websites">
+          <h3>Websites</h3>
+          <p>High-performance marketing sites that convert.</p>
+        </Card>
+        <Card href="/services/custom-app" image={imgCustomApp} alt="Custom web applications">
+          <h3>Custom Apps</h3>
+          <p>Complex web applications built for scale.</p>
+        </Card>
+        <Card href="/services/erp" image={imgErp} alt="System & ERP Dashboard">
+          <h3>System & ERP</h3>
+          <p>Internal tools to streamline your operations.</p>
+        </Card>
+      </div>
+    </Container>
+  </Section>
+
+  {/* 4. How we work */}
+  <Section style="background-color: var(--primary); color: white; position: relative; overflow: hidden;">
+    <div class="texture-overlay"></div>
+    <Container variant="page">
+      <div class="how-we-work-split">
+        <div class="hww-image">
+           <Image src={imgHowWeWork} alt="Abstract process flow" class="img-abstract" />
+        </div>
+        <div class="hww-content">
+          <h2 style="color: white">How we work</h2>
+          <div class="process-grid">
+            <div class="process-step">
+              <span class="step-number" style="color: rgba(255,255,255,0.2)">01</span>
+              <h3 style="color: white">Discovery</h3>
+              <p style="color: rgba(255,255,255,0.9)">We dive deep into your problem space.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-number" style="color: rgba(255,255,255,0.2)">02</span>
+              <h3 style="color: white">Strategy</h3>
+              <p style="color: rgba(255,255,255,0.9)">We plan the most effective path forward.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-number" style="color: rgba(255,255,255,0.2)">03</span>
+              <h3 style="color: white">Execution</h3>
+              <p style="color: rgba(255,255,255,0.9)">We build with precision and craft.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-number" style="color: rgba(255,255,255,0.2)">04</span>
+              <h3 style="color: white">Iteration</h3>
+              <p style="color: rgba(255,255,255,0.9)">We refine based on real feedback.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  {/* 5. Featured Case Study
+  <Section pad="tight">
+    <Container variant="content">
+        <div class="featured-case">
+            <span class="eyebrow">Featured Work</span>
+            <h2>E-Commerce Revamp for Retail Corp</h2>
+            <p>How we boosted conversion rates by 40% through a redesign of the checkout experience.</p>
+            <a href="/case-studies/ecommerce-revamp" class="text-link">Read Case Study &rarr;</a>
+        </div>
+    </Container>
+  </Section>
+  */}
+
+  {/* 6. Insights Preview */}
+  <Section>
+    <Container variant="page">
+      <div class="section-header">
+        <h2>Latest Insights</h2>
+        <a href="/insights">View all &rarr;</a>
+      </div>
+      <div class="grid-3">
+        {latestInsights.map(post => (
+          <Card href={`/insights/${post.slug}`}>
+            <span class="date">{post.data.publishedAt.toLocaleDateString()}</span>
+            <h3>{post.data.title}</h3>
+            {post.data.excerpt && <p>{post.data.excerpt}</p>}
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  {/* 7. CTA Strip */}
+  <Section pad="hero" style="background-color: var(--primary); color: white;">
+    <Container variant="content">
+      <div class="cta-strip">
+        <h2 style="color: white">Ready to build something great?</h2>
+        <p style="color: rgba(255,255,255,0.9)">Let's talk about your project and how we can help.</p>
+        <CTA href="/contact">Get in Touch</CTA>
+      </div>
+    </Container>
+  </Section>
+
+</BaseLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .hero-title {
+    font-size: var(--h1);
+    line-height: var(--lh-tight);
+    margin-bottom: var(--s-3);
+  }
+  .hero-subtitle {
+    font-size: var(--h3);
+    color: var(--text-2);
+    margin-bottom: var(--s-4);
+    max-width: 600px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: var(--s-3);
+    align-items: center;
+  }
+  .text-link {
+    font-weight: 500;
+  }
+  
+  .img-fluid {
+    width: 100%;
+    height: auto;
+    max-height: 450px; /* Constrain height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: var(--r-lg);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+    margin-top: var(--s-4);
+  }
+  @media (min-width: 768px) {
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .texture-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .how-we-work-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .how-we-work-split {
+      grid-template-columns: 0.8fr 1.2fr;
+    }
+  }
+
+  .img-abstract {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Stronger shadow */
+    border-radius: 24px; /* Distinct rounded corners */
+    display: block;
+  }
+
+  /* Process Grid - 2 Column */
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+    margin-top: var(--s-4);
+  }
+  @media (min-width: 640px) {
+    .process-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .step-number {
+    display: block;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--s-2);
+    font-family: var(--font-mono);
+  }
+
+  h2 {
+    font-size: var(--h2);
+    margin-bottom: var(--s-2);
+  }
+  h3 {
+    font-size: var(--h3);
+    margin-bottom: var(--s-1);
+    margin-top: 0;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .date {
+    font-size: var(--small);
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: var(--s-1);
+  }
+  
+  .cta-strip {
+    text-align: center;
+  }
+  .audience-content {
+      /* Optional styles for audience section */
+  }
+  .services-header {
+      margin-bottom: var(--s-4);
+  }
+</style>

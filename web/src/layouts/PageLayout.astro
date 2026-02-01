@@ -1,0 +1,15 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Container from "../components/Container.astro";
+import Section from "../components/Section.astro";
+
+const { title, description } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <Section>
+    <Container variant="content">
+      <h1>{title}</h1>
+      <slot />
+    </Container>
+  </Section>
+</BaseLayout>

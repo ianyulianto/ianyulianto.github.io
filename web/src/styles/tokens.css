@@ -1,0 +1,67 @@
+:root {
+    /* colors */
+    --bg: #FFFFFF;
+    --bg-muted: #F9FAFB;
+    --text: #111111;
+    --text-2: #555555;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+
+    /* primary (Deep Elegant Blue) */
+    --primary: #1e3a8a;
+    --primary-hover: #172554;
+    --primary-soft: #DBEAFE;
+
+    /* accent (Orange) */
+    --accent: #F97316;
+    --accent-hover: #EA580C;
+    --accent-soft: #FFF7ED;
+
+    /* typography */
+    --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+    /* type scale */
+    /* Mapping JSON sizes to spec variables */
+    --h1: 48px;
+    /* 3xl */
+    --h2: 36px;
+    /* 2xl */
+    --h3: 24px;
+    /* lg/md overlap? Spec says 24. JSON lg is 24. */
+    --body: 18px;
+    /* md */
+    --small: 16px;
+    /* sm */
+    --xs: 14px;
+    /* xs from JSON */
+
+    /* line height */
+    --lh-tight: 1.2;
+    --lh-normal: 1.5;
+    --lh-relaxed: 1.7;
+
+    /* spacing (8pt grid) */
+    /* Mapping JSON spacing to spec variables */
+    --s-1: 8px;
+    /* xs */
+    --s-2: 16px;
+    /* sm */
+    --s-3: 24px;
+    /* md */
+    --s-4: 40px;
+    /* lg */
+    --s-5: 64px;
+    /* xl */
+    --s-6: 96px;
+    /* 2xl */
+
+    /* radius */
+    --r-sm: 4px;
+    --r-md: 6px;
+    --r-lg: 8px;
+
+    /* layout */
+    --max-page: 1200px;
+    --max-content: 720px;
+}
