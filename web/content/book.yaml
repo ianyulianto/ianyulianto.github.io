@@ -101,6 +101,13 @@ parts:
     - masih rapi di situ
     - ''
     - tidak berubah satu cm pun
+  - kind: prose
+    text: |
+      Setiap kali aku berulang tahun, aku selalu memakai topi lebar. Kata nenek biar kepalaku tidak masuk angin. Memang rambutku tumbuhnya malu-malu. Kami semua juga suka malu.
+
+      Tidak banyak foto.
+
+      Tidak banyak senyum.
   - kind: poetry
     lines:
     - Setiap ulang tahun
@@ -147,6 +154,9 @@ parts:
     - ''
     - kenapa bukan
     - yang lainnya?
+  - kind: prose
+    text: |
+      Semua suka membandingkanku dengan sepupuku. Katanya dia cantik, putih, manis, dan lucu. Untung sepupuku cuma satu saja. Aku pasti kesal kalau punya lebih banyak. Nanti aku harus sering-sering pakai terusan yang ada rendanya. Cuma itu yang aku tahu bisa buat aku lebih manis. Padahal es teh manis tidak usah pakai terusan sudah manis.
   - kind: poetry
     lines:
     - Pernahkah kalian berdoa
@@ -207,7 +217,7 @@ parts:
     - bulan sebelumku?
   - kind: prose
     text: |
-      He.. he. Aku suka menunjukkan gigiku yang belum utuh semuanya. Tapi herannya mereka memalingkah wajah? Apa karena mereka tidak memiliki gigi sepertiku. Padahal, ini membuatku susah mengunyah dan malah suka membuat makanan terselip. Aku heran dengan orang dewasa, suka yang tidak dimiliki anak kecil sepertiku. Aku tahu mereka pasti iri. Ya sudah, aku sendiri saja. Awas ingin lagi punyaku!
+      He.. he. Aku suka menunjukkan gigiku yang belum utuh semuanya. Tapi herannya mereka memalingkan wajah? Apa karena mereka tidak memiliki gigi sepertiku. Padahal, ini membuatku susah mengunyah dan malah suka membuat makanan terselip. Aku heran dengan orang dewasa, suka yang tidak dimiliki anak kecil sepertiku. Aku tahu mereka pasti iri. Ya sudah, aku sendiri saja. Awas ingin lagi punyaku!
   - kind: poetry
     lines:
     - Aku suka
@@ -365,7 +375,7 @@ parts:
     - pulang tepat waktu
   - kind: prose
     text: |
-      Kenapa ayah gampang sekali membuat janji? Terus lupa. Aku inginnya muak, tapi aku masih penasaran hebohnya beli di Pasar Sore. Aku ingin tahu gimana caranya membeli dengan uang milik ayah, bukan uang milikku. Pasti ada rasa senang yang membuatku ketagihan. Aku heboh dan ayah akhirnya malu. He he.
+      Kenapa ayah gampang sekali membuat janji? Terus lupa. Aku inginnya muak, tapi aku masih penasaran hebohnya beli di Pasar Sore. Aku ingin tahu gimana caranya membeli dengan uang milik ayah, bukan uang milikku. Pasti ada rasa senang yang membuatku ketagihan. Aku heboh dan ayah akhirnya malu. He.. he.
   - kind: poetry
     lines:
     - Rumah yang berdiri sejak lama
@@ -547,7 +557,7 @@ parts:
   - kind: poetry
     lines:
     - Aku memilih
-    - satu sisi sepatu
+    - sepasang sepatu
     - paling cocok denganku
     - ''
     - kurapikan sepatu-sepatu mereka
@@ -556,6 +566,13 @@ parts:
     - tak lama
     - sepatu itu menjauh
     - dari pandanganku
+  - kind: prose
+    text: |
+      Aku suka melihat sepatu bermotif bunga warna-warni. Kalau ibu sedang baik, dia akan membelikan satu untukku. Sebelum berangkat sekolah, aku senang merapikan sepatu-sepatu yang sedang bertengkar. Mereka saling diam dan berjauhan. Seperti orang rumah.
+
+      Aku terlalu asyik merapikan, sampai aku kehilangan sepatuku.
+
+      Sepatu, ke mana lagi kamu pergi? Kakiku kedinginan.
   - kind: poetry
     lines:
     - Dua anak anjing
@@ -568,6 +585,13 @@ parts:
     - ''
     - berdoa
     - agar sore tetap diberi makan
+  - kind: prose
+    text: |
+      Saat di sekolah, aku dan teman-temanku suka bermain dolib-doliban. Kami banyak berlarian, lalu diam seperti patung, Aku senang. Aku akan bergerak lagi saat ada yang memegangku.
+
+      Namun, beda halnya saat harus mematung di rumah.
+
+      Aku takut tidak bisa bergerak lagi. Aku takut tidak ada yang sadar kalau aku sedang diam.
   - kind: poetry
     lines:
     - Kuikuti gerak gerik nenek
@@ -588,16 +612,31 @@ parts:
     - dilebih-lebihkan
     - ''
     - sampai semuanya lupa
+  - kind: prose
+    text: |
+      Setiap malam pukul tujuh, nenek mulai menimbang garam, gula, dan bumbu untuk kateringnya. Aku suka mengikutinya. Aku ingin diajak main timbang-timbangan, tapi aku takut nenek marah. Padahal aku ingin juga ditimbang, biar nenek tidak lupa padaku. Tapi aku tidak mau ditaruh di kresek.
   - kind: poetry
     lines:
     - Aku menunggu
     - sampai habis kertas gambarku
+  - kind: prose
+    text: |
+      Aku suka sekali ke toko buku. Melihat-lihat buku bergambar yang lucu-lucu. Aku pikir-pikir, apakah memang aku suka menggambar? Atau aku suka lihat-lihat di toko buku? Atau pergi naik motor bersama nenek?
   - kind: poetry
     lines:
     - Teman-teman main engklek
     - ''
     - mereka pasti tidak mengenal
     - momok penebah kasur
+  - kind: prose
+    text: |
+      Pasti banyak anak nakal, sampai momok harus repot-repot bawa penebah kasur. Kenapa tidak bawa tongkat sapu saja? Biar sekalian bisa bersih-bersih taman.
+
+      Ibu sering bercerita tentang momok kalau nilaiku jelek. Padahal, aku sudah bosan belajar.
+
+      Aku juga ingin main engklek.
+
+      Tapi… momok nanti ikut main juga?
   - kind: poetry
     lines:
     - Dari dulu
@@ -608,12 +647,26 @@ parts:
     - ''
     - biar sedikit
     - merasakannya
+  - kind: prose
+    text: |
+      Rumahku dekat sekali dengan sekolah. Sampai tasku yang berat tidak terasa.
+
+      Aku suka sekali telat, biar bisa berlari-lari.
+
+      Aku iri melihat teman-temanku diantar orang tuanya ke sekolah. Aku juga ingin.
+
+      Tapi bagaimana mintanya?
+
+      Apa aku harus pindah ke sekolah lain?
   - kind: poetry
     lines:
     - Aku cuma punya satu mimpi
     - ''
     - tidak mau dua,
     - nanti satunya hilang
+  - kind: prose
+    text: |
+      Tanganku kecil. Banyak-banyak, nanti banyak yang hilang. Aku bingung mau pinjam tangan siapa kalau punya banyak. Aku lihat orang-orang kalau punya banyak sering dipuji hebat. Aku ingin punya tangan kayak gurita.
 - slug: '3'
   label: Chapter 3
   title: Apakah Ini Keahlianku?
@@ -684,6 +737,9 @@ parts:
     - memang tak ada bahan
     - atau
     - tak ada jawaban
+  - kind: prose
+    text: |
+      Setiap pukul 6 malam, orang-orang rumah berkumpul di ruang keluarga dengan sofa berbentuk L untuk melihat famili 100. Sepertinya semua suka dengan tayangan itu. Enak. Tidak perlu banyak bicara. Tidak perlu banyak bertanya. Habis selesai tayangannya, semua kembali ke kamar masing-masing. Mungkin semua yang mau ditanyakan, sudah dijawab oleh kuis famili 100. Kalau aku belum pernah dijawab. Mungkin karena aku masih kecil.
   - kind: poetry
     lines:
     - Kalau
@@ -712,6 +768,15 @@ parts:
     - dari aku,
     - yang selalu menunggumu
     - memanggil namaku
+  - kind: prose
+    text: |
+      Ayah dan Ibu punya rumah dekat dengan rumah nenek, nomor 4. Tapi aku lebih banyak main di rumah nenek. Pulang sekolah dijemput nenek. Berangkat les juga sama nenek. Banyak yang bilang aku memang anaknya nenek. Apalagi aku sering tidur di rumah nenek.
+
+      Aku malas di rumah ayah ibu. Ibu jarang berbicara. Apalagi ayah. Dia sering pergi.
+
+      Aku tidak bisa bersuara seperti orang-orang. Aku tidak bisa menangis minta-minta seperti orang-orang. Aku cuma menurut saja, sambil banyak berdoa.
+
+      Biar waktu ayah pulang nanti, dia mau menjemputku di rumah nenek.
   - kind: poetry
     lines:
     - Aku suka menempelkan pipi
