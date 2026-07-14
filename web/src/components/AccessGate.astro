@@ -1,0 +1,238 @@
+---
+/**
+ * Client-side access gate.
+ * Password = today's date as ddMMyyyy + trailing "_"
+ * Example: 14 Jul 2026 → 14072026_
+ */
+---
+
+<div id="access-gate" class="gate">
+  <form id="access-gate-form" class="gate-panel" autocomplete="off">
+    <p class="gate-kicker">Akses terbatas</p>
+    <h1 class="gate-title">Masukkan kata sandi</h1>
+    <p class="gate-hint">Gunakan tanggal hari ini (ddMMyyyy) diikuti tanda _</p>
+    <label class="gate-label" for="access-password">
+      <span class="sr-only">Kata sandi</span>
+      <input
+        id="access-password"
+        name="password"
+        type="password"
+        inputmode="numeric"
+        autocomplete="current-password"
+        placeholder="ddMMyyyy_"
+        required
+      />
+    </label>
+    <p id="access-gate-error" class="gate-error" hidden role="alert">
+      Kata sandi tidak cocok.
+    </p>
+    <button type="submit" class="gate-submit">Buka</button>
+  </form>
+</div>
+
+<style>
+  .gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: var(--pad-y) var(--pad-x);
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(255, 255, 255, 0.55), transparent 55%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  }
+
+  .gate[hidden] {
+    display: none;
+  }
+
+  .gate-panel {
+    width: min(100%, 22rem);
+    text-align: center;
+    animation: gate-rise 0.7s ease both;
+  }
+
+  .gate-kicker {
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .gate-title {
+    font-size: var(--fs-title);
+    margin-bottom: 0.75rem;
+  }
+
+  .gate-hint {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+    text-wrap: pretty;
+  }
+
+  .gate-label {
+    display: block;
+    margin-bottom: 0.85rem;
+  }
+
+  .gate-label input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.8rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+
+  .gate-label input::placeholder {
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .gate-label input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  }
+
+  .gate-error {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    color: #8a3a2a;
+  }
+
+  .gate-error[hidden] {
+    display: none;
+  }
+
+  .gate-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.8rem 1.25rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .gate-submit:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @keyframes gate-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = "booklet-access-day";
+
+  function pad2(n: number) {
+    return String(n).padStart(2, "0");
+  }
+
+  /** Local date key: ddMMyyyy */
+  function todayKey(d = new Date()) {
+    return `${pad2(d.getDate())}${pad2(d.getMonth() + 1)}${d.getFullYear()}`;
+  }
+
+  /** Password = ddMMyyyy_ */
+  function todayPassword(d = new Date()) {
+    return `${todayKey(d)}_`;
+  }
+
+  function isUnlocked() {
+    try {
+      return sessionStorage.getItem(STORAGE_KEY) === todayKey();
+    } catch {
+      return false;
+    }
+  }
+
+  function unlock() {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, todayKey());
+    } catch {
+      /* ignore quota / private mode */
+    }
+  }
+
+  function lockPage(locked: boolean) {
+    document.documentElement.toggleAttribute("data-access-locked", locked);
+    const gate = document.getElementById("access-gate");
+    if (gate) gate.hidden = !locked;
+  }
+
+  function init() {
+    const gate = document.getElementById("access-gate");
+    const form = document.getElementById("access-gate-form") as HTMLFormElement | null;
+    const input = document.getElementById("access-password") as HTMLInputElement | null;
+    const error = document.getElementById("access-gate-error");
+
+    if (!gate || !form || !input) return;
+
+    if (isUnlocked()) {
+      lockPage(false);
+      return;
+    }
+
+    lockPage(true);
+    queueMicrotask(() => input.focus());
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const value = input.value.trim();
+      if (value === todayPassword()) {
+        unlock();
+        lockPage(false);
+        if (error) error.hidden = true;
+        return;
+      }
+      if (error) error.hidden = false;
+      input.select();
+    });
+
+    input.addEventListener("input", () => {
+      if (error) error.hidden = true;
+    });
+  }
+
+  init();
+</script>
