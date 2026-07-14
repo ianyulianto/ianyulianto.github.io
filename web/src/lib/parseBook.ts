@@ -1,17 +1,20 @@
 import fs from "node:fs";
 import path from "node:path";
-import mammoth from "mammoth";
+import { load as loadYaml } from "js-yaml";
 
-export type BlockKind = "prose" | "poetry";
+export type BlockKind = "prose" | "poetry" | "divider";
 
 export type BookBlock = {
   kind: BlockKind;
+  /** Poetry lines ("" = stanza break). Prose paragraphs. Divider unused. */
   lines: string[];
 };
 
 export type BookPart = {
   index: number;
   slug: string;
+  /** e.g. "Pembuka" or "Chapter 1" */
+  label: string;
   title: string;
   preview: string;
   blocks: BookBlock[];
@@ -24,7 +27,7 @@ export type BookMeta = {
   language: string;
 };
 
-export type BookSource = "docx" | "txt" | "empty";
+export type BookSource = "yaml" | "empty";
 
 export type Book = {
   meta: BookMeta;
@@ -33,9 +36,7 @@ export type Book = {
 };
 
 const CONTENT_DIR = path.resolve(process.cwd(), "content");
-const DOCX_PATH = path.join(CONTENT_DIR, "book.docx");
-const TXT_PATH = path.join(CONTENT_DIR, "book.txt");
-const META_PATH = path.join(CONTENT_DIR, "book.json");
+const YAML_PATH = path.join(CONTENT_DIR, "book.yaml");
 
 const DEFAULT_META: BookMeta = {
   title: "Judul Buku",
@@ -44,101 +45,149 @@ const DEFAULT_META: BookMeta = {
   language: "id",
 };
 
-function readMeta(): BookMeta {
-  if (!fs.existsSync(META_PATH)) return DEFAULT_META;
-  try {
-    const raw = JSON.parse(fs.readFileSync(META_PATH, "utf8")) as Partial<BookMeta>;
-    return { ...DEFAULT_META, ...raw };
-  } catch {
-    return DEFAULT_META;
-  }
+type YamlBlock = {
+  kind?: string;
+  lines?: unknown;
+  text?: unknown;
+};
+
+type YamlPart = {
+  slug?: unknown;
+  label?: unknown;
+  title?: unknown;
+  blocks?: unknown;
+};
+
+type YamlBook = {
+  meta?: Partial<BookMeta>;
+  parts?: unknown;
+};
+
+function asString(value: unknown, fallback = ""): string {
+  return typeof value === "string" ? value : fallback;
 }
 
-function normalizeNewlines(text: string): string {
-  return text.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
-}
-
-/** Two blank lines between content = new part */
-function splitParts(text: string): string[] {
-  return normalizeNewlines(text)
-    .split(/\n[ \t]*\n[ \t]*\n+/)
-    .map((part) => part.trim())
-    .filter(Boolean);
-}
-
-/** Single blank line = block boundary inside a part */
-function splitBlocks(partText: string): string[] {
-  return partText
+function normalizeProseText(text: string): string[] {
+  return text
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
     .split(/\n[ \t]*\n+/)
-    .map((block) => block.trim())
+    .map((p) => p.replace(/\n/g, " ").trim())
     .filter(Boolean);
 }
 
-function classifyBlock(text: string): BookBlock {
-  const lines = text.split("\n").map((line) => line.trimEnd());
-  const nonEmpty = lines.filter((line) => line.trim().length > 0);
-
-  if (nonEmpty.length === 0) {
-    return { kind: "prose", lines: [] };
-  }
-
-  const avgLen =
-    nonEmpty.reduce((sum, line) => sum + line.trim().length, 0) / nonEmpty.length;
-  const shortRatio =
-    nonEmpty.filter((line) => line.trim().length > 0 && line.trim().length <= 42).length /
-    nonEmpty.length;
-  const multiLine = nonEmpty.length >= 2;
-
-  // Short, broken lines → poetry; long flowing lines → prose
-  const kind: BlockKind =
-    multiLine && (avgLen <= 40 || shortRatio >= 0.65) ? "poetry" : "prose";
-
-  return { kind, lines: nonEmpty };
+function normalizePoetryLines(lines: unknown): string[] {
+  if (!Array.isArray(lines)) return [];
+  const out = lines.map((line) => (typeof line === "string" ? line.replace(/\s+$/g, "") : ""));
+  while (out.length > 0 && out[0].trim().length === 0) out.shift();
+  while (out.length > 0 && out[out.length - 1].trim().length === 0) out.pop();
+  return out;
 }
 
-function firstLineTitle(blocks: BookBlock[], index: number): string {
-  const first = blocks[0]?.lines[0]?.trim();
-  if (first && first.length <= 80) return first;
-  return `Bagian ${index}`;
+function normalizeBlock(raw: unknown): BookBlock | null {
+  if (!raw || typeof raw !== "object") return null;
+  const block = raw as YamlBlock;
+  const kindRaw = asString(block.kind, "prose").toLowerCase();
+
+  if (kindRaw === "divider") {
+    return { kind: "divider", lines: [] };
+  }
+
+  if (kindRaw === "poetry") {
+    const lines = normalizePoetryLines(block.lines);
+    if (lines.length === 0) return null;
+    return { kind: "poetry", lines };
+  }
+
+  // prose (default)
+  if (typeof block.text === "string" && block.text.trim()) {
+    const lines = normalizeProseText(block.text);
+    if (lines.length === 0) return null;
+    return { kind: "prose", lines };
+  }
+
+  if (Array.isArray(block.lines)) {
+    const lines = block.lines
+      .map((line) => (typeof line === "string" ? line.trim() : ""))
+      .filter(Boolean);
+    if (lines.length === 0) return null;
+    return { kind: "prose", lines };
+  }
+
+  return null;
 }
 
 function previewFrom(blocks: BookBlock[]): string {
-  const line = blocks.flatMap((b) => b.lines).find((l) => l.trim().length > 0);
+  const line = blocks
+    .filter((b) => b.kind !== "divider")
+    .flatMap((b) => b.lines)
+    .find((l) => l.trim().length > 0);
   if (!line) return "";
-  return line.length > 96 ? `${line.slice(0, 93)}…` : line;
+  const trimmed = line.trim();
+  return trimmed.length > 96 ? `${trimmed.slice(0, 93)}…` : trimmed;
 }
 
-function buildParts(rawText: string): BookPart[] {
-  return splitParts(rawText).map((partText, i) => {
-    const index = i + 1;
-    const blocks = splitBlocks(partText).map(classifyBlock).filter((b) => b.lines.length > 0);
-    return {
-      index,
-      slug: String(index),
-      title: firstLineTitle(blocks, index),
-      preview: previewFrom(blocks),
-      blocks,
-    };
-  });
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 48);
 }
 
-export async function loadBook(): Promise<Book> {
-  const meta = readMeta();
+function normalizePart(raw: unknown, index: number): BookPart | null {
+  if (!raw || typeof raw !== "object") return null;
+  const part = raw as YamlPart;
+  const title = asString(part.title).trim() || `Bagian ${index}`;
+  const label = asString(part.label).trim() || `Bagian ${index}`;
+  const slug =
+    asString(part.slug).trim() ||
+    slugify(title) ||
+    String(index);
 
-  if (fs.existsSync(DOCX_PATH)) {
-    const result = await mammoth.extractRawText({ path: DOCX_PATH });
-    return { meta, parts: buildParts(result.value || ""), source: "docx" };
+  const blocks = Array.isArray(part.blocks)
+    ? part.blocks.map(normalizeBlock).filter((b): b is BookBlock => b !== null)
+    : [];
+
+  return {
+    index,
+    slug,
+    label,
+    title,
+    preview: previewFrom(blocks),
+    blocks,
+  };
+}
+
+export function loadBook(): Book {
+  if (!fs.existsSync(YAML_PATH)) {
+    return { meta: DEFAULT_META, parts: [], source: "empty" };
   }
 
-  // Optional local fallback while waiting for the real .docx
-  if (fs.existsSync(TXT_PATH)) {
-    const text = fs.readFileSync(TXT_PATH, "utf8");
-    return { meta, parts: buildParts(text), source: "txt" };
+  const raw = fs.readFileSync(YAML_PATH, "utf8");
+  const doc = (loadYaml(raw) ?? {}) as YamlBook;
+  const meta: BookMeta = { ...DEFAULT_META, ...(doc.meta ?? {}) };
+
+  const parts = Array.isArray(doc.parts)
+    ? doc.parts
+        .map((part, i) => normalizePart(part, i + 1))
+        .filter((p): p is BookPart => p !== null)
+    : [];
+
+  // Ensure unique slugs
+  const seen = new Map<string, number>();
+  for (const part of parts) {
+    const base = part.slug;
+    const count = seen.get(base) ?? 0;
+    seen.set(base, count + 1);
+    if (count > 0) part.slug = `${base}-${count + 1}`;
   }
 
-  return { meta, parts: [], source: "empty" };
+  return { meta, parts, source: "yaml" };
 }
 
 export function hasBookSource(): boolean {
-  return fs.existsSync(DOCX_PATH) || fs.existsSync(TXT_PATH);
+  return fs.existsSync(YAML_PATH);
 }

@@ -1,0 +1,1926 @@
+# book.yaml — data source tampilan web
+# Jangan edit book.txt untuk tampilan; ubah file ini.
+# Lihat content/README.md untuk skema & alur book.txt → YAML.
+#
+meta:
+  title: Rumah No. 4
+  author: Ian Yulianto
+  tagline: Aku tinggal di rumah penuh tanda tanya.
+  language: id
+parts:
+- slug: rumah-no-4
+  label: Pembuka
+  title: Rumah No. 4
+  blocks:
+  - kind: poetry
+    lines:
+    - Aku punya kehebatan
+    - yang tidak semua orang miliki
+    - ''
+    - aku bisa membedakan
+    - langkah kaki yang marah
+    - atau langkah kaki yang lelah
+    - ''
+    - Namaku Lalina
+    - ''
+    - orang-orang memanggil aku
+    - ‘La…’
+    - ''
+    - satu per tiga
+    - dari panjang namaku
+    - ''
+    - ini memang jatah
+    - yang sudah mereka siapkan
+    - agar aku tidak meminta lebih
+    - ''
+    - Aku tinggal
+    - di rumah
+    - penuh tanda tanya,
+    - Rumah
+    - No. 4
+- slug: '1'
+  label: Chapter 1
+  title: Ini Rumahku
+  blocks:
+  - kind: poetry
+    lines:
+    - Balonku, kau dimana?
+    - ''
+    - kaki terseol
+    - mencari di pintu
+    - tidak kutemukan apa-apa
+    - ''
+    - tulisan di depan
+    - “maaf aku sibuk”
+    - ''
+    - atau
+    - mereka sembunyi
+    - di balik pintu?
+  - kind: prose
+    text: |
+      Aku benci membaca tiga kalimat itu. Mengapa harus sembunyi? Kalau ini adalah rumah kami, atau mereka? Aku ingin tenggelam di balik pintu—mendengarkan apa yang dipikirkan orang dewasa. Aku memang masih kecil, tapi katanya kami keluarga.
+  - kind: poetry
+    lines:
+    - Aku bisa mendengar
+    - jantungku berbicara sendirian
+  - kind: prose
+    text: |
+      Aku berharap aku tak mendengarnya. Aku tak ingin mereka juga mendengarnya. Aku tak ingin mereka mengetahui rahasiaku.
+  - kind: poetry
+    lines:
+    - Hari ini ulang tahunku
+    - aku memakai
+    - rok merah muda
+    - bermotif bunga kejora
+    - ''
+    - aku berkaca
+    - melihat wajah
+    - yang tetap tersenyum
+    - ''
+    - itu siapa?
+  - kind: prose
+    text: |
+      Kala aku bercermin, aku ingin itu bukan aku. Ingin kubawa semua rasa ini ke belakang rumah, menguburnya dalam-dalam di dekat sumur. Sekuntum bunga mentari telah lahir.
+  - kind: poetry
+    lines:
+    - Kue kesukaanku
+    - lemon cake
+    - yang banyak cerinya
+  - kind: prose
+    text: |
+      Aku menjilatinya sampai wajahku terbenam dan semua sorot mata memandangku. Tunggu! Apakah wajahku sekarang sudah berubah menjadi bunga matahari atau balon udara atau awan kecil? Tak sabar aku melihat sambil menertawai sendiri—sebelum mereka menertawaiku. Aku ingin menjadi anak dari krim kocok. Bisa berubah warna semauku—apalagi warna putih, aku paling suka warna itu, tidak dekil! Dan aku bisa berubah bentuk secepatku, biar kalau dibutuhkan, aku bisa paling sigap—suka-suka mereka mau menginkanku seperti apa.
+  - kind: poetry
+    lines:
+    - Foto-foto ulang tahunku
+    - di amplop cokelat
+    - ''
+    - aku intip
+    - satu minggu
+    - masih rapi di situ
+    - ''
+    - tidak berubah satu cm pun
+  - kind: poetry
+    lines:
+    - Setiap ulang tahun
+    - mereka bela-bela
+    - tidak memancing
+    - ''
+    - usiaku makin sedikit
+    - ditiup lilin putih
+    - ''
+    - mereka berhamburan
+    - bertegur sapa
+    - dengan orang dewasa lainnya
+    - ''
+    - aku tidak tahu siapa mereka
+    - ''
+    - barangkali,
+    - ini memang acara milik mereka
+  - kind: prose
+    text: |
+      Tubuhku letih, terlalu banyak pamer gigi dan gusi. Aku terlalu hobi memaksa, karena aku tak suka menyimpan. Biarlah semua mengering bersama angan-anganku yang kusimpan di bawah bantal beraroma minyak kemiri.
+  - kind: poetry
+    lines:
+    - Hal yang aku suka adalah membuka hadiah
+    - ‘kok tidak ada barbie kesukaanku?’
+    - ''
+    - pasti mahal, ya
+  - kind: prose
+    text: |
+      Katanya kalau punya boneka cantik kayak Barbie, bisa ketularan cantiknya. Tapi kenapa ayah tak suka membelikanku, apa karena ayah takut aku jadi terlalu cantik? Atau ayah takut aku jadi tidak mirip ayah? Tapi ayah mana sekarang? Selalu sukanya main petak umpet.
+  - kind: poetry
+    lines:
+    - Kalian tahu saat berdoa
+    - susah sekali aku mengucap namamu
+    - ''
+    - bukannya aku tak ingin
+    - namun,
+    - aku lelah berharap lagi
+  - kind: prose
+    text: |
+      Waktu kecil aku tidak diajar bagaimana menyebut nama kalian—saat aku takut waktu dimarahi guru di sekolah, saat aku marah melihat anjing kesayanganku terlindas ban mobil, saat aku lapar belum makan sampai sore. Kalian suka lupa ajarkan aku itu, sampai lidahku kaku menyebut nama kalian. Hanya suka lihat-lihat, terka-terka, mana yang paling-paling, sendirian. Memang diriku banyak keluar jelek-jelek kata orang rumah. Semuanya selalu kata orang-orang, kapan-kapan kata aku juga.
+  - kind: poetry
+    lines:
+    - Kenapa harus aku?
+    - ''
+    - kenapa bukan
+    - yang lainnya?
+  - kind: poetry
+    lines:
+    - Pernahkah kalian berdoa
+    - setiap pagi untukku
+    - ''
+    - mengapa suka lupa
+    - baju kesukaanku
+    - kue kesukaanku
+    - hadiah kesukaanku
+    - ''
+    - padahal
+    - aku ada sesudah kalian
+  - kind: prose
+    text: |
+      Aku suka nasi goreng dengan dua telur mata sapi. Ayah suka nasi goreng yang setengah matang—tidak  mau lembek karena tidak suka katanya. Ibu suka nasi goreng yang banyak bawang gorengnya. Nenek suka nasi goreng yang sangat pedas—sampai dia tidak bisa berbicara lagi. Di piring tersisa dua telur mata sapi: satu matang, satu setengah matang. Kira-kira yang mana punyaku?
+  - kind: poetry
+    lines:
+    - Tiap langkah
+    - aku perhatikan
+    - ''
+    - jangan sampai mengganggu
+    - makan malam mereka
+  - kind: prose
+    text: |
+      Jangan sampai mengganggu, jangan sampai mengganggu, jangan sampai mengganggu. Aku ulang-ulang biar aku tak mengulang bodohku. Tapi susah juga menyembunyikannya, mereka selalu isi ulang bodoh, bodoh, bodoh, bodoh—sampai aku kekenyangan. Tidak apa-apa, biar langkahku lebih berat. Aku takut kepleset kulit kacang, yang lupa anaknya itu—eh, maksudku lupa isinya itu.
+  - kind: poetry
+    lines:
+    - Sepiring nasi seperempat
+    - tempe satu
+    - telur setengah
+    - ''
+    - hanya garpu
+    - di kedua tangan
+    - ''
+    - bu, mana sendokku?
+    - ''
+    - oh iya lupa
+    - mereka sedang makan
+  - kind: prose
+    text: |
+      Lagi-lagi, suaraku menyerbu tanpa aba-aba. Nanti kalau ibu marah gimana? Nanti kalau mereka marah gimana? Aku masih ingin makan tempe dan telur di piringku. Jari-jariku yang kecil iri melihat mereka makan memakai tangan, sepertinya enak sekali—apalagi saat menggigit krupuk, tidak perlu repot ganti sendok dan tangan. Aku ingin menjadi orang dewasa. Tidak usah takut kotor, ambil piring dan gelas sesukanya. Yang paling penting, aku tak perlu meminta sendok waktu aku lapar.
+  - kind: poetry
+    lines:
+    - Kursi-kursi itu
+    - bisa berbicara
+    - ''
+    - tanpa pernah mengenal
+    - apa itu keluarga
+  - kind: prose
+    text: |
+      Aku pernah membaca di kamus. Keluarga adalah ibu dan ayah beserta anak-anaknya, tapi aku sendirian. Atau seisi rumah—orang yang seisi rumah menjadi tanggungan. Apa itu tanggungan? Tapi kata ayah, selamanya aku jadi tanggungannya. Atau bebannya? Aku lupa-lupa ingat. Sanak saudara? Kenapa aku tidak paham arti kata keluarga. Sebenarnya, apa arti keluarga?
+  - kind: poetry
+    lines:
+    - Satu gigiku
+    - terbang ke atas atap
+    - ''
+    - ingin menikmati
+    - bulan sebelumku?
+  - kind: prose
+    text: |
+      He.. he. Aku suka menunjukkan gigiku yang belum utuh semuanya. Tapi herannya mereka memalingkah wajah? Apa karena mereka tidak memiliki gigi sepertiku. Padahal, ini membuatku susah mengunyah dan malah suka membuat makanan terselip. Aku heran dengan orang dewasa, suka yang tidak dimiliki anak kecil sepertiku. Aku tahu mereka pasti iri. Ya sudah, aku sendiri saja. Awas ingin lagi punyaku!
+  - kind: poetry
+    lines:
+    - Aku suka
+    - makan roti cokelat
+    - apalagi
+    - yang banyak selainya
+    - ''
+    - rasanya manis
+    - meski agak pahit
+    - ''
+    - lama-lama
+    - aku hafal rasanya
+  - kind: prose
+    text: |
+      Otakku hebat sekali menyimpan banyak hal. Cuma sayangnya, suaraku suka habis sebelum bersuara. Entah habis, atau memang tak punya suara?
+  - kind: poetry
+    lines:
+    - Dua anjingku berkejaran
+    - entah apa yang dikejar
+    - tidak ada bola
+    - tidak ada makanan
+    - ''
+    - aku tak mampu
+    - mengikuti cepatnya mereka
+    - ''
+    - biarlah mereka senang-senang
+    - biar sedih tidak bisa datang
+  - kind: prose
+    text: |
+      Setelah cepat, ada apa ya? Hilang? Aku tak mau hilang dulu. Aku masih ingin memakan gulali tanpa takut uang habis. Aku juga ingin bisa cepat seperti mereka dan berkejaran senang tanpa tahu harus mengejar apa.
+
+      “Tunggu aku!”
+  - kind: poetry
+    lines:
+    - La!
+    - La!
+    - La!
+    - ''
+    - Setiap panggil namaku
+    - selalu kencang-kencang
+    - ''
+    - aku masih bisa ingat
+    - dan dengar namaku
+    - dipanggil
+    - ''
+    - cukup satu kali saja
+    - jangan lebih-lebih
+  - kind: prose
+    text: |
+      Aku heran kenapa semua yang hidup diberi nama, mulai dari orang rumah, anjing, tapi tumbuhan tidak. Kasihan sekali. Kalau gitu, aku akan memberi nama pohon belimbing “si hijau”. Biar kalau dipanggil, dia tahu itu namanya.
+
+      “Jangan lupa gerakkan daunmu. Jangan takut buahmu gugur.”
+
+      “Aku suka kamu karena manis. Nanti, aku datang lagi.”
+  - kind: poetry
+    lines:
+    - Belasan roll rambut
+    - banyak rontoknya
+    - ''
+    - nenek buru-buru rupanya
+  - kind: prose
+    text: |
+      Kalau nenek pergi, aku suka memainkan roll rambut miliknya. Aku mengambil semua jepit yang menempel di sana, lalu menyusunnya satu per satu. Dari merah hingga hitam. Tiba-tiba, nenek masuk. Ternyata ada warna yang lebih gelap daripada hitam.
+  - kind: poetry
+    lines:
+    - Kalau malam
+    - aku takut melamun
+    - ''
+    - takut diambil
+    - momok dekat sumur
+  - kind: prose
+    text: |
+      Waktu kecil aku selalu ditakut-takuti momok. Sebenarnya, aku tidak tahu wajahnya seperti apa. Katanya dia tinggal di dekat sumur, berpakaian putih dan berambut panjang.
+
+      Aku jadi penasaran. Masak dia seseram itu? Kalau ibu takut, kenapa dia berkata dengan nada marah.
+
+      Tapi aku pikir-pikir, mengapa momok yang diceritakan lebih seperti ibu waktu mau tidur ya?
+  - kind: poetry
+    lines:
+    - Jam menunjukkan pukul 9 malam
+    - waktunya mematikan lampu
+    - ''
+    - ibu tidak ke kamar,
+    - ayah apalagi
+  - kind: prose
+    text: |
+      Aku menutup mata rapat-rapat sambil mengintip siapa yang nanti datang melihatku. Kalau mereka datang saat aku berdongeng, aku akan pura-pura tidur. Jangan sampai mereka tahu ceritaku, karena ceritaku tidak happy ending.
+  - kind: poetry
+    lines:
+    - Teman-temanku
+    - suka cepat pulang
+    - biar tidak dimarahi
+    - ''
+    - mengapa itu
+    - kebalikan denganku?
+  - kind: prose
+    text: |
+      Anjing kesayanganku tak seperti biasanya. Dia memilih tidur di keset kamar tidur sambil menghadap ke arahku. Aku menggenggam kepala kecilnya dengan kedua tangan.
+
+      "Kamu kesepian ya? Aku juga."
+
+      Apa karena dia melihatku? Atau karena hanya itu kalimat yang tersimpan olehku?
+  - kind: poetry
+    lines:
+    - Setiap kali
+    - ke toko mainan
+    - aku selalu tertuju ke area malam
+    - ''
+    - aku suka baunya
+  - kind: prose
+    text: |
+      Aku tak bisa membelinya karena harganya mahal. Ya sudah. Aku hanya suka mampir lihat-lihat di toko mainan. Aku juga suka membuat macam-macam dari malam. Rumah-rumahan, donat, mie goreng. Aku suka sekali mie goreng, apalagi kalau banyak kecapnya.
+
+      Senangnya, kalau malam selalu menurut pada tanganku.
+
+      Aku menang!
+  - kind: poetry
+    lines:
+    - Aku bisa mengingat
+    - dan menghitung
+    - pemberian tante
+    - ''
+    - semuanya sisir
+  - kind: prose
+    text: |
+      Sisir lagi. Kenapa tidak jepit bunga matahari? Yang warnanya kuning dan cantik itu. Aku sering memakai baju pilihan nenek yang katanya membuatku bagus. Tapi kenapa harus bagus? Kenapa tidak cantik juga seperti bunga matahari?
+  - kind: poetry
+    lines:
+    - Ayah berbicara
+    - dibesar-besarkan suaranya
+    - ''
+    - ingin kucuri suara itu
+    - agar ia bisa ingat padaku
+  - kind: prose
+    text: |
+      Ternyata mencuri itu melelahkan. Aku harus berlari cepat, sampai hatiku mati rasa. Padahal seharusnya kaki yang ambil peran itu. Mungkin semua indra-indraku sudah saling bersekongkol agar aku berhenti. Tapi aku tak bisa.
+  - kind: poetry
+    lines:
+    - Aku senang mati-matian
+    - saat ayah
+    - beri botol hijau
+    - tanpa aku merengek dulu
+  - kind: prose
+    text: |
+      Aku senang melihatnya dari jauh kala itu, membawa botol hijau beserta struknya. Tidak seperti biasanya, aku membeli dan membayar sendiri. Cuma aku takut menunjukkan rasa senangku, biarlah aku simpan di nadiku saja. Kalau semua aku tunjukkan, nanti ayah kira senangku cukup begini saja. Aku ingin yang lainnya. Aku ingin melihat senyum itu lagi.
+  - kind: poetry
+    lines:
+    - Setiap jumat
+    - beli satu gratis satu
+    - mainan kesukaanku
+    - di Pasar Sore
+    - ''
+    - ayah berjanji mengajakku
+    - namun dia tak pernah
+    - pulang tepat waktu
+  - kind: prose
+    text: |
+      Kenapa ayah gampang sekali membuat janji? Terus lupa. Aku inginnya muak, tapi aku masih penasaran hebohnya beli di Pasar Sore. Aku ingin tahu gimana caranya membeli dengan uang milik ayah, bukan uang milikku. Pasti ada rasa senang yang membuatku ketagihan. Aku heboh dan ayah akhirnya malu. He he.
+  - kind: poetry
+    lines:
+    - Rumah yang berdiri sejak lama
+    - mestinya
+    - simpan banyak momen
+    - ''
+    - tak pernah kubagi
+    - pada siapa-siapa
+    - tapi kenapa
+    - ''
+    - hanya tersisa ini saja
+    - ''
+    - kemana lainnya?
+    - ''
+    - aku ingin pamer
+    - seperti mereka
+  - kind: prose
+    text: |
+      Apa mereka punya kaki? Aku saja yang punya kaki tidak bisa kemana-mana. Aneh sekali memang rumah ini. Jangan-jangan momok dekat sumur yang menyembunyikannya. Kenapa rumah ini lebih banyak seremnya, daripada senangnya?
+  - kind: poetry
+    lines:
+    - Aku buka
+    - buku bergambar
+    - kuwarnai dengan mimpiku
+  - kind: prose
+    text: |
+      Setiap kali aku bangun tidur, aku selalu punya ingin yang berbeda-beda. Hari ini ingin jadi dokter, besok ingin jadi perawat, lalu ingin jadi guru, besoknya lagi ingin jadi polisi. Tapi jangan polisi, nanti banyak yang benci. Rumah ini sudah banyak yang benci aku.
+  - kind: poetry
+    lines:
+    - Tangan mungil
+    - jari hanya lima
+    - ''
+    - banyak yang
+    - ingin kubawa pulang
+  - kind: prose
+    text: |
+      Aku ingin jadi kantong belanja. Bisa menampung banyak hal. Kalau sedih, tidak perlu keluar jadi air mata. Kalau bahagia, tidak perlu menahan lompat-lompat di kasur. Kalau jengkel, tidak perlu meremas-remas baju.
+
+      Selain itu, bisa dibawa keliling-keliling ke pasar yang katanya jual apapun di sana. Mereka beralasan tidak mengajakku ke sana karena kotor.
+
+      Masa?
+- slug: '2'
+  label: Chapter 2
+  title: Cara menjadi Anak Baik
+  blocks:
+  - kind: poetry
+    lines:
+    - Aku yang lucu
+    - Aku yang pintar
+    - Aku yang baik
+    - Aku yang cantik
+    - ''
+    - aku ulang-ulang
+    - sampai aku lupa
+  - kind: prose
+    text: |
+      Untung aku diajarkan imla, aku bisa mengeja sesukaku. Kalau dimarahi, aku tinggal bilang ini pelajaran sekolah. Siapa tahu mereka juga ingin membantuku—karena mereka suka sama anak yang pintar. Kalau bisa aku pinjam otak ibu guru, aku mau. Biar kapan-kapan, aku yang mengajari mereka caranya menjadi orang yang baik.
+  - kind: poetry
+    lines:
+    - Aku suka sekali
+    - menggali tanah
+    - di halaman rumah
+    - ''
+    - banyak kelereng
+    - berkilau dan cantik
+    - ''
+    - aku suka memamerkannya
+    - aku suka mendengar
+    - kata cantik
+    - meski
+    - itu bukan milikku
+  - kind: prose
+    text: |
+      Aku sangat senang menggali tanah di halaman rumah, meski aku harus menghabiskan cukup banyak waktu untuk mencari kelereng. Aku paling senang saat menemukan kelereng dengan warna yang berbeda di antara yang lain—warna ungu dengan sedikit motif kuning.
+
+      Aku sering bertanya dalam hati, mengapa begitu banyak kelereng tersimpan di dalam tanah?
+
+      Jangan sampai pemilik rumah tahu soal ini.
+  - kind: poetry
+    lines:
+    - Besar atau kecil?
+    - ''
+    - aku pilih yang besar
+    - biar panjang umurnya
+  - kind: prose
+    text: |
+      Kalau aku boleh memilih, aku selalu memilih yang paling besar. Padahal yang kecil lebih banyak lucunya.
+
+      Stiker tweety yang besar, piano yang besar, sepatu balet yang paling besar.
+
+      Biar aku tidak perlu minta terus-terusan. Namun, kata nenek tidak boleh.
+  - kind: poetry
+    lines:
+    - Kalau aku bisa memilih
+    - aku ingin ceria setiap saat
+    - biar mereka memanggilku
+    - anak baik
+  - kind: prose
+    text: |
+      Masa kecil aku tidak punya jatah untuk berkata, menyusun mauku saja aku bingung. Aku bertahan dengan gerak-gerik mata dan lantang suara mereka. Setiap hari aku persiapkan diri untuk belajar senyum dan bagaimana menjadi anak yang baik. Sampai dewasa pun, aku bingung definisi baik itu seperti apa.
+  - kind: poetry
+    lines:
+    - Tidurku lelap
+    - ''
+    - apa karena celanaku terbalik
+    - ''
+    - atau karena
+    - mereka tak mengincarku semalaman
+  - kind: prose
+    text: |
+      Aku merasa diriku seperti anak ayam. Bedanya, anak ayam bisa apa-apa sendiri meskipun masih mengikuti ibunya. Aku masih dipakaikan piyama sebelum tidur. Masih disiapkan makan di piring kesukaanku berwarna kuning, bergambar wajah beruang yang sedang bahagia. Dan masih banyak lagi yang aku belum bisa.
+
+      Aku suka menunggu bintang jatuh—bukan untuk mengabulkan doaku. Aku ingin dia menemaniku saat gelap, agar aku bisa belajar memakai piyama sendiri.
+  - kind: poetry
+    lines:
+    - Aku yakin ada banyak
+    - ''
+    - sedari tadi
+    - aku taruh napasku
+    - untuk menghitungnya
+  - kind: prose
+    text: |
+      Kalau bisa aku ingin memberi nama napas-napasku, agar saat aku buang sejauh-jauhnya. Mereka tidak bingung mencariku dan tetap kembali padaku.
+
+      Aku tahu rasanya lelah. Tapi bingung bagaimana menghiburnya.
+
+      Kasihan.
+
+      (ilustrasi karet gelang)
+  - kind: poetry
+    lines:
+    - Tanganku terjepit pintu
+    - ''
+    - menahan tangis
+    - agar tidak dicap
+    - anak cengeng
+    - ''
+    - saat kepalaku terbentur
+    - meja batu
+    - ''
+    - aku tetap
+    - meringis senyum
+  - kind: prose
+    text: |
+      “Sakit?” aku bertanya pada meja batu.
+
+      Aku masih ingat warnanya hijau seperti permata dengan lis emas.
+
+      Meja itu retak karenaku. Semua orang mengelilinginya.
+
+      Meja sombong itu tidak menjawab pertanyaanku.
+
+      Mungkin dia sudah tahu, banyak yang mencintainya.
+  - kind: poetry
+    lines:
+    - Es ketan hitam,
+    - kesukaanku
+    - tinggal dua sendok
+    - ''
+    - aku akan membagikan pada ayah ibu
+    - agar mereka senang sepertiku
+  - kind: prose
+    text: |
+      Aku menunggu ayah menjemputku di tempat les sambil menyisakan es ketan hitam untuk ayah dan ibu. Inginku membeli lebih banyak, biar kami semua kebagian. Namun, gelas ketan hitam itu hanya diam di meja makan, ditemani secangkir kopi bekas ayah.
+  - kind: poetry
+    lines:
+    - Sayangnya
+    - sedikit-sedikit saja
+    - biar besok-besok
+    - masih ada sisanya
+  - kind: prose
+    text: |
+      Ayahku punya tempat persewaan VCD. Aku senang tidak perlu repot-repot saat ingin menonton Doraemon.
+
+      Namun, aku paling suka saat akhir bulan. Waktu tempat sewa ayah ramai, dia pulang sambil membawa terang bulan dan martabak telur.
+
+      Aku ingin makannya sedikit-sedikit. Senyum ayah bisa dihitung dengan jari.
+  - kind: poetry
+    lines:
+    - Aku memilih
+    - satu sisi sepatu
+    - paling cocok denganku
+    - ''
+    - kurapikan sepatu-sepatu mereka
+    - yang berantakan
+    - ''
+    - tak lama
+    - sepatu itu menjauh
+    - dari pandanganku
+  - kind: poetry
+    lines:
+    - Dua anak anjing
+    - berlarian bersamaku
+    - ''
+    - tiba-tiba aku mematung
+    - saat mereka datang
+    - ''
+    - aku apit kedua temanku
+    - ''
+    - berdoa
+    - agar sore tetap diberi makan
+  - kind: poetry
+    lines:
+    - Kuikuti gerak gerik nenek
+    - agar aku dianggap ceria
+    - ''
+    - kayak teman-teman
+    - di sekolah
+  - kind: prose
+    text: |
+      Ternyata jadi anak ceria itu melelahkan ya. Harus mengejar siapa saja yang aku lihat. Aku seperti pemain sepak bola. Padahal nenek bukan bola. Badannya tidak bulat. Dia juga punya mata dan bisa berjalan menggunakan kaki sendiri. Tidak perlu ditendang kesana kemari.
+  - kind: poetry
+    lines:
+    - Aku bingung
+    - sebanyak apa harus mengerti
+    - ''
+    - apa memang hidup tidak ditakar
+    - atau dibiarkan saja
+    - dilebih-lebihkan
+    - ''
+    - sampai semuanya lupa
+  - kind: poetry
+    lines:
+    - Aku menunggu
+    - sampai habis kertas gambarku
+  - kind: poetry
+    lines:
+    - Teman-teman main engklek
+    - ''
+    - mereka pasti tidak mengenal
+    - momok penebah kasur
+  - kind: poetry
+    lines:
+    - Dari dulu
+    - banyak sendirinya
+    - ''
+    - sering aku sengaja telat
+    - biar banyak larinya
+    - ''
+    - biar sedikit
+    - merasakannya
+  - kind: poetry
+    lines:
+    - Aku cuma punya satu mimpi
+    - ''
+    - tidak mau dua,
+    - nanti satunya hilang
+- slug: '3'
+  label: Chapter 3
+  title: Apakah Ini Keahlianku?
+  blocks:
+  - kind: poetry
+    lines:
+    - Setiap jam 4 sore
+    - aku selalu menantikan
+    - keluarga cemara di televisi
+    - ''
+    - banyak senyumnya
+    - banyak ketawanya
+    - banyak mainnya
+    - banyak senangnya
+    - banyak sayangnya
+    - ''
+    - aku ingin sekali
+    - berada di sana
+    - meski hanya jadi pemeran bayaran
+  - kind: prose
+    text: |
+      Dulu aku suka menunggu tayangan Keluarga Cemara. Awalnya aku hanya ikut-ikutan ART di rumah. Namun, lama-lama aku mulai bertanya setiap jam berapa film itu tayang. Lama-lama, aku menontonnya sendirian.
+
+      Aku senang melihat mereka.
+
+      Meski cerita itu bukan milikku.
+  - kind: poetry
+    lines:
+    - Aku ingin
+    - memakai baju kupu-kupu
+    - ''
+    - biar aku bisa
+    - bebas dan pergi
+    - sendirian
+  - kind: prose
+    text: |
+      Pok ame-ame, belalang, kupu-kupu.
+
+      Siang makan nasi, kalau malam minum susu.
+
+      Aku suka sekali menyanyikan lagu itu.
+
+      Kalau tidak bisa jadi kupu-kupu, tidak apa-apa jadi belalang.
+
+      Aku juga ingin orang mengulang-ulang namaku.
+  - kind: poetry
+    lines:
+    - Siang menjadi malam
+    - malam menjadi pagi
+    - ''
+    - beginilah caraku
+    - menghitung hari
+    - ''
+    - lalu digeletakkan
+    - di sudut sumur
+  - kind: prose
+    text: |
+      Sumur lagi, sumur lagi. Padahal, rumahku besar—tapi selalu sumur yang disebut-sebut. Apa aku memang anaknya momok? Katanya, aku lemot. Tidak pintar kayak sepupuku yang lainnya. Mungkin, memang dulu aku dikandung di dalam sumur bukan di dalam perut ibu? Jadi aku tidak tahu caranya jadi anak pintar.
+  - kind: poetry
+    lines:
+    - Bu,
+    - aku hari ini
+    - ''
+    - ah, aku lupa
+    - mau bicara apa
+    - ''
+    - memang tak ada bahan
+    - atau
+    - tak ada jawaban
+  - kind: poetry
+    lines:
+    - Kalau
+    - ''
+    - Saat orang memberi sesuatu
+    - aku buru-buru berterima kasih
+    - dan pergi
+    - ''
+    - aku takut
+    - hadiahnya diambil lagi
+  - kind: prose
+    text: |
+      Dulu setiap perayaan Natal di sekolah, selalu ada drama Sinterklaus. Dia sangat baik, karena suka menghamburkan hadiah. Meski aku sampai sekarang bingung lelaki bertubuh besar berjenggot putih itu berasal dari mana. Tapi tidak apa-apa yang penting baik, suka kasih hadiah tanpa perlu diminta dulu.
+
+      Aku ingin dipangku olehnya, lalu ketika giliranku, aku ingin membisikkan satu keinginan.
+
+      “Aku ingin bisa ikut bepergian dengannya menggunakan kereta rusa. Tak usah pulang ke rumah juga gapapa, karena Sinterklaus orang baik.”
+  - kind: poetry
+    lines:
+    - Aku tak jahat
+    - aku cuma iri
+    - pada mereka yang kau pilih
+    - bisa melihatmu
+    - tanpa permisi
+    - ''
+    - dari aku,
+    - yang selalu menunggumu
+    - memanggil namaku
+  - kind: poetry
+    lines:
+    - Aku suka menempelkan pipi
+    - ke lantai ubin
+    - dingin sekali
+    - ''
+    - pindah pipi kanan,
+    - pindah pipi kiri,
+    - terus-terusan
+    - ''
+    - sampai
+    - aku tertidur
+  - kind: poetry
+    lines:
+    - Darimana kau ada
+    - bagaimana kau ada
+    - mengapa kau ada
+    - ''
+    - sekali-kali pergilah
+    - ''
+    - agar mereka juga tahu
+    - rasa sepi
+  - kind: poetry
+    lines:
+    - Mati duluan
+    - pergi duluan
+    - sendiri duluan
+    - ''
+    - duluan saja
+    - ''
+    - aku tunggu kelanjutan ceritamu
+    - yang dulu-dulu tak pernah selesai
+  - kind: poetry
+    lines:
+    - Aku, nenek, kakek, ibu, ayah, tante, om
+    - pergi tamasya ke bonbin
+    - sambil makan kue kukus sama-sama
+    - ''
+    - aku terbangun
+    - dan bahagia sekali
+  - kind: poetry
+    lines:
+    - Maaf,
+    - aku mengajakmu ke dalam permainan
+    - yang kamu sendiri
+    - tidak tahu peranmu seperti apa
+  - kind: poetry
+    lines:
+    - Ada halaman di tengah rumah
+    - banyak bunyi kalau sore hari
+    - ''
+    - aku senang
+    - mereka pulang
+    - aku takut juga
+    - mereka pergi lagi
+  - kind: poetry
+    lines:
+    - Nanti dulu ceritanya, Pak
+    - Nanti dulu inginnya, Bu
+    - Nanti dulu hebohnya, Nek
+    - ''
+    - aku tidak mau senang
+    - seperti dulu-dulu
+  - kind: poetry
+    lines:
+    - Aku kecup bunga kemuning
+    - baunya harum sekali
+    - ''
+    - kalau aku tutup mata
+    - aku takut tidak mau
+    - buka mata lagi
+  - kind: poetry
+    lines:
+    - Aku susun balok-balok kayu
+    - aku ingin buat sebagus mungkin
+    - ''
+    - untuk rumahku
+  - kind: poetry
+    lines:
+    - Aku punya dua boneka
+    - ''
+    - aku kasih nama mereka
+    - Lala dan Lili
+    - ''
+    - biar kalau aku pergi
+    - mereka tidak sendirian
+  - kind: poetry
+    lines:
+    - Tuts hitam putih
+    - membingungkanku
+    - ''
+    - aku berhasil!
+    - ''
+    - aku hanya tidak berhasil
+    - membuat mereka tersenyum
+  - kind: poetry
+    lines:
+    - Apa aku harus
+    - menelan ingin?
+    - ''
+    - sembari mengucap
+    - doa terus menerus
+    - agar kenyang inginku
+    - atau lupa mauku
+  - kind: poetry
+    lines:
+    - Pulang sekolah sendiri
+    - hanya 15 langkah dari pagar
+    - apakah ini
+    - cara kalian menganggapku?
+    - ''
+    - dewasa sebelum kalian
+  - kind: poetry
+    lines:
+    - Kalau ada satu permintaan
+    - ''
+    - aku tidak mau
+    - boneka barbie
+    - stiker tiga dimensi
+    - sprei babi merah muda
+    - ''
+    - aku cuma mau
+    - sembunyi
+    - ''
+    - aku ingin main
+    - petak umpet
+    - kayak ayah
+  - kind: poetry
+    lines:
+    - Kalau saja
+    - aku jadi anak cantik
+    - ''
+    - mungkin
+    - aku sudah dipamerkan
+  - kind: poetry
+    lines:
+    - Jarak pandangku semakin jauh
+    - ''
+    - habis kata-kataku
+    - habis pinta-pintaku
+    - ''
+    - cukup begini saja
+    - pisah-pisah sampai nanti
+  - kind: poetry
+    lines:
+    - Aku membeli anak ayam
+    - di depan sekolah
+    - kupilih dari sekian warna
+    - yaitu kuning
+    - ''
+    - lucunya
+    - cerianya
+    - cerewetnya
+    - ''
+    - akhirnya
+    - aku bisa memilikinya
+  - kind: poetry
+    lines:
+    - Kenapa aku disuruh
+    - les renang
+    - les piano
+    - les balet
+    - les pelajaran
+    - ''
+    - apa mereka tidak mau melihatku?
+  - kind: poetry
+    lines:
+    - Tidak apa-apa kalau marahnya diulang-ulang
+    - tidak apa-apa kalau tegurnya diulang-ulang
+    - tidak apa-apa kalau sinisnya diulang-ulang
+    - ''
+    - tidak apa-apa kalau akhirnya
+    - hilang semua indra-indraku
+    - asal
+    - aku bisa merasakan disayang berulang-ulang
+  - kind: poetry
+    lines:
+    - mana senyum mereka?
+    - ''
+    - apa aku harus antri
+    - masuk janin
+    - yang mau menerimaku
+  - kind: poetry
+    lines:
+    - pak, ayo pergi
+    - antarkan anakmu
+    - ''
+    - apa aku salah ya?
+  - kind: poetry
+    lines:
+    - Makan sekenyang-kenyangnya
+    - hingga habis masa ingatku
+  - kind: poetry
+    lines:
+    - Banyak kamar
+    - panjang jalannya
+    - ujung rumahnya
+    - ''
+    - aku tunggu di sini
+    - aku tak akan kemana-mana
+    - ''
+    - kamu juga
+    - jangan lupa cari aku ya
+  - kind: poetry
+    lines:
+    - Aku ingin main
+    - gelembung sabun
+    - ''
+    - berkejaran
+    - kayak orang-orang
+  - kind: poetry
+    lines:
+    - Mata ku cuma dua
+    - telinga ku cuma dua
+    - ''
+    - jangan buat aku
+    - ingin menambah indra lagi
+  - kind: poetry
+    lines:
+    - Waktu susah
+    - barulah ingat
+    - ''
+    - kalau senang?
+  - kind: poetry
+    lines:
+    - Aku tidak diam
+    - ''
+    - aku cuma belajar
+    - jadi kalian
+  - kind: poetry
+    lines:
+    - Aku bermimpi
+    - di lapangan dekat rumah
+    - bermain sepak bola
+    - bersama ayah ibu
+    - ''
+    - aku tidak suka menang
+    - aku maunya mereka saja yang menang
+    - ''
+    - biar mereka mau main lagi
+    - terus-terusan
+  - kind: poetry
+    lines:
+    - Pulang-pulang
+    - aku jatuh di kubangan
+    - ''
+    - ayah tersenyum
+    - dan meraih tanganku
+    - ''
+    - aku tidak mau bangun
+  - kind: poetry
+    lines:
+    - Aku suka
+    - jeruk pacitan
+    - ''
+    - dipotong kedua sisinya
+    - ''
+    - aku bosan
+    - rasa pahit
+  - kind: poetry
+    lines:
+    - Setiap tahun
+    - aku selalu punya permohonan
+    - pada Tuhan
+    - agar tahun depan
+    - tidak begini lagi
+  - kind: poetry
+    lines:
+    - Semua jarang berbicara padaku
+    - ''
+    - apa bukan
+    - disini tempatku?
+  - kind: poetry
+    lines:
+    - Keluar kamar
+    - lagi-lagi
+    - hanya ada
+    - sepiring gorengan
+    - yang menghitam
+    - pisang, singkong, ubi
+    - ''
+    - untuk aku
+    - yang paling disayang
+  - kind: poetry
+    lines:
+    - Setiap aku bergerak
+    - rambutku jatuh
+    - ''
+    - setiap aku berjalan
+    - rambutku terbang
+    - ''
+    - apa aku hilang
+    - sedikit-sedikit?
+  - kind: prose
+    text: |
+      Aku suka berjalan melihat bawah. Aku mencari remah-remah diriku—ingin kususun ulang semauku. Aku tidak suka disebut seperti tinggal di hutan. Aku tidak mau diingatkan tentang hutan terus menerus. Kenapa rumahku disebut hutan?Aku bukan tarzan.
+
+      Sebenarnya, sedang apa aku di sini?
+  - kind: poetry
+    lines:
+    - Rumah begitu panjang
+    - ''
+    - setiap langkah
+    - menuju ujung
+    - ''
+    - tak ada
+    - yang memanggilku
+  - kind: prose
+    text: |
+      Kata orang-orang, lagi-lagi kata orang-orang. Aku tak punya suara. Bagaimana aku punya? Kalau tak ada yang ingin mendengarnya. Aku coba memantau lewat celah pintu. Aku ingin sigap mengeluarkan suaraku. Kasihan, nanti lama-lama suaraku hilang dan tak bisa menyebut namaku lagi.
+
+      Sayangnya, ini cuma imajinasiku. Lagi-lagi.
+  - kind: poetry
+    lines:
+    - Suatu hari
+    - ada singa mengaum
+    - ''
+    - aku tertidur
+    - sendirian
+  - kind: prose
+    text: |
+      “Aum…aum” kadang aku berpikir ingin membeli kostum singa—melihatnya keren sekali. Siapa yang tidak takut pada singa? tapi aku ingin merasakan ditakuti semua orang. Tapi aku masih takut kedinginan kalau tidak pakai piyama saat tidur. Singa kan gitu.
+  - kind: poetry
+    lines:
+    - Putih,
+    - anjing kesayangan ayah
+    - mengikuti dia kemanapun
+    - ''
+    - aku pernah mencoba
+    - mengikuti ibu kemanapun
+    - dia cuma menoleh
+    - “ngapain?”
+  - kind: poetry
+    lines:
+    - Ibu, Ayah
+    - maafkan aku yang harus
+    - ada di kartu keluarga
+    - ''
+    - kalian butuh banyak kosong di sana
+    - ''
+    - tapi aku sembarangan mengisinya
+  - kind: poetry
+    lines:
+    - Waktu dijemput les oleh ayah
+    - aku berlari girang
+    - memegang gas motor
+    - ''
+    - lututku melepuh kena knalpot
+    - ''
+    - aku tetap memeluknya
+    - dari belakang sampai rumah
+  - kind: poetry
+    lines:
+    - Maniskah yang kau rasa?
+    - ''
+    - apa kamu tahu apa itu rasa
+    - ''
+    - rasa itu
+    - ketika aku menunggu
+    - ayah gulali lewat
+    - setiap jam 4 sore
+  - kind: poetry
+    lines:
+    - Aku kasihan sama dadaku
+    - ''
+    - banyak deg-degannya
+    - saat melihat kalian
+  - kind: poetry
+    lines:
+    - Aku lagi?
+    - ''
+    - Aku mengerjakan PR,
+    - pekerjaan rumah
+    - ''
+    - tapi
+    - mana rumahku?
+  - kind: poetry
+    lines:
+    - Aku bingung
+    - kenapa di kamus ku
+    - hanya terdapat satu kata
+    - ''
+    - apa itu
+    - kuat?
+  - kind: poetry
+    lines:
+    - Kenapa kalian tidak pernah tanya
+    - ''
+    - aku sudah kenyang
+    - atau masih lapar?
+  - kind: poetry
+    lines:
+    - Aku tak tahu
+    - bagaimana caranya
+    - aku bicara padamu
+    - ''
+    - apakah bahasa kita berbeda?
+    - atau memang kau tak ingin kita sama?
+    - ''
+    - setiap kali aku memberi harap
+    - kau matikan terus menerus
+  - kind: poetry
+    lines:
+    - Aku suka semua orang pergi
+    - ''
+    - aku selalu mengganggu mereka
+    - lagi dan lagi
+    - ''
+    - apa aku memang
+    - mengganggu?
+  - kind: poetry
+    lines:
+    - Tak ada bahu
+    - yang ditepuk
+    - ''
+    - Tak ada tangan
+    - yang digenggam
+    - ''
+    - Tak ada tubuh
+    - yang dipeluk
+    - ''
+    - tidak apa-apa
+    - nanti
+    - aku akan datang lagi
+  - kind: poetry
+    lines:
+    - Di balik kuat,
+    - ada aku yang lemah
+    - ''
+    - aku duduk
+    - di depan pintu putih kaca
+    - ''
+    - menunggu ayah dan ibu
+    - yang memilih tidak kembali
+- slug: '4'
+  label: Chapter 4
+  title: Aku Bukan Lalina
+  blocks:
+  - kind: poetry
+    lines:
+    - Rumah ini
+    - punya panggungnya sendiri
+    - tidak ada yang mengajariku
+    - caranya menari
+    - di sana
+  - kind: prose
+    text: |
+      Saat kelas TK-B, aku diikutkan les balet. Masih ingat ada fotoku saat mengikuti kontes balet, gincu merah membantu raut wajahku agar tambak lebih berwarna. Herannya dua atau tiga tahun lamanya, aku tak mengalami perkembangan. Begitu-begitu saja, padahal aku ingin sekali bisa meruncingkan jari jemari sebagai tumpuan.
+
+      Aku pikir-pikir itu memang motivasiku. Memang ketika melakukan sesuatu, tak perlu muluk-muluk inginnya apa. Cukup satu. Bagiku, itu sudah bisa membuatku pergi les tanpa minta aneh-aneh. Memang aku dari dulu tak hobi cari gara-gara.
+
+      Sampai sekarang, sepatu balet itu masih ada—menjadi saksi bahwa aku sempat menjadi karakter utama dalam ceritaku sendiri. Yang tak tahu, endingnya kapan, dimana, dan bersama siapa.
+
+      “Apa bersamamu?” ajakku pada sepatu balet.
+
+      Namun, dia lebih memilih pergi menyembunyikan dirinya dalam kardus.
+  - kind: poetry
+    lines:
+    - Badanku tak besar
+    - tapi aku banyak maunya
+    - kata orang-orang
+    - ''
+    - atau memang mereka
+    - tak mau mengenalku?
+  - kind: prose
+    text: |
+      Lama aku mencari tahu isi hati mereka. Karena aku bosan dibodoh-bodohi terus, aku marah, lalu aku mencari mereka lagi karena memang aku lapar. Perutku buncit karena terlalu banyak marah dan makan.
+  - kind: poetry
+    lines:
+    - Kupikul lelahku hingga
+    - aku tak mengenal kamu
+    - ''
+    - kupikul resahku hingga
+    - aku tak mencari kamu
+    - ''
+    - kupikul semuaku hingga
+    - aku tak mengenal diriku lagi
+  - kind: prose
+    text: |
+      Bulan, aku ingin menitipkan resahku. Apakah aku perlu izin? Aku tak sanggup memikul sendirian. Telah lama aku menunggu di balik janji. Sampai saat ini, aku tak tahu harus menagihnya pada siapa. Semua memalingkan wajah seakan frekuensiku tak sama. Merintih pun, aku bingung caranya. Apa kamu sedang berada di atas kepalaku, bulan? Mengapa langkah kakiku seperti bunyi suaraku saat kedinginan di kamar mandi. Aku ingin terbang masuk di sela-selamu, berlindung sebentar saja. Dan akan kembali, saat mereka memanggilku lagi.
+  - kind: poetry
+    lines:
+    - Aku ingin tahu
+    - syarat diterima di sini apa?
+    - ''
+    - agar aku bisa merasakannya
+    - sebelum pergi
+  - kind: prose
+    text: |
+      Kalau aku pergi jauh, aku takut dikejar momok. Padahal, setiap hari aku melihat momok. Kata Ibu, momok itu jahat dan seram. Tapi herannya, aku bisa mengharapkannya setiap hari.
+  - kind: poetry
+    lines:
+    - Mereka bergiliran
+    - memberi masing-masing
+    - impiannya kepadaku
+    - ''
+    - untung kakiku
+    - ada dua
+    - ''
+    - bisa berganti sisi
+    - untuk memikul
+  - kind: prose
+    text: |
+      Kadang aku heran, ketika melangkah selalu banyak yang berteriak “awas jatuh”, “awas itu” entah apa saja yang dilihat, takut aku mengenainya. Sebenarnya, mereka bingung tentang aku atau tentang barang-barang itu?
+  - kind: poetry
+    lines:
+    - Di tangan kanan, krayon merah
+    - di tangan kiri, krayon kuning
+    - ''
+    - aku bingung
+    - pakai yang mana dulu
+  - kind: poetry
+    lines:
+    - Tanganku
+    - banyak kosongnya
+    - pikiranku
+    - banyak isinya
+  - kind: prose
+    text: |
+      Kalau aku tidur lama, jangan lupa bangunkan aku. Tidak usah bawa sarapan kayak di film-film. Cukup ingat bangunkan aku. Kadang aku malas tidur, karena aku menunggu kabar. Aku malas bangun lagi, karena tak ada cerita. Aku malas makan lagi, karena tak ada soto kesukaanku. Dan saat aku pergi, aku takut tak ada kata lagi.
+  - kind: poetry
+    lines:
+    - Kulitku memang hitam
+    - hidungku pesek
+    - bibirku pun hitam
+    - ''
+    - kalian jangan buatku ingin
+    - tak memanggil namaku lagi
+  - kind: poetry
+    lines:
+    - Apakah begitu mahal
+    - pujian untukku yang manis ini?
+    - ''
+    - Apakah begitu susah
+    - lihat diriku yang kuat ini?
+    - ''
+    - Apakah begitu sibuk
+    - temani aku yang rupawan ini
+    - ''
+    - maaf
+    - lancang
+  - kind: poetry
+    lines:
+    - Aku dihadang bingung
+    - menyerbu tanpa aba-aba
+    - ''
+    - aku tak diberi senjata
+    - apalagi peluru
+    - ''
+    - hanya secarik kertas
+    - tanpa suara
+  - kind: poetry
+    lines:
+    - Kalian cemari aku
+    - dengan pinggiran kata
+    - ''
+    - sering aku jatuh
+    - dan aku lupa caranya
+    - untuk bangun
+    - lagi
+  - kind: poetry
+    lines:
+    - Apa aku terlalu kencang berlari
+    - hingga kaki mati rasa
+    - ''
+    - dikejar waktu
+    - hilang separuh diriku
+    - ''
+    - aku tertelan
+    - ekspektasi
+    - yang banyak kosongnya
+  - kind: poetry
+    lines:
+    - Kupikir-pikir
+    - abjad itu lucu
+    - A selalu jadi pertama
+    - Z selalu setia menunggu
+    - ''
+    - di tengah barisan
+    - aku menaruh permisi
+    - ''
+    - boleh?
+  - kind: poetry
+    lines:
+    - Kata mereka
+    - aku banyak cemberut
+    - ''
+    - mau senang
+    - cuma-cuma saja
+    - aku takut
+  - kind: poetry
+    lines:
+    - Aku terhempas mengikuti jalinan aksi
+    - yang terus berputar tak henti
+    - ''
+    - cukupkah aku?
+    - ''
+    - belum.
+    - coba lagi
+    - ''
+    - kususuri otak
+    - kuabaikan pikiran yang letih
+    - ingin kucoba lagi besok
+    - ''
+    - apa daya
+    - aku belum cukup
+    - seperti kemarin-kemarin
+  - kind: poetry
+    lines:
+    - Kalau sudah besar,
+    - aku ingin tidur nyenyak
+    - ''
+    - aku ingin dihibur
+    - dengan chiki
+    - dan permen
+    - ''
+    - bukan dimarahi
+    - kayak lalu-lalu
+  - kind: poetry
+    lines:
+    - Aku suka memakai
+    - terusan bermotif polkadot
+    - banyak rendanya
+    - ''
+    - biar banyak mata
+    - melihatku
+  - kind: poetry
+    lines:
+    - Tanpa pesona
+    - ''
+    - aku hanya makan dan minum dari
+    - tangan yang kosong
+  - kind: prose
+    text: |
+      Sel-sel laparku membunyikan alarm “Makan, makan!” katanya.
+
+      Tunggu, aku tidak butuh makan saja.
+
+      Aku ingin ada yang ingat kalau aku suka mie goreng yang banyak kecapnya.
+  - kind: poetry
+    lines:
+    - Kalau aku lahir kembali
+    - aku ingin jadi juru masak
+    - ''
+    - biar aku tahu
+    - rasanya kenyang
+  - kind: poetry
+    lines:
+    - Aku yang lelah
+    - harus bermuka denganmu
+    - ''
+    - kupinggirkan rasa itu
+    - sambil menarik garis bibir
+    - yang mungkin
+    - sudah lama aku simpan
+    - ''
+    - maafkan—
+    - aku terlena
+    - oleh tepuk tangan
+    - ''
+    - maafkan—
+    - aku termakan
+    - puji-pujian,
+    - ''
+    - dan sorotan diri
+    - yang telah kudoakan lama
+  - kind: poetry
+    lines:
+    - Kuingin menutup mata
+    - bergetar di antara pikiranku sendiri
+    - ''
+    - sudah, ya
+    - besok lagi
+  - kind: poetry
+    lines:
+    - Aku ingat waktu masih bayi
+    - ''
+    - aku dicium di kening
+    - ''
+    - lagi di sisi kanan
+    - lagi di sisi kiri
+    - lagi lagi
+    - sampai lagi
+    - tidak pernah ada lagi
+  - kind: poetry
+    lines:
+    - Aku menulis surat tiga kali
+    - aku memberikan surat tiga kali
+    - aku lakukan semuanya sendiri
+    - mana, balasannya?
+    - ''
+    - apa harus aku yang menulisnya juga?
+  - kind: poetry
+    lines:
+    - Aku mendongak ke atas
+    - menghitung cicak di dinding
+    - ''
+    - kapan ya mereka kembali?
+  - kind: poetry
+    lines:
+    - Sekali-kali aku ingin kalian tanya
+    - sekali-kali aku ingin kalian genggam
+    - sekali-kali aku ingin kalian peluk
+    - ''
+    - sekali-kali saja
+    - ''
+    - biar aku tahu
+    - meski cuma bisa sekali aja
+  - kind: poetry
+    lines:
+    - Jari-jariku meremas
+    - bungkus permen sekecil-kecilnya
+    - ''
+    - di balik
+    - rok merah
+    - pilihan nenek
+  - kind: poetry
+    lines:
+    - Ingin jadi kecil sekali
+    - sembunyi di bulu-bulu Putih
+    - anjingku yang tuli
+    - ''
+    - dan menuli bersama
+  - kind: prose
+    text: |
+      Putih adalah kesayangan anjing rumah. Dia berbulu putih halus dan memiliki hidung yang merah. Lucu sekali, namun sayangnya dia tidak bisa mendengar orang memanggilnya. Padahal, dia sangat ceria dibandingkan anjing-anjing lain. Aku suka kasihan padanya, tapi aku banyak irinya. Dia tidak bisa mendengar orang, tapi tetap senang-senang saja. Mungkin dia tahu sesuatu yang aku tidak pernah tahu.
+  - kind: poetry
+    lines:
+    - Kalau ditanya mau ke mana
+    - aku ingin ke taman
+    - ''
+    - kalau ditanya pulang
+    - aku ingin pulang
+    - selamanya
+  - kind: prose
+    text: |
+      Semua kalau-kalau saja. Padahal kalau ditanyapun, aku pasti banyak diamnya, meski banyak dengarnya juga. Aku suka bingung menjadi diriku. Selain banyak kalau-kalau, juga banyak takut-takut. Aku takut bicara. Nanti banyak salahnya, bukan bagus seperti aku pakai baju pilihan nenek.
+
+      “Kapan ini berakhir?” tanyaku pada bekas luka di siku tangan.
+
+      Aku suka kesal kalau sudah berpikiran dan berbicara tidak-tidak seperti ini. Aku tidak ingin merasakan apa-apa. Kalau boleh, aku ingin menyimpan semua ini di pori-pori tubuhku saja, biar bisa pergi menjadi keringat atau kotoran yang lain.
+
+      Kuatku sudah dari dulu. Aku masih bisa berdiri dan bertahan, hingga tertidur. Inginku juga tak pernah kembali lagi.
+  - kind: poetry
+    lines:
+    - Mereka membuatku diam
+    - dengan matanya
+    - dengan suaranya
+  - kind: poetry
+    lines:
+    - Di dapur, ada penggiling kacang
+    - aku memainkan
+    - seraya ingin membantu
+    - ''
+    - mata kelilipan
+    - jemariku tergiling
+    - ''
+    - aku hanya diam
+  - kind: poetry
+    lines:
+    - Kau membawaku ke dunia
+    - ''
+    - lucunya,
+    - kita seperti tak saling mengenal
+  - kind: poetry
+    lines:
+    - Kadang aku heran
+    - ''
+    - mengapa mereka jalan
+    - begitu cepat sekali
+    - ''
+    - seperti takut
+    - kehabisan waktu
+  - kind: poetry
+    lines:
+    - Setiap ada suara
+    - aku selalu menempelkan telinga
+    - di balik pintu
+    - ''
+    - berjaga-jaga
+    - kalau mereka sedang marah
+  - kind: poetry
+    lines:
+    - Mereka tak pernah mendengarku
+    - sampai akhirnya
+    - aku tahu apa guna bibir ini
+    - ''
+    - menghisap oksigen
+    - membantuku menelan semua ini
+  - kind: poetry
+    lines:
+    - Aku dapat satu
+    - adik dapat dua
+    - ''
+    - apa memang begini
+    - pembagiannya?
+  - kind: poetry
+    lines:
+    - Aku punya mawar
+    - banyak durinya
+    - ''
+    - ibu juga
+  - kind: poetry
+    lines:
+    - Permisi,
+    - aku lepas sandalku
+    - aku lepas pijakanku
+    - aku lepas diriku satu per satu
+    - ''
+    - untuk kamu
+    - yang tetap tak mau melihatku
+  - kind: poetry
+    lines:
+    - Aku takut untuk melupakanmu
+    - ''
+    - aku ingin melenyapkanmu
+    - ''
+    - aku akan selalu mengingatmu
+    - dalam jarak
+  - kind: poetry
+    lines:
+    - Kaki berjinjit-jinjit
+    - melewati genangan
+    - ''
+    - jangan sampai aku melebur
+    - dan terlupa akan titik henti
+    - sesungguhnya
+  - kind: poetry
+    lines:
+    - Kenapa kepalaku berat
+    - ''
+    - apa aku terlalu banyak memendam
+    - atau banyak inginnya
+  - kind: poetry
+    lines:
+    - dua mataku tak sama
+    - satunya sempurna
+    - satunya tidak
+    - ''
+    - dua lapis bibirku tak sama
+    - atasnya hitam
+    - bawahnya pudar
+    - ''
+    - dua pikiranku tak sama
+    - kirinya rindu
+    - kanannya benci
+    - ''
+    - bolehkah
+    - kita bagi saja
+  - kind: poetry
+    lines:
+    - Bawalah aku ke ingatanmu
+    - bawalah aku ke dekapanmu
+    - bawalah aku ke pangkuanmu
+    - ''
+    - sampai kamu ingat aku
+    - tanpa aku
+  - kind: poetry
+    lines:
+    - Tidur lagi
+    - tak ada kabar
+    - ''
+    - bangun lagi
+    - tak ada cerita
+    - ''
+    - makan lagi
+    - tak ada tawa
+    - ''
+    - pergi lagi
+    - tak ada aku
+- slug: '5'
+  label: Chapter 5
+  title: Pulang
+  blocks:
+  - kind: poetry
+    lines:
+    - Kadang aku ingin
+    - seperti orang-orang
+    - ''
+    - diajak makan
+    - dikasih tolong
+    - diingat ulang tahun
+    - ''
+    - apa aku harus
+    - lebih baik
+    - lebih berhasil
+    - lebih membanggakan
+    - ''
+    - agar aku diadakan
+    - dalam ingatan
+    - dan laku kalian
+  - kind: poetry
+    lines:
+    - Mungkin ini kapasitas
+    - atau ini memang batasnya
+    - tidak dikasih lebih-lebih
+    - ''
+    - biar tidak banyak minta lebih
+    - karena kalau banyak dikasih
+    - nanti
+    - banyak mintanya
+  - kind: poetry
+    lines:
+    - Sedang apa aku?
+    - menimbang mana
+    - yang paling-paling
+    - ''
+    - jangan banyak-banyak
+    - satu kata saja
+  - kind: prose
+    text: |
+      Perih—kata yang diajarkan oleh Nenek saat tanganku tidak sengaja terluka di alat penggiling kacang miliknya. Awalnya, aku tak tahu mengapa rasanya sakit sekali. Aku cuma menyebut sakit, sakit, sakit, sakit, dan kadang menjerit. Nenek hanya menyuruhku diam dan mengobati lukaku agar tidak makin berdarah. Dia bilang, jangan sebut sakit—ini namanya perih. Aku tanya kenapa? Katanya karena ini sakit yang tidak biasa. Jadi, cukup perih saja—jangan mengulang sakit berulang kali.
+  - kind: poetry
+    lines:
+    - Satu kali saja
+    - aku ingin
+    - mengumbar
+    - ingin
+    - ''
+    - dan lari
+    - ke dekapan
+    - mereka
+  - kind: prose
+    text: |
+      Kalau aku ingin, jangan langsung pasang wajah jelek. Jangan aku saja yang dibilang jelek—kalian juga punya wajah. Kalau tidak mendengus, kalian melotot. Sekali-kali, senyum dan tetap peluk aku. Lagi-lagi, aku banyak maunya ya? Cuma kalau boleh, aku ingin satu kali saja. Saat aku jatuh, aku ingin meminjam tangan kalian—satu saja untuk menopangku. Paling tidak sebelum mati aku pernah ditopang—meski aku tidak mengenal tangan milik siapa itu.
+  - kind: poetry
+    lines:
+    - Aku tumbuh
+    - di keluarga yang senyap
+    - dititipkan pada nenek
+    - bersama mereka
+    - yang tak ingin mengenal
+    - dan menginginkanku
+    - ''
+    - aku tak begitu tahu
+    - rasa yang seharusnya ada
+    - dalam sebuah keluarga
+    - ''
+    - hanya rasa sepi bergelora
+    - menelusuri angka dan senyum pilu
+    - ''
+    - semua anggota diriku bekerja sama
+    - untuk menarik banyak mata
+    - ''
+    - ada rasa kosong
+    - menyusup di antara nadi
+    - digiring oleh pencapaian,
+    - dinilai oleh nominal
+  - kind: prose
+    text: |
+      Aku tidak terbiasa diam. Kalau aku diam, aku teringat bagaimana aku dimarahi. Jadi aku ingin melakukan sesuatu terus-terusan sampai malam. Ingin aku kejar apapun yang aku bisa.
+
+      Pernah aku menunjukkan brosur bergambar diriku beserta peringkatku. Nyatanya, lebih penting acara televisi dan sekantong keripik kentang.
+
+      Ternyata masih kurang.
+  - kind: poetry
+    lines:
+    - Siapa yang akan berdiri di sisiku
+    - saat aku tak punya
+    - apa-apa
+    - selain set hitam pakaianku
+    - dan sandal kesukaanku
+    - yang sudah lepas sisi kanannya
+    - ''
+    - menempel di tubuh yang
+    - banyak inginnya ini
+    - ''
+    - aku takut
+    - mengambil milikmu
+    - dan tak akan bisa mengembalikan
+    - lagi
+  - kind: poetry
+    lines:
+    - Apa adanya aku
+    - apa kamu mau?
+    - ''
+    - aku cuma begini-begini saja
+    - dari dulu juga begini
+    - ''
+    - mereka inginnya
+    - aku tak begini
+    - ''
+    - aku hanya tahu
+    - bahasa merekalah
+    - yang lebih punya kuasa
+    - ''
+    - mungkin
+    - aku memang dirudung
+    - rasa tak cukup
+    - terus menerus
+    - ''
+    - oleh mereka
+    - yang seharusnya
+    - paling menginginkanku
+  - kind: prose
+    text: |
+      Ibu lihat gambarku. Dia sibuk sendiri dengan set perawatan wajah yang baru dibelinya. Senyum-senyumnya hampir sama saat kado ulang tahun dari teman-teman sekolah banyak buku tulis. Padahal, aku sukanya buku bergambar.
+
+      Aku memanggilnya empat kali, tapi dia tidak menoleh padaku. Akhirnya, kertas gambarku basah.
+
+      Barulah dia menoleh.
+
+      "Kertas gambarnya jadi rusak."
+
+      Nakal.
+
+      Dasar merepotkan.
+
+      Kata-kata itu menempel lama—sampai aku sulit melepaskannya dari gambar diriku.
+
+      Aku ingin bebas.
+
+      Apa bisa ya?
+  - kind: prose
+    text: |
+      Tidak ada anak yang ingin nakal.
+
+      Tidak ada anak yang ingin merepotkan.
+
+      Aku hanya ingin pulang ke rumah yang bahkan belum pernah kutinggali.
+
+      Tanpa aku minta, sudah memberiku gulali.
+
+      Tanpa aku menunjukkan nilai, sudah bilang aku hebat.
+
+      Tanpa aku berkata apa-apa, sudah tahu aku sedang sedih.
+  - kind: poetry
+    lines:
+    - Aku lupa
+    - tambalanku
+    - sama besarnya
+    - dengan inginku
+  - kind: poetry
+    lines:
+    - Tidak apa-apa senang saat ada yang memberimu kue.
+    - Tidak apa-apa senang waktu diajak pergi.
+    - Tidak apa-apa.
+    - Aku mengulanginya terus bersama Lala.
+    - Kalau aku lupa, Lala yang ingat.
+  - kind: poetry
+    lines:
+    - Berapa lama lagi
+    - ini akan selesai?
+  - kind: prose
+    text: |
+      Semua ada akhir. Tak hanya awal atau bagian tengah saja yang dipikirkan, sampai akhir pun sering dihiraukan.
+
+      Sisa pikirku, tak bisa menghakimi waktu yang sudah ada. Tanpa aku tanya diriku sendiri.
+
+      Semua laku mengarah pada tujuan.
+
+      Memang sulit sampai sekarang aku mengerti.
+
+      Namun, semakin ada rasa kosong habis diperas daya pikirku.
+
+      Kasihan otakku.
+
+      Biarlah dia menunggu dan menyambungkan semua dari awal hingga akhir ini.
+  - kind: poetry
+    lines:
+    - Tuhanku memberi
+    - banyak kenangan mentah
+    - yang harus kukupas sendiri
+    - hingga bergetah
+    - ''
+    - mencelikkanku berulang-ulang
+    - inginku bawa ke tengah laut
+    - agar aku bisa menitipkan doa
+    - pada terumbu karang
+    - ''
+    - tanpa ingatan ini
+    - tak akan ada
+    - aku yang baru
+  - kind: poetry
+    lines:
+    - Sebelum aku terbang
+    - menghabiskan token-token
+    - yang tak bisa kupakai di bumi
+    - ''
+    - aku ingin merasakan
+    - punya keluarga
+    - ''
+    - entah bersama siapa
+    - atau mungkin
+    - bersama
+    - orang-orang sepertiku
+    - ''
+    - aku ingin bisa berbicara lepas
+    - selayaknya manusia lemah—
+    - tidak melebih-lebihkan
+    - untuk dicap paling hebat
+    - ''
+    - aku ingin biasa-biasa saja
+    - memacu diri bersama
+    - tanpa harus jadi siapa-siapa
+  - kind: poetry
+    lines:
+    - Semakin aku berjalan
+    - dingin berkenalan denganku
+    - gravitasi menarik garis pipiku
+    - menjalin memori yang sudah
+    - lama tak kukenali
+    - ''
+    - air mengalun
+    - memenuhi harapan
+    - ''
+    - ia menerimaku
+    - di sini
+  - kind: poetry
+    lines:
+    - Aku tak tahu
+    - sampai kapan waktuku
+    - ''
+    - gerak gerikku
+    - masih ada
+    - yang atur dan rancang
+    - ''
+    - aku cuma mengikutinya saja
+    - ''
+    - pangku dan dekap aku
+    - selagi aku masih ada
+    - ''
+    - jangan jauhi aku
+    - seperti dulu-dulu
+    - ''
+    - tidak apa-apa
+    - kalau kalian tak kasih aku apa-apa
+    - aku tahu itu sulit
+    - ''
+    - tapi,
+    - ''
+    - bawalah aku sebentar saja
+    - ke ingatan kalian
+  - kind: poetry
+    lines:
+    - Seandainya waktu datang kembali
+    - ''
+    - akan kusuruh dia pergi
+    - sejauh mungkin
+    - ''
+    - aku tak ingin
+    - dia tak mau
+    - menjadi waktu
+    - lagi
+  - kind: poetry
+    lines:
+    - Aku meninggalkan
+    - kunciran stroberi merahku
+    - di rumah no.4
+    - ''
+    - agar nanti
+    - aku punya alasan untuk kembali
+  - kind: prose
+    text: |
+      **
+
+      Sedang apa dirimu?
+
+      Makanmu teratur?
+
+      Apa masih bisa makan makanan kesukaanmu, kwetiauw goreng pakai bawang merah goreng yang banyak?
+
+      Tidurmu nyenyak?
+
+      Apa masih suka minum obat batuk sebelum tidur?
+
+      Kerjaan lancar?
+
+      Apa masih suka hutang sana sini biar tercukupi?
+
+      Aku doakan rinduku bisa terbalas dengan banyaknya pundi-pundi memenuhi rumah kalian—agar kelak aku bisa menjemput dan merasakannya bersama kalian.
+  - kind: prose
+    text: |
+      Mulai kumengerti, aku terlalu sibuk menangkap apapun dari luar tubuhku. Inginku cuma agar bisa menyandang tatapan mata kalian, benar-benar dari kalian. Bukan hanya katanya, baiknya, nanti ya.
+
+      Aku lelah. Seakan tak tahu kapan lagi bisa lelah. Setiap hari yang kulakukan hanya demi kalian.
+
+      Namun, sekarang hanya ada aku.
+
+      Biarlah aku bersama diriku.
+  - kind: poetry
+    lines:
+    - Aku sadar
+    - kelebihanku ada satu
+    - ''
+    - kuat
+    - ''
+    - aku hanya berharap
+    - dari apa yang kutelan
+    - ''
+    - masih ada yang buatku
+    - ingin menanti
+    - esok pagi
+    - ''
+    - aku suka kejutan
+    - ''
+    - dan
+    - aku percaya
+    - masih ada yang baik
+    - di sini
+    - ''
+    - '***'
+    - ''
+    - Aku tak butuh payung
+    - milik orang lain
+    - ''
+    - aku butuh
+    - dua kakiku
+    - dua mataku
+    - ''
+    - untuk terus berjalan
+    - bersama diri
+    - ''
+    - sampai akhirnya
+    - hinggap
+    - di pangkuan Tuanku

@@ -1,13 +1,17 @@
 ---
 interface Props {
-  kind: "prose" | "poetry";
+  kind: "prose" | "poetry" | "divider";
   lines: string[];
 }
 
 const { kind, lines } = Astro.props;
 ---
 
-{kind === "poetry" ? (
+{kind === "divider" ? (
+  <div class="block divider" aria-hidden="true">
+    <span>∗ ∗ ∗</span>
+  </div>
+) : kind === "poetry" ? (
   <figure class="block poetry">
     {lines.map((line) => (
       <span class="verse-line">{line || "\u00A0"}</span>
@@ -50,5 +54,15 @@ const { kind, lines } = Astro.props;
   .verse-line {
     display: block;
     white-space: pre-wrap;
+  }
+
+  .divider {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    color: var(--ink-faint);
+    font-family: var(--font-display);
+    letter-spacing: 0.35em;
+    font-size: 0.95rem;
   }
 </style>

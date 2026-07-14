@@ -2,7 +2,7 @@
 import BookLayout from "../layouts/BookLayout.astro";
 import { loadBook } from "../lib/parseBook";
 
-const book = await loadBook();
+const book = loadBook();
 const { meta, parts } = book;
 const firstHref = parts.length > 0 ? `/part/${parts[0].slug}` : null;
 const pageTitle = meta.title;
@@ -24,7 +24,7 @@ const description = `${meta.tagline} — ${meta.author}`;
       ) : (
         <div class="waiting">
           <p>
-            Belum ada isi buku. Upload <code>web/content/book.docx</code> ke repo,
+            Belum ada isi buku. Isi <code>web/content/book.yaml</code>,
             lalu push ke <code>master</code>.
           </p>
         </div>
