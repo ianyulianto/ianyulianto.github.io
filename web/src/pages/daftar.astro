@@ -1,9 +1,13 @@
 ---
 import BookLayout from "../layouts/BookLayout.astro";
+import NewBadge from "../components/NewBadge.astro";
 import { loadBook } from "../lib/parseBook";
+import { loadBookUpdates } from "../lib/bookUpdates";
 
 const book = loadBook();
+const updates = loadBookUpdates();
 const { meta, parts } = book;
+const newParts = updates.newParts;
 ---
 
 <BookLayout
@@ -18,23 +22,48 @@ const { meta, parts } = book;
       <p class="sub">{meta.title}</p>
     </header>
 
+    {newParts.length > 0 && (
+      <section class="new-list" aria-label="Bagian baru">
+        <h2 class="new-heading">
+          <span class="new-dot" aria-hidden="true" />
+          Baru
+        </h2>
+        <ul>
+          {newParts.map((part) => (
+            <li>
+              <a href={`/part/${part.slug}`}>
+                <span class="new-label">{part.label}</span>
+                <span class="new-title">{part.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     {parts.length === 0 ? (
       <p class="empty">Belum ada isi. Isi <code>content/book.yaml</code> dulu.</p>
     ) : (
       <ol class="toc-list">
-        {parts.map((part) => (
-          <li>
-            <a href={`/part/${part.slug}`}>
-              <span class="num">{part.label}</span>
-              <span class="body">
-                <span class="part-title">{part.title}</span>
-                {part.preview && part.preview !== part.title && (
-                  <span class="preview">{part.preview}</span>
-                )}
-              </span>
-            </a>
-          </li>
-        ))}
+        {parts.map((part) => {
+          const status = updates.bySlug[part.slug] ?? null;
+          return (
+            <li>
+              <a href={`/part/${part.slug}`}>
+                <span class="num">{part.label}</span>
+                <span class="body">
+                  <span class="title-row">
+                    <span class="part-title">{part.title}</span>
+                    <NewBadge status={status} />
+                  </span>
+                  {part.preview && part.preview !== part.title && (
+                    <span class="preview">{part.preview}</span>
+                  )}
+                </span>
+              </a>
+            </li>
+          );
+        })}
       </ol>
     )}
   </main>
@@ -71,6 +100,68 @@ const { meta, parts } = book;
 
   .sub {
     color: var(--ink-soft);
+  }
+
+  .new-list {
+    margin: 0 0 2rem;
+    padding: 0 0 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .new-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+  }
+
+  .new-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .new-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .new-list a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.45rem 0;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.98rem;
+  }
+
+  .new-list a:hover .new-title {
+    color: var(--accent);
+  }
+
+  .new-label {
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    color: var(--ink-faint);
+    min-width: 5.5rem;
+  }
+
+  .new-title {
+    font-family: var(--font-display);
+    font-weight: 550;
   }
 
   .empty {
@@ -119,6 +210,13 @@ const { meta, parts } = book;
     display: grid;
     gap: 0.25rem;
     min-width: 0;
+  }
+
+  .title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .part-title {

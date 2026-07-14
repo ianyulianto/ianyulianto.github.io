@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history so build can mark “baru” sections from book.yaml git log
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -34,6 +37,9 @@ jobs:
 
       - name: Build site
         working-directory: web
+        env:
+          # Parts first seen in git history within this many days keep the “Baru” mark
+          BOOK_NEW_DAYS: "30"
         run: npm run build
 
       - name: Setup Pages

@@ -1,12 +1,15 @@
 ---
 import BookLayout from "../layouts/BookLayout.astro";
 import { loadBook } from "../lib/parseBook";
+import { loadBookUpdates } from "../lib/bookUpdates";
 
 const book = loadBook();
+const updates = loadBookUpdates();
 const { meta, parts } = book;
 const firstHref = parts.length > 0 ? `/part/${parts[0].slug}` : null;
 const pageTitle = meta.title;
 const description = `${meta.tagline} — ${meta.author}`;
+const newCount = updates.newParts.length;
 ---
 
 <BookLayout title={pageTitle} description={description} lang={meta.language}>
@@ -31,7 +34,15 @@ const description = `${meta.tagline} — ${meta.author}`;
       )}
 
       {parts.length > 0 && (
-        <p class="meta-line">{parts.length} bagian</p>
+        <p class="meta-line">
+          {parts.length} bagian
+          {newCount > 0 && (
+            <>
+              {" · "}
+              <a class="new-link" href="/daftar">{newCount} baru</a>
+            </>
+          )}
+        </p>
       )}
     </div>
   </main>
@@ -136,6 +147,17 @@ const description = `${meta.tagline} — ${meta.author}`;
     font-family: var(--font-ui);
     font-size: var(--fs-small);
     color: var(--ink-faint);
+  }
+
+  .new-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .new-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
   }
 
   @keyframes rise {

@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "book:updates": "node scripts/book-updates-report.mjs"
   },
   "dependencies": {
     "astro": "^5.17.1",
