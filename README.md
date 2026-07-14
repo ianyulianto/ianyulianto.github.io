@@ -1,6 +1,7 @@
----
 # Booklet site — Ian / karya tulisan
-# Upload web/content/book.docx lalu push ke master.
----
 
-site: https://ianyulianto.github.io
+Data tampilan: `web/content/book.yaml`  
+Naskah mentah: `web/content/book.txt` (dikonsversi ke YAML)  
+Panduan: `web/content/README.md`
+
+Site: https://ianyulianto.github.io

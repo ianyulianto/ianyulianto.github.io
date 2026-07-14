@@ -1,32 +1,22 @@
 # Booklet
 
-Static booklet site (mobile-first) for a single book source file. Deployed via GitHub Pages.
+Situs booklet statis (mobile-first). Deploy via GitHub Pages.
 
-## Source file
+## Data source
 
-Put the full book here:
+Tampilan web **hanya** membaca:
 
 ```text
-web/content/book.docx
+web/content/book.yaml
 ```
 
-Optional while drafting:
+Naskah mentah (opsional, untuk dikonversi AI → YAML):
 
 ```text
 web/content/book.txt
 ```
 
-Metadata (title, author, tagline):
-
-```text
-web/content/book.json
-```
-
-### Part rules
-
-- **Two blank lines** → new part
-- Inside a part: prose and poetry blocks (single blank line separates blocks)
-- Poetry is detected from short broken lines
+Dokumentasi skema & prompt konversi: [`content/README.md`](./content/README.md).
 
 ## Develop
 
@@ -43,8 +33,10 @@ cd web
 npm run build
 ```
 
-Output goes to `web/dist`. GitHub Actions deploys that folder to Pages.
+Output: `web/dist`. GitHub Actions men-deploy folder itu ke Pages.
 
 ## Deploy
 
-Push to `master`. Workflow: `.github/workflows/deploy.yml`
+1. Update `web/content/book.yaml`
+2. Push ke `master`
+3. Workflow: `.github/workflows/deploy.yml`

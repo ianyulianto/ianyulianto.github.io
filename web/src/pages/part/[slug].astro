@@ -4,8 +4,8 @@ import TextBlock from "../../components/TextBlock.astro";
 import PartNav from "../../components/PartNav.astro";
 import { loadBook } from "../../lib/parseBook";
 
-export async function getStaticPaths() {
-  const book = await loadBook();
+export function getStaticPaths() {
+  const book = loadBook();
   return book.parts.map((part, i) => ({
     params: { slug: part.slug },
     props: {
@@ -29,7 +29,7 @@ const { part, prev, next, total, meta } = Astro.props;
   <div class="reader">
     <header class="reader-head">
       <a class="crumb" href="/daftar">Daftar isi</a>
-      <p class="part-label">Bagian {part.index}</p>
+      <p class="part-label">{part.label}</p>
       <h1>{part.title}</h1>
     </header>
 

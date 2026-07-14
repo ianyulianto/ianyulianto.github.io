@@ -2,7 +2,7 @@
 import BookLayout from "../layouts/BookLayout.astro";
 import { loadBook } from "../lib/parseBook";
 
-const book = await loadBook();
+const book = loadBook();
 const { meta, parts } = book;
 ---
 
@@ -19,13 +19,13 @@ const { meta, parts } = book;
     </header>
 
     {parts.length === 0 ? (
-      <p class="empty">Belum ada bagian. Upload <code>book.docx</code> dulu.</p>
+      <p class="empty">Belum ada isi. Isi <code>content/book.yaml</code> dulu.</p>
     ) : (
       <ol class="toc-list">
         {parts.map((part) => (
           <li>
             <a href={`/part/${part.slug}`}>
-              <span class="num">{String(part.index).padStart(2, "0")}</span>
+              <span class="num">{part.label}</span>
               <span class="body">
                 <span class="part-title">{part.title}</span>
                 {part.preview && part.preview !== part.title && (
@@ -110,8 +110,9 @@ const { meta, parts } = book;
     font-family: var(--font-ui);
     font-size: var(--fs-small);
     color: var(--ink-faint);
-    padding-top: 0.2rem;
-    font-variant-numeric: tabular-nums;
+    padding-top: 0.35rem;
+    min-width: 5.5rem;
+    letter-spacing: 0.02em;
   }
 
   .body {
