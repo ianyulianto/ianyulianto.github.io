@@ -18,6 +18,8 @@ web/content/book.txt
 
 Dokumentasi skema & prompt konversi: [`content/README.md`](./content/README.md).
 
+Setelah YAML: AI juga membuat SVG per bagian di `content/illustrations/` (feel & tone) — lihat prompt lanjutan di README konten.
+
 ## Develop
 
 ```sh

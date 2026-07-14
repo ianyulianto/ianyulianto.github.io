@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-labelledby="t0">
+  <title id="t0">Rumah dengan jendela bertanda tanya</title>
+  <defs>
+    <linearGradient id="sky0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f3ea"/>
+      <stop offset="100%" stop-color="#e6dfd0"/>
+    </linearGradient>
+    <radialGradient id="glow0" cx="50%" cy="42%" r="45%">
+      <stop offset="0%" stop-color="#2f5d56" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#2f5d56" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="320" fill="url(#sky0)"/>
+  <ellipse cx="240" cy="150" rx="170" ry="110" fill="url(#glow0)"/>
+  <!-- ground -->
+  <path d="M0 248 C120 232 360 232 480 248 L480 320 L0 320 Z" fill="#ddd4c2"/>
+  <!-- house body -->
+  <path d="M150 248 L150 148 L240 88 L330 148 L330 248 Z" fill="#f3efe6" stroke="#1c1a17" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M150 148 L240 88 L330 148" fill="none" stroke="#2f5d56" stroke-width="2.4" stroke-linejoin="round"/>
+  <!-- door -->
+  <rect x="220" y="188" width="40" height="60" rx="3" fill="#ebe4d6" stroke="#1c1a17" stroke-width="1.8"/>
+  <circle cx="252" cy="218" r="2.2" fill="#2f5d56"/>
+  <!-- windows as soft question marks -->
+  <g fill="none" stroke="#2f5d56" stroke-width="2.2" stroke-linecap="round">
+    <path d="M178 168 c0-12 10-20 22-20 s22 8 22 20 c0 10-8 14-14 18"/>
+    <circle cx="200" cy="218" r="2.4" fill="#2f5d56" stroke="none"/>
+    <path d="M258 168 c0-12 10-20 22-20 s22 8 22 20 c0 10-8 14-14 18"/>
+    <circle cx="280" cy="218" r="2.4" fill="#2f5d56" stroke="none"/>
+  </g>
+  <!-- listening footsteps -->
+  <g fill="#7a7366" opacity="0.55">
+    <ellipse cx="118" cy="262" rx="7" ry="3.5" transform="rotate(-18 118 262)"/>
+    <ellipse cx="138" cy="270" rx="7" ry="3.5" transform="rotate(12 138 270)"/>
+    <ellipse cx="156" cy="258" rx="6.5" ry="3.2" transform="rotate(-10 156 258)"/>
+  </g>
+</svg>

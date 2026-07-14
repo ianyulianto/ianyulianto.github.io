@@ -17,6 +17,10 @@ export type BookPart = {
   label: string;
   title: string;
   preview: string;
+  /** Relative path under content/, e.g. illustrations/1.svg */
+  illustration: string | null;
+  /** Inline SVG markup when illustration file exists */
+  illustrationSvg: string | null;
   blocks: BookBlock[];
 };
 
@@ -55,6 +59,7 @@ type YamlPart = {
   slug?: unknown;
   label?: unknown;
   title?: unknown;
+  illustration?: unknown;
   blocks?: unknown;
 };
 
@@ -137,6 +142,17 @@ function slugify(value: string): string {
     .slice(0, 48);
 }
 
+function resolveIllustration(rel: string): { path: string; svg: string } | null {
+  const cleaned = rel.replace(/^\/+/, "").replace(/\\/g, "/");
+  if (!cleaned || cleaned.includes("..") || !cleaned.endsWith(".svg")) return null;
+  const abs = path.resolve(CONTENT_DIR, cleaned);
+  const relative = path.relative(CONTENT_DIR, abs);
+  if (relative.startsWith("..") || path.isAbsolute(relative) || !fs.existsSync(abs)) return null;
+  const svg = fs.readFileSync(abs, "utf8").trim();
+  if (!svg.includes("<svg")) return null;
+  return { path: cleaned, svg };
+}
+
 function normalizePart(raw: unknown, index: number): BookPart | null {
   if (!raw || typeof raw !== "object") return null;
   const part = raw as YamlPart;
@@ -151,12 +167,17 @@ function normalizePart(raw: unknown, index: number): BookPart | null {
     ? part.blocks.map(normalizeBlock).filter((b): b is BookBlock => b !== null)
     : [];
 
+  const illustrationRaw = asString(part.illustration).trim();
+  const illustration = illustrationRaw ? resolveIllustration(illustrationRaw) : null;
+
   return {
     index,
     slug,
     label,
     title,
     preview: previewFrom(blocks),
+    illustration: illustration?.path ?? null,
+    illustrationSvg: illustration?.svg ?? null,
     blocks,
   };
 }

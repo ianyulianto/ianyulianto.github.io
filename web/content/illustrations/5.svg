@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-labelledby="t5">
+  <title id="t5">Jalan pulang menuju cahaya pintu</title>
+  <defs>
+    <linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#efe8da"/>
+      <stop offset="100%" stop-color="#ddd3bf"/>
+    </linearGradient>
+    <radialGradient id="doorlight" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#fff6df" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#e8c56d" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#e8c56d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="320" fill="url(#sky5)"/>
+  <!-- path -->
+  <path d="M210 320 C220 250 200 190 230 140 C250 108 268 96 280 88" fill="none" stroke="#b9a483" stroke-width="36" stroke-linecap="round"/>
+  <path d="M210 320 C220 250 200 190 230 140 C250 108 268 96 280 88" fill="none" stroke="#cbb99a" stroke-width="22" stroke-linecap="round"/>
+  <!-- doorway -->
+  <rect x="248" y="48" width="72" height="110" rx="36 36 4 4" fill="#ebe4d6" stroke="#1c1a17" stroke-width="2"/>
+  <ellipse cx="284" cy="98" rx="40" ry="48" fill="url(#doorlight)"/>
+  <rect x="262" y="68" width="44" height="90" rx="22 22 2 2" fill="#f7f1e4" opacity="0.85"/>
+  <!-- balance / one word -->
+  <g transform="translate(86 86)" opacity="0.7">
+    <line x1="40" y1="8" x2="40" y2="48" stroke="#1c1a17" stroke-width="1.6"/>
+    <path d="M8 48 H72" stroke="#1c1a17" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M8 48 l-10 22 M72 48 l10 22" stroke="#2f5d56" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="40" cy="6" r="3" fill="#2f5d56"/>
+    <!-- single small leaf as the one word -->
+    <path d="M40 58 c8 2 14 10 10 16 c-6 2-14-4-16-12 c2-4 4-6 6-4z" fill="#2f5d56" opacity="0.8"/>
+  </g>
+  <!-- distant figure suggestion -->
+  <g opacity="0.4" stroke="#1c1a17" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <circle cx="284" cy="210" r="6"/>
+    <path d="M284 216 v22 M274 228 l10 -6 10 6 M284 238 l-6 16 M284 238 l6 16"/>
+  </g>
+</svg>
