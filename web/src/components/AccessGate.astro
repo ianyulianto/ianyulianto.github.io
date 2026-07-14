@@ -10,16 +10,13 @@
   <form id="access-gate-form" class="gate-panel" autocomplete="off">
     <p class="gate-kicker">Akses terbatas</p>
     <h1 class="gate-title">Masukkan kata sandi</h1>
-    <p class="gate-hint">Gunakan tanggal hari ini (ddMMyyyy) diikuti tanda _</p>
     <label class="gate-label" for="access-password">
       <span class="sr-only">Kata sandi</span>
       <input
         id="access-password"
         name="password"
         type="password"
-        inputmode="numeric"
         autocomplete="current-password"
-        placeholder="ddMMyyyy_"
         required
       />
     </label>
@@ -64,14 +61,7 @@
 
   .gate-title {
     font-size: var(--fs-title);
-    margin-bottom: 0.75rem;
-  }
-
-  .gate-hint {
-    color: var(--ink-soft);
-    font-size: 0.95rem;
     margin-bottom: 1.75rem;
-    text-wrap: pretty;
   }
 
   .gate-label {
@@ -91,11 +81,6 @@
     font-size: 1rem;
     letter-spacing: 0.06em;
     text-align: center;
-  }
-
-  .gate-label input::placeholder {
-    color: var(--ink-faint);
-    letter-spacing: 0.04em;
   }
 
   .gate-label input:focus {
