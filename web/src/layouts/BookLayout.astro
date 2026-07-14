@@ -1,4 +1,5 @@
 ---
+import AccessGate from "../components/AccessGate.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -15,7 +16,7 @@ const {
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-access-locked>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -30,8 +31,14 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <style is:global>
+      html[data-access-locked] body > :not(#access-gate) {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
+    <AccessGate />
     <slot />
   </body>
 </html>
