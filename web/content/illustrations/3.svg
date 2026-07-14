@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-labelledby="t3">
-  <title id="t3">Kupu-kupu dan cahaya televisi sore</title>
+  <title id="t3">Televisi sore, sofa L, dan kupu-kupu</title>
   <defs>
     <linearGradient id="sky3" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f4efe5"/>
@@ -11,15 +11,23 @@
     </radialGradient>
   </defs>
   <rect width="480" height="320" fill="url(#sky3)"/>
-  <ellipse cx="150" cy="180" rx="110" ry="90" fill="url(#tvglow)"/>
-  <!-- old TV -->
-  <rect x="78" y="128" width="120" height="90" rx="8" fill="#ebe4d6" stroke="#1c1a17" stroke-width="2"/>
-  <rect x="92" y="140" width="92" height="58" rx="3" fill="#2f5d56" opacity="0.55"/>
-  <rect x="118" y="218" width="40" height="10" fill="#cbb99a" stroke="#1c1a17" stroke-width="1.2"/>
-  <line x1="138" y1="228" x2="138" y2="248" stroke="#1c1a17" stroke-width="1.5"/>
-  <line x1="118" y1="248" x2="158" y2="248" stroke="#1c1a17" stroke-width="1.5" stroke-linecap="round"/>
+  <ellipse cx="150" cy="170" rx="110" ry="90" fill="url(#tvglow)"/>
+  <!-- old TV (Keluarga Cemara / Famili 100) -->
+  <rect x="78" y="118" width="120" height="90" rx="8" fill="#ebe4d6" stroke="#1c1a17" stroke-width="2"/>
+  <rect x="92" y="130" width="92" height="58" rx="3" fill="#2f5d56" opacity="0.55"/>
+  <rect x="118" y="208" width="40" height="10" fill="#cbb99a" stroke="#1c1a17" stroke-width="1.2"/>
+  <line x1="138" y1="218" x2="138" y2="238" stroke="#1c1a17" stroke-width="1.5"/>
+  <line x1="118" y1="238" x2="158" y2="238" stroke="#1c1a17" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- L-shaped family sofa, empty -->
+  <g fill="#f3efe6" stroke="#1c1a17" stroke-width="1.6">
+    <rect x="56" y="252" width="130" height="28" rx="4"/>
+    <rect x="56" y="224" width="36" height="56" rx="4"/>
+  </g>
+  <g fill="none" stroke="#7a7366" stroke-width="1.2" opacity="0.45">
+    <path d="M100 262 h70 M72 236 v28"/>
+  </g>
   <!-- butterfly as freedom dress -->
-  <g transform="translate(292 118)">
+  <g transform="translate(292 108)">
     <path d="M0 48 C-48 8 -58 -28 -18 -8 C-8 4 -2 22 0 48 Z" fill="#c97878" stroke="#1c1a17" stroke-width="1.5" opacity="0.9"/>
     <path d="M0 48 C48 8 58 -28 18 -8 C8 4 2 22 0 48 Z" fill="#2f5d56" stroke="#1c1a17" stroke-width="1.5" opacity="0.85"/>
     <path d="M0 48 C-34 70 -28 108 0 92 C10 86 8 62 0 48 Z" fill="#e8c56d" stroke="#1c1a17" stroke-width="1.3" opacity="0.8"/>
@@ -31,4 +39,9 @@
   <circle cx="400" cy="72" r="22" fill="none" stroke="#7a7366" stroke-width="1.6" opacity="0.5"/>
   <line x1="400" y1="72" x2="400" y2="58" stroke="#2f5d56" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
   <line x1="400" y1="72" x2="412" y2="72" stroke="#2f5d56" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+  <!-- small house tip — nenek's no. 4 -->
+  <g transform="translate(390 230)" fill="none" stroke="#7a7366" stroke-width="1.5" opacity="0.55">
+    <path d="M0 40 L0 18 L18 4 L36 18 L36 40 Z"/>
+    <rect x="14" y="22" width="8" height="18" fill="#ebe4d6" stroke="#1c1a17" stroke-width="1.2"/>
+  </g>
 </svg>
