@@ -156,12 +156,17 @@ Contoh motif (bukan template wajib): rumah + tanda tanya; balon + pintu tertutup
 
 ---
 
-## Penanda section baru
+## Penanda prose / poetry baru atau diubah
+
+Pelacakan memakai **blok prose/poetry**, bukan seluruh chapter (chapter tetap ada sebagai wadah).
 
 Saat `book.yaml` berubah:
 
-1. **Pull request** — workflow `book-yaml-updates.yml` membandingkan section (per `slug`) dengan base branch dan menulis komentar berisi daftar bagian baru / diubah / dihapus.
-2. **Situs** — saat build, git history `book.yaml` dipakai untuk menandai bagian yang **baru** (±30 hari sejak slug pertama muncul). Di daftar isi ada daftar “Baru” + badge minimalis; di halaman bagian juga muncul badge yang sama.
+1. **Pull request** — workflow `book-yaml-updates.yml` membandingkan tiap blok prose/poetry dengan base branch dan menulis komentar berisi:
+   - blok baru (dengan cuplikan teks)
+   - blok diubah (**sebelum → sesudah**)
+   - blok dihapus
+2. **Situs** — saat build, git history `book.yaml` menandai blok yang **baru** atau **diubah** (±30 hari). Badge menempel di blok itu di halaman baca; di daftar isi ada daftar “Baru & diubah” + cuplikan perubahannya.
 
 Override jendela hari lewat env `BOOK_NEW_DAYS` (default `30`).
 

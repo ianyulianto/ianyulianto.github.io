@@ -7,7 +7,9 @@ import { loadBookUpdates } from "../lib/bookUpdates";
 const book = loadBook();
 const updates = loadBookUpdates();
 const { meta, parts } = book;
-const newParts = updates.newParts;
+const newBlocks = updates.newBlocks;
+const updatedBlocks = updates.updatedBlocks;
+const recentBlocks = [...newBlocks, ...updatedBlocks].slice(0, 12);
 ---
 
 <BookLayout
@@ -22,18 +24,30 @@ const newParts = updates.newParts;
       <p class="sub">{meta.title}</p>
     </header>
 
-    {newParts.length > 0 && (
-      <section class="new-list" aria-label="Bagian baru">
+    {recentBlocks.length > 0 && (
+      <section class="new-list" aria-label="Prose dan poetry yang berubah">
         <h2 class="new-heading">
           <span class="new-dot" aria-hidden="true" />
-          Baru
+          Baru & diubah
         </h2>
         <ul>
-          {newParts.map((part) => (
+          {recentBlocks.map((block) => (
             <li>
-              <a href={`/part/${part.slug}`}>
-                <span class="new-label">{part.label}</span>
-                <span class="new-title">{part.title}</span>
+              <a href={`/part/${block.partSlug}#b-${block.partSlug}-${block.blockIndex}`}>
+                <span class="new-label">{block.partLabel}</span>
+                <span class="new-body">
+                  <span class="title-row">
+                    <span class="kind">{block.kind === "poetry" ? "Puisi" : "Prosa"}</span>
+                    <NewBadge status={block.status} />
+                  </span>
+                  {block.status === "updated" && block.previousPreview ? (
+                    <span class="was">
+                      “{block.previousPreview}” → “{block.preview}”
+                    </span>
+                  ) : (
+                    <span class="new-title">{block.preview}</span>
+                  )}
+                </span>
               </a>
             </li>
           ))}
@@ -46,7 +60,10 @@ const newParts = updates.newParts;
     ) : (
       <ol class="toc-list">
         {parts.map((part) => {
-          const status = updates.bySlug[part.slug] ?? null;
+          const partStatus = updates.partsWithUpdates[part.slug] ?? null;
+          const blockCount =
+            (updates.newBlocks.filter((b) => b.partSlug === part.slug).length) +
+            (updates.updatedBlocks.filter((b) => b.partSlug === part.slug).length);
           return (
             <li>
               <a href={`/part/${part.slug}`}>
@@ -54,7 +71,9 @@ const newParts = updates.newParts;
                 <span class="body">
                   <span class="title-row">
                     <span class="part-title">{part.title}</span>
-                    <NewBadge status={status} />
+                    {partStatus && blockCount > 0 && (
+                      <span class="hint">{blockCount} blok {partStatus === "new" ? "baru" : "diubah"}</span>
+                    )}
                   </span>
                   {part.preview && part.preview !== part.title && (
                     <span class="preview">{part.preview}</span>
@@ -141,14 +160,15 @@ const newParts = updates.newParts;
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 0.75rem;
-    align-items: baseline;
-    padding: 0.45rem 0;
+    align-items: start;
+    padding: 0.55rem 0;
     text-decoration: none;
     color: inherit;
     font-size: 0.98rem;
   }
 
-  .new-list a:hover .new-title {
+  .new-list a:hover .new-title,
+  .new-list a:hover .was {
     color: var(--accent);
   }
 
@@ -157,11 +177,36 @@ const newParts = updates.newParts;
     font-size: var(--fs-small);
     color: var(--ink-faint);
     min-width: 5.5rem;
+    padding-top: 0.15rem;
+  }
+
+  .new-body {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .kind {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
 
   .new-title {
     font-family: var(--font-display);
     font-weight: 550;
+    line-height: 1.35;
+  }
+
+  .was {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 550;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    font-style: italic;
   }
 
   .empty {
@@ -224,6 +269,13 @@ const newParts = updates.newParts;
     font-size: 1.15rem;
     font-weight: 550;
     line-height: 1.3;
+  }
+
+  .hint {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
   }
 
   .preview {
