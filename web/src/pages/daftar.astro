@@ -1,0 +1,137 @@
+---
+import BookLayout from "../layouts/BookLayout.astro";
+import { loadBook } from "../lib/parseBook";
+
+const book = await loadBook();
+const { meta, parts } = book;
+---
+
+<BookLayout
+  title={`Daftar isi — ${meta.title}`}
+  description={`Daftar bagian dari ${meta.title}`}
+  lang={meta.language}
+>
+  <main class="toc">
+    <header class="toc-head">
+      <a class="back" href="/">← Cover</a>
+      <h1>Daftar isi</h1>
+      <p class="sub">{meta.title}</p>
+    </header>
+
+    {parts.length === 0 ? (
+      <p class="empty">Belum ada bagian. Upload <code>book.docx</code> dulu.</p>
+    ) : (
+      <ol class="toc-list">
+        {parts.map((part) => (
+          <li>
+            <a href={`/part/${part.slug}`}>
+              <span class="num">{String(part.index).padStart(2, "0")}</span>
+              <span class="body">
+                <span class="part-title">{part.title}</span>
+                {part.preview && part.preview !== part.title && (
+                  <span class="preview">{part.preview}</span>
+                )}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    )}
+  </main>
+</BookLayout>
+
+<style>
+  .toc {
+    width: min(100%, var(--read-max));
+    margin: 0 auto;
+    padding: var(--pad-y) var(--pad-x) calc(3rem + var(--safe-bottom));
+  }
+
+  .toc-head {
+    margin-bottom: 2rem;
+  }
+
+  .back {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .back:hover {
+    color: var(--accent);
+  }
+
+  h1 {
+    font-size: var(--fs-title);
+    margin-bottom: 0.35rem;
+  }
+
+  .sub {
+    color: var(--ink-soft);
+  }
+
+  .empty {
+    color: var(--ink-soft);
+  }
+
+  .empty code {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.9em;
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .toc-list a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 0.95rem 0.35rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    min-height: 3.25rem;
+  }
+
+  .toc-list a:hover .part-title {
+    color: var(--accent);
+  }
+
+  .num {
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    color: var(--ink-faint);
+    padding-top: 0.2rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .body {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .part-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 550;
+    line-height: 1.3;
+  }
+
+  .preview {
+    color: var(--ink-faint);
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
