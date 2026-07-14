@@ -4,26 +4,33 @@ import path from "node:path";
 import { load as loadYaml } from "js-yaml";
 
 export type UpdateStatus = "new" | "updated";
+export type ContentKind = "prose" | "poetry";
 
-export type PartUpdate = {
-  slug: string;
-  label: string;
-  title: string;
+export type BlockUpdate = {
+  /** `${partSlug}:${blockIndex}` — blockIndex is position in part.blocks (incl. dividers) */
+  key: string;
+  partSlug: string;
+  partLabel: string;
+  partTitle: string;
+  kind: ContentKind;
+  blockIndex: number;
   status: UpdateStatus;
-  /** ISO date when the part was first added or last updated */
+  /** ISO date when the block was first added or last updated */
   since: string;
+  /** Short preview of current text */
+  preview: string;
+  /** Previous preview when status is "updated" */
+  previousPreview?: string;
 };
 
 export type BookUpdates = {
-  /** Parts that are new within the recency window */
-  newParts: PartUpdate[];
-  /** Parts whose content changed within the window (not brand-new) */
-  updatedParts: PartUpdate[];
-  /** Lookup by slug → status */
-  bySlug: Record<string, UpdateStatus>;
-  /** Days used for the “baru” window */
+  newBlocks: BlockUpdate[];
+  updatedBlocks: BlockUpdate[];
+  /** Lookup by `${partSlug}:${blockIndex}` → update info */
+  byBlockKey: Record<string, BlockUpdate>;
+  /** Parts that contain at least one new/updated block (for TOC hints) */
+  partsWithUpdates: Record<string, UpdateStatus>;
   windowDays: number;
-  /** Whether git history was available */
   available: boolean;
 };
 
@@ -44,19 +51,41 @@ type YamlBook = {
   parts?: unknown;
 };
 
+type SnapshotBlock = {
+  kind: ContentKind;
+  /** Index in the raw part.blocks array (including dividers) — for UI anchors */
+  blockIndex: number;
+  fingerprint: string;
+  preview: string;
+  text: string;
+};
+
 type SnapshotPart = {
   slug: string;
   label: string;
   title: string;
-  fingerprint: string;
+  blocks: SnapshotBlock[];
+};
+
+export type DiffBlock = {
+  partSlug: string;
+  partLabel: string;
+  partTitle: string;
+  kind: ContentKind;
+  blockIndex: number;
+  preview: string;
+  text: string;
+  previousPreview?: string;
+  previousText?: string;
 };
 
 const REPO_ROOT = path.resolve(process.cwd(), "..");
 const YAML_REL = "web/content/book.yaml";
 const YAML_ABS = path.resolve(process.cwd(), "content/book.yaml");
 
-/** How long a newly added part keeps the “baru” mark */
+/** How long a newly added block keeps the “baru” mark */
 const DEFAULT_WINDOW_DAYS = 30;
+const PREVIEW_LEN = 96;
 
 function asString(value: unknown, fallback = ""): string {
   return typeof value === "string" ? value : fallback;
@@ -75,32 +104,95 @@ function runGit(args: string[]): string | null {
   }
 }
 
-function fingerprintBlocks(blocks: unknown): string {
-  if (!Array.isArray(blocks)) return "";
-  const normalized = blocks.map((raw) => {
-    if (!raw || typeof raw !== "object") return null;
-    const block = raw as YamlBlock;
-    const kind = asString(block.kind, "prose").toLowerCase();
-    if (kind === "divider") return { kind: "divider" };
-    if (kind === "poetry") {
-      return {
-        kind: "poetry",
-        lines: Array.isArray(block.lines)
-          ? block.lines.map((l) => (typeof l === "string" ? l : ""))
-          : [],
-      };
+function clipPreview(text: string): string {
+  const oneLine = text.replace(/\s+/g, " ").trim();
+  if (!oneLine) return "";
+  return oneLine.length > PREVIEW_LEN ? `${oneLine.slice(0, PREVIEW_LEN - 1)}…` : oneLine;
+}
+
+/**
+ * Build before/after previews centered on the first textual difference,
+ * so PR comments and UI show what actually changed.
+ */
+export function changePreviews(beforeText: string, afterText: string): {
+  previousPreview: string;
+  preview: string;
+} {
+  const a = beforeText.replace(/\s+/g, " ").trim();
+  const b = afterText.replace(/\s+/g, " ").trim();
+  if (!a && !b) return { previousPreview: "", preview: "" };
+  if (a === b) return { previousPreview: clipPreview(a), preview: clipPreview(b) };
+
+  let start = 0;
+  const minLen = Math.min(a.length, b.length);
+  while (start < minLen && a[start] === b[start]) start++;
+
+  let endA = a.length - 1;
+  let endB = b.length - 1;
+  while (endA >= start && endB >= start && a[endA] === b[endB]) {
+    endA--;
+    endB--;
+  }
+
+  const window = Math.floor(PREVIEW_LEN * 0.55);
+  const sliceAround = (text: string, from: number, to: number) => {
+    const left = Math.max(0, from - window);
+    const right = Math.min(text.length, to + window + 1);
+    let out = text.slice(left, right).trim();
+    if (left > 0) out = `…${out}`;
+    if (right < text.length) out = `${out}…`;
+    if (out.length > PREVIEW_LEN) {
+      out = `${out.slice(0, PREVIEW_LEN - 1)}…`;
     }
-    if (typeof block.text === "string") {
-      return { kind: "prose", text: block.text.replace(/\r\n/g, "\n").trim() };
-    }
+    return out;
+  };
+
+  return {
+    previousPreview: sliceAround(a, start, endA),
+    preview: sliceAround(b, start, endB),
+  };
+}
+
+function normalizeBlock(raw: unknown, blockIndex: number): SnapshotBlock | null {
+  if (!raw || typeof raw !== "object") return null;
+  const block = raw as YamlBlock;
+  const kindRaw = asString(block.kind, "prose").toLowerCase();
+
+  if (kindRaw === "divider") return null;
+
+  if (kindRaw === "poetry") {
+    const lines = Array.isArray(block.lines)
+      ? block.lines.map((l) => (typeof l === "string" ? l : ""))
+      : [];
+    const text = lines.join("\n").replace(/\r\n/g, "\n");
+    if (!text.replace(/\s+/g, "").length) return null;
     return {
-      kind: "prose",
-      lines: Array.isArray(block.lines)
-        ? block.lines.map((l) => (typeof l === "string" ? l.trim() : "")).filter(Boolean)
-        : [],
+      kind: "poetry",
+      blockIndex,
+      fingerprint: JSON.stringify({ kind: "poetry", lines }),
+      preview: clipPreview(lines.filter((l) => l.trim()).join(" / ") || text),
+      text,
     };
-  });
-  return JSON.stringify(normalized);
+  }
+
+  // prose
+  let text = "";
+  if (typeof block.text === "string") {
+    text = block.text.replace(/\r\n/g, "\n").trim();
+  } else if (Array.isArray(block.lines)) {
+    text = block.lines
+      .map((l) => (typeof l === "string" ? l.trim() : ""))
+      .filter(Boolean)
+      .join("\n");
+  }
+  if (!text) return null;
+  return {
+    kind: "prose",
+    blockIndex,
+    fingerprint: JSON.stringify({ kind: "prose", text }),
+    preview: clipPreview(text),
+    text,
+  };
 }
 
 function parsePartsFromYaml(raw: string): SnapshotPart[] {
@@ -129,12 +221,15 @@ function parsePartsFromYaml(raw: string): SnapshotPart[] {
     seen.set(slug, count + 1);
     if (count > 0) slug = `${slug}-${count + 1}`;
 
-    out.push({
-      slug,
-      label,
-      title,
-      fingerprint: fingerprintBlocks(part.blocks),
-    });
+    const blocks: SnapshotBlock[] = [];
+    if (Array.isArray(part.blocks)) {
+      part.blocks.forEach((rawBlock, i) => {
+        const normalized = normalizeBlock(rawBlock, i);
+        if (normalized) blocks.push(normalized);
+      });
+    }
+
+    out.push({ slug, label, title, blocks });
   }
 
   return out;
@@ -171,41 +266,267 @@ function yamlAt(sha: string): string {
   return runGit(["show", `${sha}:${YAML_REL}`]) ?? "";
 }
 
+function blockKey(partSlug: string, blockIndex: number): string {
+  return `${partSlug}:${blockIndex}`;
+}
+
+/** Word-overlap similarity in [0, 1]. Used to pair edits, not unrelated inserts. */
+function textSimilarity(a: string, b: string): number {
+  const tokenize = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}\s]+/gu, " ")
+      .split(/\s+/)
+      .filter(Boolean);
+  const wa = tokenize(a);
+  const wb = tokenize(b);
+  if (wa.length === 0 || wb.length === 0) return 0;
+  const counts = new Map<string, number>();
+  for (const w of wa) counts.set(w, (counts.get(w) ?? 0) + 1);
+  let overlap = 0;
+  for (const w of wb) {
+    const n = counts.get(w) ?? 0;
+    if (n > 0) {
+      overlap++;
+      counts.set(w, n - 1);
+    }
+  }
+  return (2 * overlap) / (wa.length + wb.length);
+}
+
+/** Minimum similarity to treat unmatched same-kind blocks as an edit. */
+const UPDATE_SIMILARITY_THRESHOLD = 0.35;
+
 /**
- * Diff two part snapshots. Returns newly added and content-changed slugs.
+ * LCS on fingerprints, then pair leftover same-kind blocks by text similarity.
  */
-export function diffPartSnapshots(
+export function diffBlockLists(
+  before: SnapshotBlock[],
+  after: SnapshotBlock[],
+): {
+  added: SnapshotBlock[];
+  removed: SnapshotBlock[];
+  updated: { before: SnapshotBlock; after: SnapshotBlock }[];
+} {
+  const n = before.length;
+  const m = after.length;
+  const dp: number[][] = Array.from({ length: n + 1 }, () => Array(m + 1).fill(0));
+
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
+      if (before[i].fingerprint === after[j].fingerprint) {
+        dp[i][j] = dp[i + 1][j + 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+  }
+
+  const matchedBefore = new Set<number>();
+  const matchedAfter = new Set<number>();
+  let i = 0;
+  let j = 0;
+  while (i < n && j < m) {
+    if (before[i].fingerprint === after[j].fingerprint) {
+      matchedBefore.add(i);
+      matchedAfter.add(j);
+      i++;
+      j++;
+    } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+
+  const unmatchedBefore = before
+    .map((b, idx) => ({ b, idx }))
+    .filter(({ idx }) => !matchedBefore.has(idx));
+  const unmatchedAfter = after
+    .map((b, idx) => ({ b, idx }))
+    .filter(({ idx }) => !matchedAfter.has(idx));
+
+  type Cand = { bi: number; aj: number; score: number; dist: number };
+  const candidates: Cand[] = [];
+  for (let bi = 0; bi < unmatchedBefore.length; bi++) {
+    for (let aj = 0; aj < unmatchedAfter.length; aj++) {
+      const left = unmatchedBefore[bi];
+      const right = unmatchedAfter[aj];
+      if (left.b.kind !== right.b.kind) continue;
+      const score = textSimilarity(left.b.text, right.b.text);
+      if (score < UPDATE_SIMILARITY_THRESHOLD) continue;
+      candidates.push({
+        bi,
+        aj,
+        score,
+        dist: Math.abs(left.idx - right.idx),
+      });
+    }
+  }
+
+  candidates.sort((a, b) => b.score - a.score || a.dist - b.dist);
+
+  const updated: { before: SnapshotBlock; after: SnapshotBlock }[] = [];
+  const usedBefore = new Set<number>();
+  const usedAfter = new Set<number>();
+
+  for (const c of candidates) {
+    if (usedBefore.has(c.bi) || usedAfter.has(c.aj)) continue;
+    usedBefore.add(c.bi);
+    usedAfter.add(c.aj);
+    updated.push({
+      before: unmatchedBefore[c.bi].b,
+      after: unmatchedAfter[c.aj].b,
+    });
+  }
+
+  const removed = unmatchedBefore.filter((_, idx) => !usedBefore.has(idx)).map(({ b }) => b);
+  const added = unmatchedAfter.filter((_, idx) => !usedAfter.has(idx)).map(({ b }) => b);
+
+  return { added, removed, updated };
+}
+
+export type PartBlockDiff = {
+  partSlug: string;
+  partLabel: string;
+  partTitle: string;
+  added: SnapshotBlock[];
+  removed: SnapshotBlock[];
+  updated: { before: SnapshotBlock; after: SnapshotBlock }[];
+  titleChanged: boolean;
+};
+
+/**
+ * Diff two part snapshots at prose/poetry block granularity.
+ */
+export function diffPartBlockSnapshots(
   before: SnapshotPart[],
   after: SnapshotPart[],
-): { added: SnapshotPart[]; updated: SnapshotPart[] } {
+): {
+  addedParts: SnapshotPart[];
+  removedParts: SnapshotPart[];
+  partDiffs: PartBlockDiff[];
+} {
   const prev = new Map(before.map((p) => [p.slug, p]));
-  const added: SnapshotPart[] = [];
-  const updated: SnapshotPart[] = [];
+  const next = new Map(after.map((p) => [p.slug, p]));
+
+  const addedParts: SnapshotPart[] = [];
+  const removedParts: SnapshotPart[] = [];
+  const partDiffs: PartBlockDiff[] = [];
 
   for (const part of after) {
     const old = prev.get(part.slug);
     if (!old) {
-      added.push(part);
+      addedParts.push(part);
       continue;
     }
-    if (old.fingerprint !== part.fingerprint || old.title !== part.title || old.label !== part.label) {
-      updated.push(part);
+    const { added, removed, updated } = diffBlockLists(old.blocks, part.blocks);
+    const titleChanged = old.title !== part.title || old.label !== part.label;
+    if (added.length || removed.length || updated.length || titleChanged) {
+      partDiffs.push({
+        partSlug: part.slug,
+        partLabel: part.label,
+        partTitle: part.title,
+        added,
+        removed,
+        updated,
+        titleChanged,
+      });
     }
   }
 
-  return { added, updated };
+  for (const part of before) {
+    if (!next.has(part.slug)) removedParts.push(part);
+  }
+
+  return { addedParts, removedParts, partDiffs };
+}
+
+function toDiffBlock(
+  part: { slug: string; label: string; title: string },
+  block: SnapshotBlock,
+  previous?: SnapshotBlock,
+): DiffBlock {
+  if (previous) {
+    const previews = changePreviews(previous.text, block.text);
+    return {
+      partSlug: part.slug,
+      partLabel: part.label,
+      partTitle: part.title,
+      kind: block.kind,
+      blockIndex: block.blockIndex,
+      preview: previews.preview,
+      text: block.text,
+      previousPreview: previews.previousPreview,
+      previousText: previous.text,
+    };
+  }
+  return {
+    partSlug: part.slug,
+    partLabel: part.label,
+    partTitle: part.title,
+    kind: block.kind,
+    blockIndex: block.blockIndex,
+    preview: block.preview,
+    text: block.text,
+  };
 }
 
 /**
- * Detect parts that are new or updated within the recency window,
+ * Flatten a part-level block diff into lists of block changes (for PR reports).
+ */
+export function flattenBlockDiff(result: ReturnType<typeof diffPartBlockSnapshots>): {
+  added: DiffBlock[];
+  updated: DiffBlock[];
+  removed: DiffBlock[];
+} {
+  const added: DiffBlock[] = [];
+  const updated: DiffBlock[] = [];
+  const removed: DiffBlock[] = [];
+
+  for (const part of result.addedParts) {
+    for (const block of part.blocks) {
+      added.push(toDiffBlock(part, block));
+    }
+  }
+
+  for (const part of result.removedParts) {
+    for (const block of part.blocks) {
+      removed.push(toDiffBlock(part, block));
+    }
+  }
+
+  for (const diff of result.partDiffs) {
+    const partMeta = {
+      slug: diff.partSlug,
+      label: diff.partLabel,
+      title: diff.partTitle,
+    };
+    for (const block of diff.added) {
+      added.push(toDiffBlock(partMeta, block));
+    }
+    for (const block of diff.removed) {
+      removed.push(toDiffBlock(partMeta, block));
+    }
+    for (const pair of diff.updated) {
+      updated.push(toDiffBlock(partMeta, pair.after, pair.before));
+    }
+  }
+
+  return { added, updated, removed };
+}
+
+/**
+ * Detect prose/poetry blocks that are new or updated within the recency window,
  * using git history of `web/content/book.yaml`.
  */
 export function loadBookUpdates(): BookUpdates {
   const days = windowDays();
   const empty: BookUpdates = {
-    newParts: [],
-    updatedParts: [],
-    bySlug: {},
+    newBlocks: [],
+    updatedBlocks: [],
+    byBlockKey: {},
+    partsWithUpdates: {},
     windowDays: days,
     available: false,
   };
@@ -213,109 +534,192 @@ export function loadBookUpdates(): BookUpdates {
   const currentRaw = readCurrentYaml();
   if (!currentRaw) return empty;
 
-  const currentParts = parsePartsFromYaml(currentRaw);
-  if (currentParts.length === 0) return empty;
+  const tipParts = parsePartsFromYaml(currentRaw);
+  if (tipParts.length === 0) return empty;
 
   const commits = listBookCommits();
-  // Need at least one historical revision to compare against.
-  // Working tree may have uncommitted edits — always treat current file as tip.
   if (commits.length === 0) {
     return { ...empty, available: false };
   }
 
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
 
-  // Walk oldest → newest to find first-seen and last-changed dates.
-  // The oldest commit that introduced book.yaml is the baseline: its parts
-  // are not marked “baru” (avoids tagging the whole book on first import).
-  const firstSeen = new Map<string, { date: string; sha: string; part: SnapshotPart }>();
-  const lastChanged = new Map<string, { date: string; sha: string; part: SnapshotPart }>();
-  let previous: SnapshotPart[] = [];
+  // fingerprint → first seen (for "new")
+  const firstSeen = new Map<string, { date: string; sha: string }>();
+  // tip block key → last update info
+  const lastUpdated = new Map<
+    string,
+    { date: string; sha: string; previousPreview: string; previousText: string }
+  >();
 
+  let previous: SnapshotPart[] = [];
   const chronological = [...commits].reverse();
   const baselineSha = chronological[0]?.sha ?? "";
 
-  for (const commit of chronological) {
-    const parts = parsePartsFromYaml(yamlAt(commit.sha));
-    const { added, updated } = diffPartSnapshots(previous, parts);
-
-    for (const part of added) {
-      if (!firstSeen.has(part.slug)) {
-        firstSeen.set(part.slug, { date: commit.date, sha: commit.sha, part });
+  // Seed firstSeen from baseline so baseline content is never "baru"
+  if (chronological.length > 0) {
+    const baselineParts = parsePartsFromYaml(yamlAt(baselineSha));
+    for (const part of baselineParts) {
+      for (const block of part.blocks) {
+        if (!firstSeen.has(block.fingerprint)) {
+          firstSeen.set(block.fingerprint, { date: chronological[0].date, sha: baselineSha });
+        }
       }
-      lastChanged.set(part.slug, { date: commit.date, sha: commit.sha, part });
     }
-    for (const part of updated) {
-      lastChanged.set(part.slug, { date: commit.date, sha: commit.sha, part });
+    previous = baselineParts;
+  }
+
+  const applyDiff = (
+    before: SnapshotPart[],
+    after: SnapshotPart[],
+    date: string,
+    sha: string,
+  ) => {
+    const { addedParts, partDiffs } = diffPartBlockSnapshots(before, after);
+
+    for (const part of addedParts) {
+      for (const block of part.blocks) {
+        if (!firstSeen.has(block.fingerprint)) {
+          firstSeen.set(block.fingerprint, { date, sha });
+        }
+      }
     }
 
+    for (const diff of partDiffs) {
+      for (const block of diff.added) {
+        if (!firstSeen.has(block.fingerprint)) {
+          firstSeen.set(block.fingerprint, { date, sha });
+        }
+      }
+      for (const pair of diff.updated) {
+        // New fingerprint appears via edit
+        if (!firstSeen.has(pair.after.fingerprint)) {
+          firstSeen.set(pair.after.fingerprint, { date, sha });
+        }
+        const previews = changePreviews(pair.before.text, pair.after.text);
+        lastUpdated.set(`fp:${pair.after.fingerprint}`, {
+          date,
+          sha,
+          previousPreview: previews.previousPreview,
+          previousText: pair.before.text,
+        });
+      }
+    }
+  };
+
+  for (let c = 1; c < chronological.length; c++) {
+    const commit = chronological[c];
+    const parts = parsePartsFromYaml(yamlAt(commit.sha));
+    applyDiff(previous, parts, commit.date, commit.sha);
     previous = parts;
   }
 
-  // Working tree / uncommitted tip vs last commit
-  const tipParts = currentParts;
+  // Working tree tip vs last commit
   const tipDate = new Date().toISOString();
   const tipSha = "__workdir__";
-  const { added: tipAdded, updated: tipUpdated } = diffPartSnapshots(previous, tipParts);
-  for (const part of tipAdded) {
-    if (!firstSeen.has(part.slug)) {
-      firstSeen.set(part.slug, { date: tipDate, sha: tipSha, part });
-    }
-    lastChanged.set(part.slug, { date: tipDate, sha: tipSha, part });
-  }
-  for (const part of tipUpdated) {
-    lastChanged.set(part.slug, { date: tipDate, sha: tipSha, part });
-  }
+  applyDiff(previous, tipParts, tipDate, tipSha);
 
-  const newParts: PartUpdate[] = [];
-  const updatedParts: PartUpdate[] = [];
-  const bySlug: Record<string, UpdateStatus> = {};
+  const newBlocks: BlockUpdate[] = [];
+  const updatedBlocks: BlockUpdate[] = [];
+  const byBlockKey: Record<string, BlockUpdate> = {};
+  const partsWithUpdates: Record<string, UpdateStatus> = {};
+
+  const markPart = (slug: string, status: UpdateStatus) => {
+    const existing = partsWithUpdates[slug];
+    if (!existing || (existing === "updated" && status === "new")) {
+      partsWithUpdates[slug] = status;
+    }
+  };
 
   for (const part of tipParts) {
-    const seen = firstSeen.get(part.slug);
-    const changed = lastChanged.get(part.slug);
-    if (!seen) continue;
+    for (const block of part.blocks) {
+      const key = blockKey(part.slug, block.blockIndex);
+      const seen = firstSeen.get(block.fingerprint);
+      if (!seen) continue;
 
-    const seenMs = Date.parse(seen.date);
-    const changedMs = changed ? Date.parse(changed.date) : NaN;
-    const introducedAfterBaseline = seen.sha !== baselineSha;
+      const seenMs = Date.parse(seen.date);
+      const introducedAfterBaseline = seen.sha !== baselineSha;
+      const updateInfo = lastUpdated.get(`fp:${block.fingerprint}`);
+      const updatedMs = updateInfo ? Date.parse(updateInfo.date) : NaN;
+      const updatedAfterBaseline = updateInfo && updateInfo.sha !== baselineSha;
 
-    if (introducedAfterBaseline && Number.isFinite(seenMs) && seenMs >= cutoff) {
-      const item: PartUpdate = {
-        slug: part.slug,
-        label: part.label,
-        title: part.title,
-        status: "new",
-        since: seen.date,
-      };
-      newParts.push(item);
-      bySlug[part.slug] = "new";
-      continue;
-    }
+      // Prefer "new" if fingerprint first appeared after baseline within window
+      if (introducedAfterBaseline && Number.isFinite(seenMs) && seenMs >= cutoff) {
+        // If this fingerprint came from an in-window edit of an older block, treat as updated
+        if (
+          updateInfo &&
+          updatedAfterBaseline &&
+          Number.isFinite(updatedMs) &&
+          updatedMs >= cutoff &&
+          updateInfo.date === seen.date
+        ) {
+          const previews = changePreviews(updateInfo.previousText, block.text);
+          const item: BlockUpdate = {
+            key,
+            partSlug: part.slug,
+            partLabel: part.label,
+            partTitle: part.title,
+            kind: block.kind,
+            blockIndex: block.blockIndex,
+            status: "updated",
+            since: updateInfo.date,
+            preview: previews.preview,
+            previousPreview: previews.previousPreview,
+          };
+          updatedBlocks.push(item);
+          byBlockKey[key] = item;
+          markPart(part.slug, "updated");
+          continue;
+        }
 
-    // Content edits after baseline, within the window
-    if (
-      changed &&
-      changed.sha !== baselineSha &&
-      Number.isFinite(changedMs) &&
-      changedMs >= cutoff
-    ) {
-      const item: PartUpdate = {
-        slug: part.slug,
-        label: part.label,
-        title: part.title,
-        status: "updated",
-        since: changed.date,
-      };
-      updatedParts.push(item);
-      bySlug[part.slug] = "updated";
+        const item: BlockUpdate = {
+          key,
+          partSlug: part.slug,
+          partLabel: part.label,
+          partTitle: part.title,
+          kind: block.kind,
+          blockIndex: block.blockIndex,
+          status: "new",
+          since: seen.date,
+          preview: block.preview,
+        };
+        newBlocks.push(item);
+        byBlockKey[key] = item;
+        markPart(part.slug, "new");
+        continue;
+      }
+
+      if (
+        updateInfo &&
+        updatedAfterBaseline &&
+        Number.isFinite(updatedMs) &&
+        updatedMs >= cutoff
+      ) {
+        const previews = changePreviews(updateInfo.previousText, block.text);
+        const item: BlockUpdate = {
+          key,
+          partSlug: part.slug,
+          partLabel: part.label,
+          partTitle: part.title,
+          kind: block.kind,
+          blockIndex: block.blockIndex,
+          status: "updated",
+          since: updateInfo.date,
+          preview: previews.preview,
+          previousPreview: previews.previousPreview,
+        };
+        updatedBlocks.push(item);
+        byBlockKey[key] = item;
+        markPart(part.slug, "updated");
+      }
     }
   }
 
   return {
-    newParts,
-    updatedParts,
-    bySlug,
+    newBlocks,
+    updatedBlocks,
+    byBlockKey,
+    partsWithUpdates,
     windowDays: days,
     available: true,
   };
@@ -323,59 +727,97 @@ export function loadBookUpdates(): BookUpdates {
 
 /**
  * Diff current working tree book.yaml against a git ref (e.g. origin/master).
- * Used by CI to annotate pull requests.
  */
 export function diffBookAgainstRef(ref: string): {
-  added: SnapshotPart[];
-  updated: SnapshotPart[];
-  removed: SnapshotPart[];
+  added: DiffBlock[];
+  updated: DiffBlock[];
+  removed: DiffBlock[];
+  titleOnlyParts: { slug: string; label: string; title: string }[];
 } {
   const beforeRaw = runGit(["show", `${ref}:${YAML_REL}`]) ?? "";
   const afterRaw = readCurrentYaml();
   const before = parsePartsFromYaml(beforeRaw);
   const after = parsePartsFromYaml(afterRaw);
-  const { added, updated } = diffPartSnapshots(before, after);
-  const afterSlugs = new Set(after.map((p) => p.slug));
-  const removed = before.filter((p) => !afterSlugs.has(p.slug));
-  return { added, updated, removed };
+  const result = diffPartBlockSnapshots(before, after);
+  const flat = flattenBlockDiff(result);
+  const titleOnlyParts = result.partDiffs
+    .filter(
+      (d) =>
+        d.titleChanged &&
+        d.added.length === 0 &&
+        d.removed.length === 0 &&
+        d.updated.length === 0,
+    )
+    .map((d) => ({ slug: d.partSlug, label: d.partLabel, title: d.partTitle }));
+  return { ...flat, titleOnlyParts };
+}
+
+function kindLabel(kind: ContentKind): string {
+  return kind === "poetry" ? "puisi" : "prosa";
+}
+
+function formatBlockLine(b: DiffBlock, withPrevious = false): string {
+  const where = `**${b.partLabel}** — ${b.partTitle}`;
+  const what = `_${kindLabel(b.kind)}_`;
+  if (withPrevious && b.previousPreview) {
+    return `- ${where} · ${what}\n  - sebelum: “${b.previousPreview}”\n  - sesudah: “${b.preview}”`;
+  }
+  return `- ${where} · ${what}: “${b.preview}”`;
 }
 
 export function formatUpdatesMarkdown(diff: {
-  added: SnapshotPart[];
-  updated: SnapshotPart[];
-  removed: SnapshotPart[];
+  added: DiffBlock[];
+  updated: DiffBlock[];
+  removed: DiffBlock[];
+  titleOnlyParts?: { slug: string; label: string; title: string }[];
 }): string {
-  const lines: string[] = ["## Perubahan `book.yaml`", ""];
+  const lines: string[] = ["## Perubahan prose / poetry", ""];
+  const titleOnly = diff.titleOnlyParts ?? [];
 
-  if (diff.added.length === 0 && diff.updated.length === 0 && diff.removed.length === 0) {
-    lines.push("_Tidak ada perubahan section (slug/judul/isi part)._");
+  if (
+    diff.added.length === 0 &&
+    diff.updated.length === 0 &&
+    diff.removed.length === 0 &&
+    titleOnly.length === 0
+  ) {
+    lines.push("_Tidak ada perubahan prose/poetry._");
     return lines.join("\n");
   }
 
   if (diff.added.length > 0) {
-    lines.push("### Bagian baru");
-    for (const p of diff.added) {
-      lines.push(`- **${p.label}** — ${p.title} (\`${p.slug}\`)`);
+    lines.push("### Blok baru");
+    for (const b of diff.added) {
+      lines.push(formatBlockLine(b));
     }
     lines.push("");
   }
 
   if (diff.updated.length > 0) {
-    lines.push("### Bagian diubah");
-    for (const p of diff.updated) {
-      lines.push(`- **${p.label}** — ${p.title} (\`${p.slug}\`)`);
+    lines.push("### Blok diubah");
+    for (const b of diff.updated) {
+      lines.push(formatBlockLine(b, true));
     }
     lines.push("");
   }
 
   if (diff.removed.length > 0) {
-    lines.push("### Bagian dihapus");
-    for (const p of diff.removed) {
+    lines.push("### Blok dihapus");
+    for (const b of diff.removed) {
+      lines.push(formatBlockLine(b));
+    }
+    lines.push("");
+  }
+
+  if (titleOnly.length > 0) {
+    lines.push("### Judul/label chapter diubah (tanpa ubah isi blok)");
+    for (const p of titleOnly) {
       lines.push(`- **${p.label}** — ${p.title} (\`${p.slug}\`)`);
     }
     lines.push("");
   }
 
-  lines.push("_Tanda “baru” di situs aktif ±30 hari setelah section pertama kali muncul di git history._");
+  lines.push(
+    "_Tanda “baru” / “diubah” di situs menempel di blok prose/poetry (±30 hari), bukan di seluruh chapter._",
+  );
   return lines.join("\n");
 }

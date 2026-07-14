@@ -1,31 +1,125 @@
 ---
+import NewBadge from "./NewBadge.astro";
+import type { UpdateStatus } from "../lib/bookUpdates";
+
 interface Props {
   kind: "prose" | "poetry" | "divider";
   lines: string[];
+  blockId?: string;
+  updateStatus?: UpdateStatus | null;
+  previousPreview?: string | null;
+  changePreview?: string | null;
 }
 
-const { kind, lines } = Astro.props;
+const {
+  kind,
+  lines,
+  blockId,
+  updateStatus = null,
+  previousPreview = null,
+  changePreview = null,
+} = Astro.props;
+
+const kindLabel = kind === "poetry" ? "puisi" : kind === "prose" ? "prosa" : "";
 ---
 
-{kind === "divider" ? (
-  <div class="block divider" aria-hidden="true">
-    <span>∗ ∗ ∗</span>
-  </div>
-) : kind === "poetry" ? (
-  <figure class="block poetry">
-    {lines.map((line) => (
-      <span class="verse-line">{line || "\u00A0"}</span>
-    ))}
-  </figure>
-) : (
-  <div class="block prose">
-    {lines.map((line) => (
-      <p>{line}</p>
-    ))}
-  </div>
-)}
+{
+  kind === "divider" ? (
+    <div class="block divider" aria-hidden="true">
+      <span>∗ ∗ ∗</span>
+    </div>
+  ) : (
+    <div class:list={["block-wrap", updateStatus]} id={blockId}>
+      {updateStatus && (
+        <div class="block-meta">
+          <NewBadge status={updateStatus} />
+          {kindLabel && <span class="kind-tag">{kindLabel}</span>}
+          {updateStatus === "updated" && previousPreview && changePreview && (
+            <p class="change-note">
+              <span class="change-label">Perubahan</span>
+              <span class="change-text">
+                “{previousPreview}” → “{changePreview}”
+              </span>
+            </p>
+          )}
+        </div>
+      )}
+
+      {kind === "poetry" ? (
+        <figure class="block poetry">
+          {lines.map((line) => (
+            <span class="verse-line">{line || "\u00A0"}</span>
+          ))}
+        </figure>
+      ) : (
+        <div class="block prose">
+          {lines.map((line) => (
+            <p>{line}</p>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 <style>
+  .block-wrap {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .block-wrap.new,
+  .block-wrap.updated {
+    padding: 0.65rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: 0.35rem;
+  }
+
+  .block-wrap.new {
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+
+  .block-wrap.updated {
+    background: color-mix(in srgb, var(--ink) 3.5%, transparent);
+  }
+
+  .block-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.55rem;
+  }
+
+  .kind-tag {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .change-note {
+    flex: 1 1 100%;
+    display: grid;
+    gap: 0.15rem;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--ink-faint);
+  }
+
+  .change-label {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.65rem;
+  }
+
+  .change-text {
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
   .block {
     margin: 0;
   }

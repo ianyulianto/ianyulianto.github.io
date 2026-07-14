@@ -2,7 +2,6 @@
 import BookLayout from "../../layouts/BookLayout.astro";
 import TextBlock from "../../components/TextBlock.astro";
 import PartNav from "../../components/PartNav.astro";
-import NewBadge from "../../components/NewBadge.astro";
 import PartIllustration from "../../components/PartIllustration.astro";
 import { loadBook } from "../../lib/parseBook";
 import { loadBookUpdates } from "../../lib/bookUpdates";
@@ -18,12 +17,12 @@ export function getStaticPaths() {
       next: book.parts[i + 1] ?? null,
       total: book.parts.length,
       meta: book.meta,
-      updateStatus: updates.bySlug[part.slug] ?? null,
+      byBlockKey: updates.byBlockKey,
     },
   }));
 }
 
-const { part, prev, next, total, meta, updateStatus } = Astro.props;
+const { part, prev, next, total, meta, byBlockKey } = Astro.props;
 ---
 
 <BookLayout
@@ -34,10 +33,7 @@ const { part, prev, next, total, meta, updateStatus } = Astro.props;
   <div class="reader">
     <header class="reader-head">
       <a class="crumb" href="/daftar">Daftar isi</a>
-      <p class="part-label">
-        {part.label}
-        <NewBadge status={updateStatus} />
-      </p>
+      <p class="part-label">{part.label}</p>
       <h1>{part.title}</h1>
       {
         part.illustrationSvg && (
@@ -47,9 +43,20 @@ const { part, prev, next, total, meta, updateStatus } = Astro.props;
     </header>
 
     <article class="content">
-      {part.blocks.map((block) => (
-        <TextBlock kind={block.kind} lines={block.lines} />
-      ))}
+      {part.blocks.map((block, blockIndex) => {
+        const key = `${part.slug}:${blockIndex}`;
+        const update = byBlockKey[key] ?? null;
+        return (
+          <TextBlock
+            kind={block.kind}
+            lines={block.lines}
+            blockId={`b-${part.slug}-${blockIndex}`}
+            updateStatus={update?.status ?? null}
+            previousPreview={update?.previousPreview ?? null}
+            changePreview={update?.status === "updated" ? update.preview : null}
+          />
+        );
+      })}
     </article>
 
     <PartNav
@@ -98,10 +105,6 @@ const { part, prev, next, total, meta, updateStatus } = Astro.props;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 0.5rem;
-  }
-
-  .part-label :global(.badge) {
-    letter-spacing: 0.06em;
   }
 
   h1 {

@@ -9,7 +9,9 @@ const { meta, parts } = book;
 const firstHref = parts.length > 0 ? `/part/${parts[0].slug}` : null;
 const pageTitle = meta.title;
 const description = `${meta.tagline} — ${meta.author}`;
-const newCount = updates.newParts.length;
+const newCount = updates.newBlocks.length;
+const updatedCount = updates.updatedBlocks.length;
+const changeCount = newCount + updatedCount;
 ---
 
 <BookLayout title={pageTitle} description={description} lang={meta.language}>
@@ -37,10 +39,16 @@ const newCount = updates.newParts.length;
       {parts.length > 0 && (
         <p class="meta-line">
           {parts.length} bagian
-          {newCount > 0 && (
+          {changeCount > 0 && (
             <>
               {" · "}
-              <a class="new-link" href="/daftar">{newCount} baru</a>
+              <a class="new-link" href="/daftar">
+                {newCount > 0 && updatedCount > 0
+                  ? `${newCount} blok baru · ${updatedCount} diubah`
+                  : newCount > 0
+                    ? `${newCount} blok baru`
+                    : `${updatedCount} blok diubah`}
+              </a>
             </>
           )}
         </p>

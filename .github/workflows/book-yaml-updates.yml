@@ -1,4 +1,4 @@
-name: Book YAML section updates
+name: Book YAML prose/poetry updates
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  mark-sections:
+  mark-blocks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,13 +29,13 @@ jobs:
         working-directory: web
         run: npm ci
 
-      - name: Diff book.yaml sections vs base
+      - name: Diff book.yaml prose/poetry vs base
         working-directory: web
         run: |
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
           node scripts/book-updates-report.mjs "$BASE_SHA" | tee /tmp/book-updates.md
 
-      - name: Comment PR with new/changed sections
+      - name: Comment PR with block changes
         uses: actions/github-script@v7
         with:
           script: |
