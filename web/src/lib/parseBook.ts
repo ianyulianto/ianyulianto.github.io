@@ -10,6 +10,52 @@ export type BookBlock = {
   lines: string[];
 };
 
+/** Position inside a run of consecutive poetry (only when run length > 2). */
+export type PoetrySequence = {
+  index: number;
+  total: number;
+};
+
+export type AnnotatedBlock = BookBlock & {
+  poetrySequence: PoetrySequence | null;
+};
+
+/**
+ * Mark poetry blocks that sit in a consecutive run longer than 2.
+ * Shorter runs (1–2) stay unmarked so their layout stays quiet.
+ */
+export function annotatePoetrySequences(blocks: BookBlock[]): AnnotatedBlock[] {
+  const annotated: AnnotatedBlock[] = blocks.map((block) => ({
+    ...block,
+    poetrySequence: null,
+  }));
+
+  let i = 0;
+  while (i < blocks.length) {
+    if (blocks[i].kind !== "poetry") {
+      i += 1;
+      continue;
+    }
+
+    let end = i + 1;
+    while (end < blocks.length && blocks[end].kind === "poetry") end += 1;
+    const total = end - i;
+
+    if (total > 2) {
+      for (let k = i; k < end; k += 1) {
+        annotated[k].poetrySequence = {
+          index: k - i + 1,
+          total,
+        };
+      }
+    }
+
+    i = end;
+  }
+
+  return annotated;
+}
+
 export type BookPart = {
   index: number;
   slug: string;
