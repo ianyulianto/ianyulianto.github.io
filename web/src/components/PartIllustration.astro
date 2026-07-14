@@ -1,0 +1,74 @@
+---
+interface Props {
+  svg: string;
+  /** Soft decorative treatment under title, or hero for random splash */
+  variant?: "chapter" | "hero";
+  class?: string;
+}
+
+const { svg, variant = "chapter", class: className = "" } = Astro.props;
+---
+
+<figure class:list={["illust", variant, className]} aria-hidden="true">
+  <div class="frame" set:html={svg} />
+</figure>
+
+<style>
+  .illust {
+    margin: 0;
+  }
+
+  .frame {
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .frame :global(svg) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .chapter .frame {
+    border-radius: 0.35rem;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.28);
+    animation: reveal 0.8s ease both;
+  }
+
+  .hero .frame {
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    animation: drift 1s ease both;
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes drift {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chapter .frame,
+    .hero .frame {
+      animation: none;
+    }
+  }
+</style>

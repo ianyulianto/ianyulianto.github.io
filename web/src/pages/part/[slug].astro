@@ -3,6 +3,7 @@ import BookLayout from "../../layouts/BookLayout.astro";
 import TextBlock from "../../components/TextBlock.astro";
 import PartNav from "../../components/PartNav.astro";
 import NewBadge from "../../components/NewBadge.astro";
+import PartIllustration from "../../components/PartIllustration.astro";
 import { loadBook } from "../../lib/parseBook";
 import { loadBookUpdates } from "../../lib/bookUpdates";
 
@@ -38,6 +39,11 @@ const { part, prev, next, total, meta, updateStatus } = Astro.props;
         <NewBadge status={updateStatus} />
       </p>
       <h1>{part.title}</h1>
+      {
+        part.illustrationSvg && (
+          <PartIllustration svg={part.illustrationSvg} variant="chapter" class="chapter-art" />
+        )
+      }
     </header>
 
     <article class="content">
@@ -101,6 +107,10 @@ const { part, prev, next, total, meta, updateStatus } = Astro.props;
   h1 {
     font-size: var(--fs-title);
     text-wrap: balance;
+  }
+
+  .reader-head :global(.chapter-art) {
+    margin-top: 1.35rem;
   }
 
   .content {

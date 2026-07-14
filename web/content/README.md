@@ -3,14 +3,15 @@
 ## Alur kerja
 
 ```text
-book.txt  ──(AI / manual)──►  book.yaml  ──►  situs web
-  naskah mentah                 data tampilan      Astro pages
+book.txt  ──(AI / manual)──►  book.yaml  ──(AI)──►  illustrations/*.svg  ──►  situs web
+  naskah mentah                 data tampilan         gambar per bagian           Astro pages
 ```
 
 | File | Peran |
 |------|--------|
 | `book.txt` | Naskah mentah. Boleh diedit bebas. **Tidak** dibaca langsung oleh web. |
-| `book.yaml` | **Satu-satunya data source** tampilan web (meta, chapter, puisi, prosa). |
+| `book.yaml` | **Satu-satunya data source** teks tampilan web (meta, chapter, puisi, prosa) + path ilustrasi. |
+| `illustrations/*.svg` | Gambar SVG per bagian (feel & tone). Dirujuk dari field `illustration` di YAML. |
 | `book.json` | Legacy — tidak dipakai lagi. Meta ada di `book.yaml`. |
 
 Setelah `book.yaml` di-push ke `master`, GitHub Actions build & deploy ke Pages.
@@ -30,6 +31,7 @@ parts:
   - slug: pembuka          # URL → /part/pembuka
     label: Pembuka         # teks kecil di atas judul (TOC + reader)
     title: Rumah No. 4     # judul besar
+    illustration: illustrations/pembuka.svg   # opsional; SVG feel/tone bagian
     blocks:
       - kind: poetry
         lines:
@@ -58,6 +60,7 @@ parts:
 - `label` — mis. `Pembuka`, `Chapter 1`
 - `title` — judul bab
 - `blocks` — daftar blok isi
+- `illustration` — (opsional) path relatif ke file SVG di folder `content/`, mis. `illustrations/1.svg`
 
 **Setiap `block`**
 - `kind`: `poetry` | `prose` | `divider`
@@ -67,6 +70,8 @@ parts:
 | `poetry` | `lines:` array string. `""` = jeda bait. |
 | `prose` | `text: \|` literal block. Satu paragraf per blok kosong. |
 | `divider` | Tidak perlu field lain. |
+
+SVG tampil di halaman bagian dan di **Baca acak** (`/acak`).
 
 ---
 
@@ -99,6 +104,7 @@ Aturan output YAML (ikuti skema di content/README.md):
    - Jika ragu, utamakan makna: refleksi/narasi = prose; bait = poetry
 10. Pertahankan ejaan, tanda baca, dan Unicode (— ‘ ’ “ ” …) apa adanya.
 11. Jangan ringkas, jangan parafrase, jangan hilangkan teks.
+12. Jika part sudah punya `illustration`, pertahankan path-nya. Jika part baru, siapkan path `illustrations/{slug}.svg` (file SVG dibuat di langkah berikutnya).
 
 Input: isi book.txt terbaru.
 Output: seluruh isi book.yaml saja (tanpa markdown fence).
@@ -106,10 +112,47 @@ Output: seluruh isi book.yaml saja (tanpa markdown fence).
 
 ---
 
+## Prompt AI lanjutan: ilustrasi SVG per bagian
+
+Jalankan **setelah** `book.yaml` selesai. Satu SVG per `part`, berdasarkan feel & tone isi bagian (bukan cover buku generik).
+
+```text
+Kamu membuat ilustrasi SVG untuk booklet sastra mobile-first.
+
+Konteks visual situs (wajib diikuti):
+- Palet kertas: latar #f3efe6 / #ebe4d6, tinta #1c1a17, soft #7a7366, aksen teal #2f5d56
+- Hindari: ungu, glow neon, dark mode, emoji, teks panjang di dalam gambar
+- Gaya: tenang, literer, metafora visual lembut (bukan kartun ramai, bukan fotoreal)
+
+Untuk SETIAP part di book.yaml:
+1. Baca title + cuplikan poetry/prose (cukup untuk tangkap mood).
+2. Pilih 1–2 motif kuat dari bagian itu (benda/tempat/perasaan), jangan ilustrasikan seluruh plot.
+3. Tulis file SVG ke: web/content/illustrations/{slug}.svg
+4. Pastikan part.illustration di YAML = illustrations/{slug}.svg
+5. Spesifikasi SVG:
+   - viewBox="0 0 480 320" (landscape pendek)
+   - Inline <title> deskriptif singkat (bahasa Indonesia)
+   - Bentuk vector sederhana, stroke ~1.2–2.4, sedikit gradien halus boleh
+   - Tanpa external font/image; tanpa script
+   - Cocok tampil kecil di HP
+
+Urutan kerja:
+- Part baru / tanpa SVG → buat SVG baru
+- Part lama yang mood-nya berubah signifikan → perbarui SVG
+- Jangan ubah teks naskah di book.yaml selain field illustration
+
+Output: file SVG + pastikan path illustration di YAML sudah benar.
+```
+
+Contoh motif (bukan template wajib): rumah + tanda tanya; balon + pintu tertutup; kelereng di tanah; kupu-kupu + TV sore; panggung + sepatu balet; jalan pulang ke cahaya pintu.
+
+---
+
 ## Catatan
 
-- Web **hanya** membaca `book.yaml`. Perubahan di `book.txt` tidak muncul di situs sampai YAML di-update.
+- Web membaca `book.yaml` (+ file SVG yang dirujuk). Perubahan di `book.txt` tidak muncul sampai YAML (dan ilustrasi, jika perlu) di-update.
 - Draft awal YAML boleh di-generate kasar; koreksi `kind` (poetry vs prose) lewat AI atau manual agar lebih presisi.
+- Halaman **Baca acak** (`/acak`) memilih satu bagian secara acak dan menampilkan SVG-nya sebagai splash sebelum dibaca.
 
 ---
 

@@ -1,0 +1,267 @@
+---
+import BookLayout from "../layouts/BookLayout.astro";
+import { loadBook } from "../lib/parseBook";
+
+const book = loadBook();
+const { meta, parts } = book;
+
+/** Payload for client-side random pick (SVG inlined for splash). */
+const pool = parts.map((p) => ({
+  slug: p.slug,
+  label: p.label,
+  title: p.title,
+  preview: p.preview,
+  illustrationSvg: p.illustrationSvg,
+}));
+---
+
+<BookLayout
+  title={`Baca acak — ${meta.title}`}
+  description={`Bagian acak dari ${meta.title}`}
+  lang={meta.language}
+>
+  <main class="acak" id="acak-root" data-empty={parts.length === 0 ? "1" : "0"}>
+    {
+      parts.length === 0 ? (
+        <div class="empty">
+          <a class="back" href="/">
+            ← Cover
+          </a>
+          <p>Belum ada bagian untuk diacak.</p>
+        </div>
+      ) : (
+        <>
+          <header class="head">
+            <a class="back" href="/">
+              ← Cover
+            </a>
+            <p class="eyebrow">Baca acak</p>
+            <h1 class="brand">{meta.title}</h1>
+            <p class="hint">Satu bagian, sesuai mood hari ini.</p>
+          </header>
+
+          <div class="stage" id="stage" hidden>
+            <div id="illust-slot"></div>
+            <p class="picked-label" id="picked-label"></p>
+            <h2 class="picked-title" id="picked-title"></h2>
+            <p class="picked-preview" id="picked-preview"></p>
+            <div class="actions">
+              <a class="btn primary" id="read-link" href="#">Buka bagian ini</a>
+              <button type="button" class="btn ghost" id="reshuffle">Acak lagi</button>
+            </div>
+          </div>
+
+          <p class="loading" id="loading">Memilih bagian…</p>
+        </>
+      )
+    }
+  </main>
+</BookLayout>
+
+<script define:vars={{ pool }}>
+  const stage = document.getElementById("stage");
+  const loading = document.getElementById("loading");
+  const illustSlot = document.getElementById("illust-slot");
+  const labelEl = document.getElementById("picked-label");
+  const titleEl = document.getElementById("picked-title");
+  const previewEl = document.getElementById("picked-preview");
+  const readLink = document.getElementById("read-link");
+  const reshuffle = document.getElementById("reshuffle");
+
+  if (!pool.length || !stage || !readLink) {
+    // no-op
+  } else {
+    let lastSlug = null;
+
+    function pick() {
+      if (pool.length === 1) return pool[0];
+      let next;
+      do {
+        next = pool[Math.floor(Math.random() * pool.length)];
+      } while (next.slug === lastSlug);
+      return next;
+    }
+
+    function show(part) {
+      lastSlug = part.slug;
+      if (illustSlot) {
+        if (part.illustrationSvg) {
+          illustSlot.innerHTML =
+            '<figure class="illust-hero" aria-hidden="true"><div class="frame">' +
+            part.illustrationSvg +
+            "</div></figure>";
+        } else {
+          illustSlot.innerHTML = "";
+        }
+      }
+      if (labelEl) labelEl.textContent = part.label;
+      if (titleEl) titleEl.textContent = part.title;
+      if (previewEl) {
+        previewEl.textContent = part.preview || "";
+        previewEl.hidden = !part.preview;
+      }
+      readLink.setAttribute("href", "/part/" + part.slug);
+      if (loading) loading.hidden = true;
+      stage.hidden = false;
+    }
+
+    show(pick());
+    reshuffle?.addEventListener("click", () => show(pick()));
+  }
+</script>
+
+<style>
+  .acak {
+    min-height: 100dvh;
+    width: min(100%, var(--read-max));
+    margin: 0 auto;
+    padding: var(--pad-y) var(--pad-x) calc(3rem + var(--safe-bottom));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .back {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .back:hover {
+    color: var(--accent);
+  }
+
+  .head {
+    margin-bottom: 1.5rem;
+    animation: rise 0.7s ease both;
+  }
+
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.65rem;
+  }
+
+  .brand {
+    font-size: var(--fs-title);
+    margin-bottom: 0.4rem;
+  }
+
+  .hint {
+    color: var(--ink-soft);
+  }
+
+  .loading {
+    color: var(--ink-faint);
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+  }
+
+  .stage {
+    display: grid;
+    gap: 1rem;
+    animation: rise 0.85s ease 0.08s both;
+  }
+
+  .picked-label {
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0.25rem;
+  }
+
+  .picked-title {
+    font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+    text-wrap: balance;
+  }
+
+  .picked-preview {
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  .actions {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.8rem 1.25rem;
+    border-radius: 999px;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn.primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn.primary:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn.ghost {
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .btn.ghost:hover {
+    color: var(--ink);
+    border-color: color-mix(in srgb, var(--ink) 25%, transparent);
+  }
+
+  .empty {
+    color: var(--ink-soft);
+  }
+
+  :global(.illust-hero .frame) {
+    overflow: hidden;
+    line-height: 0;
+    border-radius: 0.35rem;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  :global(.illust-hero svg) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .head,
+    .stage {
+      animation: none;
+    }
+  }
+</style>
