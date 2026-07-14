@@ -1,67 +1,29 @@
 :root {
-    /* colors */
-    --bg: #FFFFFF;
-    --bg-muted: #F9FAFB;
-    --text: #111111;
-    --text-2: #555555;
-    --text-muted: #6B7280;
-    --border: #E5E7EB;
+  /* Atmosphere — soft paper, ink text, muted teal accent */
+  --bg: #f3efe6;
+  --bg-deep: #ebe4d6;
+  --ink: #1c1a17;
+  --ink-soft: #4a453c;
+  --ink-faint: #7a7366;
+  --line: rgba(28, 26, 23, 0.12);
+  --accent: #2f5d56;
+  --accent-soft: rgba(47, 93, 86, 0.12);
 
-    /* primary (Deep Elegant Blue) */
-    --primary: #1e3a8a;
-    --primary-hover: #172554;
-    --primary-soft: #DBEAFE;
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-body: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-ui: "DM Sans", system-ui, sans-serif;
 
-    /* accent (Orange) */
-    --accent: #F97316;
-    --accent-hover: #EA580C;
-    --accent-soft: #FFF7ED;
+  --fs-display: clamp(2.4rem, 8vw, 3.75rem);
+  --fs-title: clamp(1.45rem, 5vw, 2rem);
+  --fs-body: clamp(1.0625rem, 3.6vw, 1.2rem);
+  --fs-small: 0.875rem;
 
-    /* typography */
-    --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --lh-tight: 1.15;
+  --lh-body: 1.7;
+  --lh-poetry: 1.55;
 
-    /* type scale */
-    /* Mapping JSON sizes to spec variables */
-    --h1: 48px;
-    /* 3xl */
-    --h2: 36px;
-    /* 2xl */
-    --h3: 24px;
-    /* lg/md overlap? Spec says 24. JSON lg is 24. */
-    --body: 18px;
-    /* md */
-    --small: 16px;
-    /* sm */
-    --xs: 14px;
-    /* xs from JSON */
-
-    /* line height */
-    --lh-tight: 1.2;
-    --lh-normal: 1.5;
-    --lh-relaxed: 1.7;
-
-    /* spacing (8pt grid) */
-    /* Mapping JSON spacing to spec variables */
-    --s-1: 8px;
-    /* xs */
-    --s-2: 16px;
-    /* sm */
-    --s-3: 24px;
-    /* md */
-    --s-4: 40px;
-    /* lg */
-    --s-5: 64px;
-    /* xl */
-    --s-6: 96px;
-    /* 2xl */
-
-    /* radius */
-    --r-sm: 4px;
-    --r-md: 6px;
-    --r-lg: 8px;
-
-    /* layout */
-    --max-page: 1200px;
-    --max-content: 720px;
+  --pad-x: clamp(1.25rem, 5vw, 2rem);
+  --pad-y: clamp(1.5rem, 6vw, 3rem);
+  --read-max: 34rem;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }

@@ -1,0 +1,111 @@
+---
+import BookLayout from "../../layouts/BookLayout.astro";
+import TextBlock from "../../components/TextBlock.astro";
+import PartNav from "../../components/PartNav.astro";
+import { loadBook } from "../../lib/parseBook";
+
+export async function getStaticPaths() {
+  const book = await loadBook();
+  return book.parts.map((part, i) => ({
+    params: { slug: part.slug },
+    props: {
+      part,
+      prev: book.parts[i - 1] ?? null,
+      next: book.parts[i + 1] ?? null,
+      total: book.parts.length,
+      meta: book.meta,
+    },
+  }));
+}
+
+const { part, prev, next, total, meta } = Astro.props;
+---
+
+<BookLayout
+  title={`${part.title} — ${meta.title}`}
+  description={part.preview || meta.tagline}
+  lang={meta.language}
+>
+  <div class="reader">
+    <header class="reader-head">
+      <a class="crumb" href="/daftar">Daftar isi</a>
+      <p class="part-label">Bagian {part.index}</p>
+      <h1>{part.title}</h1>
+    </header>
+
+    <article class="content">
+      {part.blocks.map((block) => (
+        <TextBlock kind={block.kind} lines={block.lines} />
+      ))}
+    </article>
+
+    <PartNav
+      current={part.index}
+      total={total}
+      prevHref={prev ? `/part/${prev.slug}` : null}
+      nextHref={next ? `/part/${next.slug}` : null}
+    />
+  </div>
+</BookLayout>
+
+<style>
+  .reader {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reader-head {
+    width: min(100%, var(--read-max));
+    margin: 0 auto;
+    padding: var(--pad-y) var(--pad-x) 1.5rem;
+  }
+
+  .crumb {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .crumb:hover {
+    color: var(--accent);
+  }
+
+  .part-label {
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: var(--fs-title);
+    text-wrap: balance;
+  }
+
+  .content {
+    width: min(100%, var(--read-max));
+    margin: 0 auto;
+    padding: 0.5rem var(--pad-x) 2.5rem;
+    display: grid;
+    gap: 1.75rem;
+    flex: 1;
+    animation: fade 0.55s ease both;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

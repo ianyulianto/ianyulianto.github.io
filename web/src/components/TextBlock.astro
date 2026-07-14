@@ -1,0 +1,54 @@
+---
+interface Props {
+  kind: "prose" | "poetry";
+  lines: string[];
+}
+
+const { kind, lines } = Astro.props;
+---
+
+{kind === "poetry" ? (
+  <figure class="block poetry">
+    {lines.map((line) => (
+      <span class="verse-line">{line || "\u00A0"}</span>
+    ))}
+  </figure>
+) : (
+  <div class="block prose">
+    {lines.map((line) => (
+      <p>{line}</p>
+    ))}
+  </div>
+)}
+
+<style>
+  .block {
+    margin: 0;
+  }
+
+  .prose {
+    display: grid;
+    gap: 1.1em;
+  }
+
+  .prose p {
+    text-wrap: pretty;
+  }
+
+  .poetry {
+    display: grid;
+    gap: 0.15em;
+    justify-items: start;
+    max-width: 22rem;
+    margin-inline: auto;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 3.8vw, 1.2rem);
+    line-height: var(--lh-poetry);
+    font-weight: 500;
+  }
+
+  .verse-line {
+    display: block;
+    white-space: pre-wrap;
+  }
+</style>

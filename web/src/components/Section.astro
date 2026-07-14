@@ -1,8 +1,0 @@
----
-const { pad = "normal", style = "", ...props } = Astro.props; // "normal" | "hero" | "tight"
-const py = pad === "hero" ? "var(--s-6)" : pad === "tight" ? "var(--s-4)" : "var(--s-5)";
-const sectionStyle = `padding-top:${py}; padding-bottom:${py}; ${style}`;
----
-<section style={sectionStyle} {...props}>
-  <slot />
-</section>
