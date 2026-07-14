@@ -110,3 +110,23 @@ Output: seluruh isi book.yaml saja (tanpa markdown fence).
 
 - Web **hanya** membaca `book.yaml`. Perubahan di `book.txt` tidak muncul di situs sampai YAML di-update.
 - Draft awal YAML boleh di-generate kasar; koreksi `kind` (poetry vs prose) lewat AI atau manual agar lebih presisi.
+
+---
+
+## Penanda section baru
+
+Saat `book.yaml` berubah:
+
+1. **Pull request** — workflow `book-yaml-updates.yml` membandingkan section (per `slug`) dengan base branch dan menulis komentar berisi daftar bagian baru / diubah / dihapus.
+2. **Situs** — saat build, git history `book.yaml` dipakai untuk menandai bagian yang **baru** (±30 hari sejak slug pertama muncul). Di daftar isi ada daftar “Baru” + badge minimalis; di halaman bagian juga muncul badge yang sama.
+
+Override jendela hari lewat env `BOOK_NEW_DAYS` (default `30`).
+
+Cek lokal:
+
+```sh
+cd web
+npm run book:updates
+# atau bandingkan ke commit tertentu:
+node scripts/book-updates-report.mjs HEAD~1
+```

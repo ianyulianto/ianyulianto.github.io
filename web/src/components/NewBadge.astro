@@ -1,0 +1,39 @@
+---
+interface Props {
+  status?: "new" | "updated" | null;
+}
+
+const { status = null } = Astro.props;
+if (!status) return;
+const label = status === "new" ? "Baru" : "Diubah";
+---
+
+<span class:list={["badge", status]} aria-label={label}>{label}</span>
+
+<style>
+  .badge {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.22rem 0.45rem;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* Parent reader label also uppercases — keep badge self-contained */
+    font-variant: normal;
+  }
+
+  .badge.new {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .badge.updated {
+    color: var(--ink-faint);
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+  }
+</style>

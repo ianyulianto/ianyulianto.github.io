@@ -2,10 +2,13 @@
 import BookLayout from "../../layouts/BookLayout.astro";
 import TextBlock from "../../components/TextBlock.astro";
 import PartNav from "../../components/PartNav.astro";
+import NewBadge from "../../components/NewBadge.astro";
 import { loadBook } from "../../lib/parseBook";
+import { loadBookUpdates } from "../../lib/bookUpdates";
 
 export function getStaticPaths() {
   const book = loadBook();
+  const updates = loadBookUpdates();
   return book.parts.map((part, i) => ({
     params: { slug: part.slug },
     props: {
@@ -14,11 +17,12 @@ export function getStaticPaths() {
       next: book.parts[i + 1] ?? null,
       total: book.parts.length,
       meta: book.meta,
+      updateStatus: updates.bySlug[part.slug] ?? null,
     },
   }));
 }
 
-const { part, prev, next, total, meta } = Astro.props;
+const { part, prev, next, total, meta, updateStatus } = Astro.props;
 ---
 
 <BookLayout
@@ -29,7 +33,10 @@ const { part, prev, next, total, meta } = Astro.props;
   <div class="reader">
     <header class="reader-head">
       <a class="crumb" href="/daftar">Daftar isi</a>
-      <p class="part-label">{part.label}</p>
+      <p class="part-label">
+        {part.label}
+        <NewBadge status={updateStatus} />
+      </p>
       <h1>{part.title}</h1>
     </header>
 
@@ -75,12 +82,20 @@ const { part, prev, next, total, meta } = Astro.props;
   }
 
   .part-label {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     font-family: var(--font-ui);
     font-size: var(--fs-small);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 0.5rem;
+  }
+
+  .part-label :global(.badge) {
+    letter-spacing: 0.06em;
   }
 
   h1 {
