@@ -3,7 +3,7 @@ import BookLayout from "../../layouts/BookLayout.astro";
 import TextBlock from "../../components/TextBlock.astro";
 import PartNav from "../../components/PartNav.astro";
 import PartIllustration from "../../components/PartIllustration.astro";
-import { loadBook } from "../../lib/parseBook";
+import { annotatePoetrySequences, loadBook } from "../../lib/parseBook";
 import { loadBookUpdates } from "../../lib/bookUpdates";
 
 export function getStaticPaths() {
@@ -23,6 +23,7 @@ export function getStaticPaths() {
 }
 
 const { part, prev, next, total, meta, byBlockKey } = Astro.props;
+const blocks = annotatePoetrySequences(part.blocks);
 ---
 
 <BookLayout
@@ -43,7 +44,7 @@ const { part, prev, next, total, meta, byBlockKey } = Astro.props;
     </header>
 
     <article class="content">
-      {part.blocks.map((block, blockIndex) => {
+      {blocks.map((block, blockIndex) => {
         const key = `${part.slug}:${blockIndex}`;
         const update = byBlockKey[key] ?? null;
         return (
@@ -54,6 +55,7 @@ const { part, prev, next, total, meta, byBlockKey } = Astro.props;
             updateStatus={update?.status ?? null}
             previousPreview={update?.previousPreview ?? null}
             changePreview={update?.status === "updated" ? update.preview : null}
+            poetrySequence={block.poetrySequence}
           />
         );
       })}
@@ -124,6 +126,11 @@ const { part, prev, next, total, meta, byBlockKey } = Astro.props;
     gap: 1.75rem;
     flex: 1;
     animation: fade 0.55s ease both;
+  }
+
+  /* Extra breath between poems in a long consecutive run */
+  .content :global(.poetry-seq + .poetry-seq) {
+    margin-top: 0.85rem;
   }
 
   @keyframes fade {
