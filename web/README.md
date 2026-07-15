@@ -46,4 +46,4 @@ Output: `web/dist`. GitHub Actions men-deploy folder itu ke Pages.
 ## Section baru
 
 - PR yang mengubah `book.yaml` mendapat komentar otomatis (bagian baru / diubah / dihapus).
-- Build menandai bagian baru di situs (±30 hari) dari git history — lihat `content/README.md`.
+- Build menandai bagian dari update `book.yaml` terakhir di situs (±30 hari) — lihat `content/README.md`.

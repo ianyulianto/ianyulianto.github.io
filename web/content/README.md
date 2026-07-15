@@ -166,7 +166,7 @@ Saat `book.yaml` berubah:
    - blok baru (dengan cuplikan teks)
    - blok diubah (**sebelum → sesudah**)
    - blok dihapus
-2. **Situs** — saat build, git history `book.yaml` menandai blok yang **baru** atau **diubah** (±30 hari). Badge menempel di blok itu di halaman baca; di daftar isi ada daftar “Baru & diubah” + cuplikan perubahannya.
+2. **Situs** — saat build, git history `book.yaml` menandai blok yang **baru** atau **diubah** hanya dari **update terakhir** (bukan semua perubahan dalam jendela hari). Badge menempel di blok itu di halaman baca; di daftar isi ada daftar “Baru & diubah” + cuplikan perubahannya. Badge hilang setelah ±30 hari dari update terakhir itu.
 
 Override jendela hari lewat env `BOOK_NEW_DAYS` (default `30`).
 
