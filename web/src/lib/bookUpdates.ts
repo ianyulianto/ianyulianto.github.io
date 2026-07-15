@@ -83,7 +83,7 @@ const REPO_ROOT = path.resolve(process.cwd(), "..");
 const YAML_REL = "web/content/book.yaml";
 const YAML_ABS = path.resolve(process.cwd(), "content/book.yaml");
 
-/** How long a newly added block keeps the “baru” mark */
+/** How long the latest update batch keeps “baru” / “diubah” marks */
 const DEFAULT_WINDOW_DAYS = 30;
 const PREVIEW_LEN = 96;
 
@@ -517,8 +517,12 @@ export function flattenBlockDiff(result: ReturnType<typeof diffPartBlockSnapshot
 }
 
 /**
- * Detect prose/poetry blocks that are new or updated within the recency window,
- * using git history of `web/content/book.yaml`.
+ * Detect prose/poetry blocks that are new or updated in the *latest* book.yaml
+ * change only (not every change within the recency window).
+ *
+ * Compares the working tree tip to the previous committed version of
+ * `web/content/book.yaml`. Badges expire after `BOOK_NEW_DAYS` (default 30)
+ * from that latest change date.
  */
 export function loadBookUpdates(): BookUpdates {
   const days = windowDays();
@@ -543,82 +547,34 @@ export function loadBookUpdates(): BookUpdates {
   }
 
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+  const head = commits[0];
+  const headParts = parsePartsFromYaml(yamlAt(head.sha));
+  const tipVsHead = flattenBlockDiff(diffPartBlockSnapshots(headParts, tipParts));
+  const tipHasContentChanges =
+    tipVsHead.added.length > 0 || tipVsHead.updated.length > 0 || tipVsHead.removed.length > 0;
 
-  // fingerprint → first seen (for "new")
-  const firstSeen = new Map<string, { date: string; sha: string }>();
-  // tip block key → last update info
-  const lastUpdated = new Map<
-    string,
-    { date: string; sha: string; previousPreview: string; previousText: string }
-  >();
+  let beforeParts: SnapshotPart[];
+  let since: string;
 
-  let previous: SnapshotPart[] = [];
-  const chronological = [...commits].reverse();
-  const baselineSha = chronological[0]?.sha ?? "";
-
-  // Seed firstSeen from baseline so baseline content is never "baru"
-  if (chronological.length > 0) {
-    const baselineParts = parsePartsFromYaml(yamlAt(baselineSha));
-    for (const part of baselineParts) {
-      for (const block of part.blocks) {
-        if (!firstSeen.has(block.fingerprint)) {
-          firstSeen.set(block.fingerprint, { date: chronological[0].date, sha: baselineSha });
-        }
-      }
-    }
-    previous = baselineParts;
+  if (tipHasContentChanges) {
+    // Uncommitted tip edits are the current “latest” batch
+    beforeParts = headParts;
+    since = new Date().toISOString();
+  } else if (commits.length >= 2) {
+    // Tip matches HEAD — only show marks from the latest committed change
+    beforeParts = parsePartsFromYaml(yamlAt(commits[1].sha));
+    since = head.date;
+  } else {
+    // Single commit is the baseline; nothing is “baru” relative to it
+    return { ...empty, available: true };
   }
 
-  const applyDiff = (
-    before: SnapshotPart[],
-    after: SnapshotPart[],
-    date: string,
-    sha: string,
-  ) => {
-    const { addedParts, partDiffs } = diffPartBlockSnapshots(before, after);
-
-    for (const part of addedParts) {
-      for (const block of part.blocks) {
-        if (!firstSeen.has(block.fingerprint)) {
-          firstSeen.set(block.fingerprint, { date, sha });
-        }
-      }
-    }
-
-    for (const diff of partDiffs) {
-      for (const block of diff.added) {
-        if (!firstSeen.has(block.fingerprint)) {
-          firstSeen.set(block.fingerprint, { date, sha });
-        }
-      }
-      for (const pair of diff.updated) {
-        // New fingerprint appears via edit
-        if (!firstSeen.has(pair.after.fingerprint)) {
-          firstSeen.set(pair.after.fingerprint, { date, sha });
-        }
-        const previews = changePreviews(pair.before.text, pair.after.text);
-        lastUpdated.set(`fp:${pair.after.fingerprint}`, {
-          date,
-          sha,
-          previousPreview: previews.previousPreview,
-          previousText: pair.before.text,
-        });
-      }
-    }
-  };
-
-  for (let c = 1; c < chronological.length; c++) {
-    const commit = chronological[c];
-    const parts = parsePartsFromYaml(yamlAt(commit.sha));
-    applyDiff(previous, parts, commit.date, commit.sha);
-    previous = parts;
+  const sinceMs = Date.parse(since);
+  if (!Number.isFinite(sinceMs) || sinceMs < cutoff) {
+    return { ...empty, available: true };
   }
 
-  // Working tree tip vs last commit
-  const tipDate = new Date().toISOString();
-  const tipSha = "__workdir__";
-  applyDiff(previous, tipParts, tipDate, tipSha);
-
+  const flat = flattenBlockDiff(diffPartBlockSnapshots(beforeParts, tipParts));
   const newBlocks: BlockUpdate[] = [];
   const updatedBlocks: BlockUpdate[] = [];
   const byBlockKey: Record<string, BlockUpdate> = {};
@@ -631,88 +587,41 @@ export function loadBookUpdates(): BookUpdates {
     }
   };
 
-  for (const part of tipParts) {
-    for (const block of part.blocks) {
-      const key = blockKey(part.slug, block.blockIndex);
-      const seen = firstSeen.get(block.fingerprint);
-      if (!seen) continue;
+  for (const b of flat.added) {
+    const key = blockKey(b.partSlug, b.blockIndex);
+    const item: BlockUpdate = {
+      key,
+      partSlug: b.partSlug,
+      partLabel: b.partLabel,
+      partTitle: b.partTitle,
+      kind: b.kind,
+      blockIndex: b.blockIndex,
+      status: "new",
+      since,
+      preview: b.preview,
+    };
+    newBlocks.push(item);
+    byBlockKey[key] = item;
+    markPart(b.partSlug, "new");
+  }
 
-      const seenMs = Date.parse(seen.date);
-      const introducedAfterBaseline = seen.sha !== baselineSha;
-      const updateInfo = lastUpdated.get(`fp:${block.fingerprint}`);
-      const updatedMs = updateInfo ? Date.parse(updateInfo.date) : NaN;
-      const updatedAfterBaseline = updateInfo && updateInfo.sha !== baselineSha;
-
-      // Prefer "new" if fingerprint first appeared after baseline within window
-      if (introducedAfterBaseline && Number.isFinite(seenMs) && seenMs >= cutoff) {
-        // If this fingerprint came from an in-window edit of an older block, treat as updated
-        if (
-          updateInfo &&
-          updatedAfterBaseline &&
-          Number.isFinite(updatedMs) &&
-          updatedMs >= cutoff &&
-          updateInfo.date === seen.date
-        ) {
-          const previews = changePreviews(updateInfo.previousText, block.text);
-          const item: BlockUpdate = {
-            key,
-            partSlug: part.slug,
-            partLabel: part.label,
-            partTitle: part.title,
-            kind: block.kind,
-            blockIndex: block.blockIndex,
-            status: "updated",
-            since: updateInfo.date,
-            preview: previews.preview,
-            previousPreview: previews.previousPreview,
-          };
-          updatedBlocks.push(item);
-          byBlockKey[key] = item;
-          markPart(part.slug, "updated");
-          continue;
-        }
-
-        const item: BlockUpdate = {
-          key,
-          partSlug: part.slug,
-          partLabel: part.label,
-          partTitle: part.title,
-          kind: block.kind,
-          blockIndex: block.blockIndex,
-          status: "new",
-          since: seen.date,
-          preview: block.preview,
-        };
-        newBlocks.push(item);
-        byBlockKey[key] = item;
-        markPart(part.slug, "new");
-        continue;
-      }
-
-      if (
-        updateInfo &&
-        updatedAfterBaseline &&
-        Number.isFinite(updatedMs) &&
-        updatedMs >= cutoff
-      ) {
-        const previews = changePreviews(updateInfo.previousText, block.text);
-        const item: BlockUpdate = {
-          key,
-          partSlug: part.slug,
-          partLabel: part.label,
-          partTitle: part.title,
-          kind: block.kind,
-          blockIndex: block.blockIndex,
-          status: "updated",
-          since: updateInfo.date,
-          preview: previews.preview,
-          previousPreview: previews.previousPreview,
-        };
-        updatedBlocks.push(item);
-        byBlockKey[key] = item;
-        markPart(part.slug, "updated");
-      }
-    }
+  for (const b of flat.updated) {
+    const key = blockKey(b.partSlug, b.blockIndex);
+    const item: BlockUpdate = {
+      key,
+      partSlug: b.partSlug,
+      partLabel: b.partLabel,
+      partTitle: b.partTitle,
+      kind: b.kind,
+      blockIndex: b.blockIndex,
+      status: "updated",
+      since,
+      preview: b.preview,
+      previousPreview: b.previousPreview,
+    };
+    updatedBlocks.push(item);
+    byBlockKey[key] = item;
+    markPart(b.partSlug, "updated");
   }
 
   return {
@@ -817,7 +726,7 @@ export function formatUpdatesMarkdown(diff: {
   }
 
   lines.push(
-    "_Tanda “baru” / “diubah” di situs menempel di blok prose/poetry (±30 hari), bukan di seluruh chapter._",
+    "_Tanda “baru” / “diubah” di situs hanya dari update `book.yaml` terakhir (±30 hari), menempel di blok prose/poetry — bukan seluruh chapter._",
   );
   return lines.join("\n");
 }

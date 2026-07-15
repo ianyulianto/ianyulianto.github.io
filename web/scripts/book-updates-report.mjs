@@ -377,7 +377,7 @@ if (added.length === 0 && updated.length === 0 && removed.length === 0 && titleO
     lines.push("");
   }
   lines.push(
-    "_Tanda “baru” / “diubah” di situs menempel di blok prose/poetry (±30 hari), bukan di seluruh chapter._",
+    "_Tanda “baru” / “diubah” di situs hanya dari update `book.yaml` terakhir (±30 hari), menempel di blok prose/poetry — bukan seluruh chapter._",
   );
 }
 
