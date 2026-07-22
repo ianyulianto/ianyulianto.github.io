@@ -417,6 +417,57 @@ parts:
       Selain itu, bisa dibawa keliling-keliling ke pasar yang katanya jual apapun di sana. Mereka beralasan tidak mengajakku ke sana karena kotor.
 
       Masa?
+  - kind: poetry
+    lines:
+    - Ayah pergi
+    - membawa dua kotak rokok
+    - tanpa pamit
+    - apalagi cium di dahi
+    - ''
+    - semoga besok bangun
+    - badanku bau asap rokok
+  - kind: prose
+    text: |
+      Bangun-bangun sudah ada satu piring nasi sama telur mata sapi. Lagi-lagi aku makan sendirian. Tidak ada yang bilang “habisin” berulang-ulang. Sekali-kali aku ingin disuapi ayah. Apa aku perlu jadi kotak rokok ya? Biar bisa ikut dibawa ke mana-mana.
+  - kind: poetry
+    lines:
+    - Nenek suka memakai daster
+    - sering aku sembunyi di dalam
+    - biar kalau sembunyi di sini
+    - tidak ada yang berani marah padaku
+  - kind: prose
+    text: |
+      Nenek suka sekali memakai daster. Semuanya motif batik, cuma beda warna. Apa aku harus jadi bunglon ya? biar bisa menyatu dengan daster nenek.
+
+      Kalau ada yang marah-marah, tidak ada yang tahu aku sembunyi di sini. Enak nenek gendut jadi dasternya besar. Cuma sayangnya aku tidak bisa bawa lala.
+  - kind: poetry
+    lines:
+    - Aku ingin jadi boneka salju
+    - meski tidak punya apa-apa
+    - selain badan bulat
+    - ''
+    - tapi banyak tangan
+    - suka menghiasku
+    - biar cantik dan lucu
+  - kind: prose
+    text: |
+      Dari dulu aku ingin jadi boneka salju kayak di film-film. Dia selalu tersenyum. Padahal dia tidak bisa kemana-mana karena tidak punya kaki. Ada yang memberinya hidung wortel. Ada yang memakaikan syal. Kadang juga topi atau jaket yang cantik.
+
+      Semoga salju bisa datang di kamarku. Pokoknya jangan di luar kamar. Panas.
+  - kind: poetry
+    lines:
+    - Kalau kakiku tidak
+    - bisa melompat tinggi
+    - dan bebas kemanapun
+    - ''
+    - biar katak origami
+    - melompat
+    - untukku
+  - kind: prose
+    text: |
+      Aku suka bermain origami dari dulu. Aku punya cita-cita membuat katak. Katanya bisa melompat tinggi-tinggi. Apalagi kalau lebih tinggi daripada punya teman-teman. Cuma punyaku tidak bisa-bisa. Tidak ada yang mau membantuku.
+
+      Mungkin katakku memang tidak bisa melompat.
 - slug: '2'
   label: Chapter 2
   title: Cara menjadi Anak Baik
@@ -551,7 +602,7 @@ parts:
     text: |
       Ayahku punya tempat persewaan VCD. Aku senang tidak perlu repot-repot saat ingin menonton Doraemon.
 
-      Namun, aku paling suka saat akhir bulan. Waktu tempat sewa ayah ramai, dia pulang sambil membawa terang bulan dan martabak telur.
+      Namun, aku paling suka saat akhir bulan. Kalau tempat sewa ayah lagi ramai, dia pulang sambil membawa terang bulan dan martabak telur.
 
       Aku ingin makannya sedikit-sedikit. Senyum ayah bisa dihitung dengan jari.
   - kind: poetry
@@ -639,6 +690,22 @@ parts:
       Tapi… momok nanti ikut main juga?
   - kind: poetry
     lines:
+    - Kalau kue mangkok
+    - saja bisa warna-warni
+    - merah muda, putih,
+    - kuning, kadang hijau
+    - ''
+    - kenapa aku hanya
+    - punya warna merah?
+    - apa aku harus jadi
+    - kue mangkok?
+  - kind: prose
+    text: |
+      Ibu sukanya warna merah. Hobiku selalu ikut-ikutan, tanpa banyak tanya. Biar tidak dapat cemberutnya. Ingin sekali-kali aku bisa memilih warna lain, tanpa menoleh pada ibu. Apalagi kalau boleh lebih dari satu warna.
+
+      Tapi merah juga bagus kok, bu.
+  - kind: poetry
+    lines:
     - Setiap aku bergerak
     - rambutku jatuh
     - ''
@@ -673,6 +740,16 @@ parts:
       Tapi bagaimana mintanya?
 
       Apa aku harus pindah ke sekolah lain?
+  - kind: poetry
+    lines:
+    - Suatu hari
+    - ada singa mengaum
+    - ''
+    - aku tertidur
+    - sendirian
+  - kind: prose
+    text: |
+      “Aum…aum” kadang aku berpikir ingin membeli kostum singa. Kelihatan keren sekali. Biar semua orang takut sama aku. Tapi aku masih takut kedinginan kalau tidak pakai piyama saat tidur. Singa kan gitu.
   - kind: poetry
     lines:
     - Aku cuma punya satu mimpi
@@ -842,24 +919,48 @@ parts:
     - yang dulu-dulu tak pernah selesai
   - kind: prose
     text: |
-      Kenapa ada orang jahat dan orang baik? Kalau di rumahku, hampir semuanya jahat. Terserah mereka mau bagaimana. Aku ingin menjadi bunga bakung saja. Biar bisa disayang Tuhan terus. Biar aku lupa mendoakan mereka yang buruk-buruk. Sama aku mau warna oranye ya Tuhan, jangan merah. Aku bosan.
+      Kenapa ada orang jahat dan orang baik? Kalau di rumahku, hampir semuanya jahat. Terserah mereka mau bagaimana. Aku ingin menjadi bunga bakung saja. Biar bisa disayang Tuhan terus. Biar aku lupa mendoakan mereka yang buruk-buruk.
   - kind: poetry
     lines:
     - Aku, nenek, kakek, ibu, ayah, tante, om
     - pergi tamasya ke bonbin
-    - sambil makan kue kukus sama-sama
+    - sambil makan kue mangkok sama-sama
     - ''
     - aku terbangun
     - dan bahagia sekali
   - kind: prose
     text: |
-      Setiap minggu pagi, nenek suka membeli jajanan pasar. Mulai dari kue kukus hingga gorengan. Aku senang. Sayangnya, makan kue itu cuma bisa di rumah saja. Aku juga ingin makannya di bonbin. Dikasih tahu mana harimau, jerapah, gajah. Walaupun aku sebenarnya bisa membaca dan pergi sendiri. Tapi aku ingin pergi sama-sama.
+      Setiap minggu pagi, nenek suka membeli jajanan pasar. Aku suka mengintip dari luar kantong. Namun, tidak bisa karena kantongnya warna hitam. Aku harus mengeluarkan satu per satu, karena nenek membeli banyak sekali.
+
+      Aku suka melihat kue mangkok, warna-warni. Padahal aku tidak terlalu suka. Cuma aku ikut-ikutan, karena orang rumah suka memakannya.
+
+      Mungkin kue mangkok bisa jadi alasanku untuk mengajak mereka ke bonbin. Sambil lihat harimau, jerapah, gajah. Sama-sama.
   - kind: poetry
     lines:
     - Maaf,
     - aku mengajakmu ke dalam permainan
     - yang kamu sendiri
     - tidak tahu peranmu seperti apa
+  - kind: prose
+    text: |
+      Kamu jadi ayah ya, mengantarku ke sekolah setiap pagi. Jemput juga boleh, kalau ayah mau. Ibu tetap jadi ibu, yang suka mengingatkanku besok ada ulangan apa. Tidak apa-apa kalau sambil marah-marah. Nenek tetap jadi ibunya ayah, yang suka memberiku makanan enak. Meski itu-itu saja. Kakek tetap kakek saja, yang hobi lihat sinetron setiap jam 6 malam.
+
+      Sudah mengerti? Atau kita mau bertukar peran?
+  - kind: poetry
+    lines:
+    - Kalau sudah siap
+    - kasih tahu ya
+    - aku akan mengulang
+    - permainan favoritmu
+    - ''
+    - tidak apa-apa
+    - kalau kamu bisa
+    - sebentar saja
+  - kind: prose
+    text: |
+      Kamu mau pilih permainan apa? Ular tangga atau monopoli? Lala tangannya besar sekali. Masak bisa pegang dadu? Cuma aku tidak ingin main sendirian. Aku sudah mengocok dadu berkali-kali. Bidak merahku juga sudah bolak-balik melewati kotak start.
+
+      Sayangnya, lala tetap diam saja sampai matahari sudah pergi.
   - kind: poetry
     lines:
     - Ada halaman di tengah rumah
@@ -869,6 +970,9 @@ parts:
     - mereka pulang
     - aku takut juga
     - mereka pergi lagi
+  - kind: prose
+    text: |
+      Apa aku harus menyembunyikan sepatu-sepatu milik mereka? Sandal juga. Apalagi yang merk swallow. Kadang mereka habis mandi dari kerja, lalu tiba-tiba pergi beli putu. Aku senang bisa makan putu. Tapi kadang mereka tidak pulang-pulang sampai aku ketiduran. Aku tidak bisa makan putu yang hangat.
   - kind: poetry
     lines:
     - Nanti dulu ceritanya, Pak
@@ -877,6 +981,9 @@ parts:
     - ''
     - aku tidak mau senang
     - seperti dulu-dulu
+  - kind: prose
+    text: |
+      Mereka senang saat katering ramai, persewaan VCD laris, atau produk wajah ibu keluar edisi yang paling baru. Aku tahu dari meja yang ada terang bulan atau gorengan. Lalu mereka saling bercerita, kadang aku juga diajak. Aku senang. Cuma aku tidak suka kalau besok  meja makan kosong lagi.
   - kind: poetry
     lines:
     - Aku kecup bunga kemuning
@@ -1111,16 +1218,6 @@ parts:
       Kata orang-orang, lagi-lagi kata orang-orang. Aku tak punya suara. Bagaimana aku punya? Kalau tak ada yang ingin mendengarnya. Aku coba memantau lewat celah pintu. Aku ingin sigap mengeluarkan suaraku. Kasihan, nanti lama-lama suaraku hilang dan tak bisa menyebut namaku lagi.
 
       Sayangnya, ini cuma imajinasiku. Lagi-lagi.
-  - kind: poetry
-    lines:
-    - Suatu hari
-    - ada singa mengaum
-    - ''
-    - aku tertidur
-    - sendirian
-  - kind: prose
-    text: |
-      “Aum…aum” kadang aku berpikir ingin membeli kostum singa—melihatnya keren sekali. Siapa yang tidak takut pada singa? tapi aku ingin merasakan ditakuti semua orang. Tapi aku masih takut kedinginan kalau tidak pakai piyama saat tidur. Singa kan gitu.
   - kind: poetry
     lines:
     - Putih,
