@@ -22,6 +22,11 @@ const recentBlocks = [...newBlocks, ...updatedBlocks].slice(0, 12);
       <a class="back" href="/">← Cover</a>
       <h1>Daftar isi</h1>
       <p class="sub">{meta.title}</p>
+      <p class="tools">
+        <a href="/alat/bandingkan">Bandingkan versi</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <span class="hint-tools">diff commit book.txt / yaml</span>
+      </p>
     </header>
 
     {recentBlocks.length > 0 && (
@@ -119,6 +124,31 @@ const recentBlocks = [...newBlocks, ...updatedBlocks].slice(0, 12);
 
   .sub {
     color: var(--ink-soft);
+  }
+
+  .tools {
+    margin-top: 0.75rem;
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+  }
+
+  .tools a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .tools a:hover {
+    text-decoration: underline;
+  }
+
+  .hint-tools {
+    color: var(--ink-faint);
+  }
+
+  .sep {
+    margin: 0 0.35rem;
+    color: var(--ink-faint);
   }
 
   .new-list {

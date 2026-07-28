@@ -3,14 +3,20 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "predev": "node scripts/gen-book-commits.mjs",
+    "prebuild": "node scripts/gen-book-commits.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "book:updates": "node scripts/book-updates-report.mjs"
+    "book:updates": "node scripts/book-updates-report.mjs",
+    "book:sync-context": "node scripts/book-sync-context.mjs",
+    "book:compare": "node scripts/book-compare.mjs compare",
+    "book:commits": "node scripts/book-compare.mjs list"
   },
   "dependencies": {
     "astro": "^5.17.1",
+    "diff": "^8.0.4",
     "js-yaml": "^5.2.1"
   },
   "devDependencies": {

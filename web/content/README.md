@@ -77,7 +77,81 @@ SVG tampil di halaman bagian dan di **Baca acak** (`/acak`).
 
 ## Prompt AI: `book.txt` → `book.yaml`
 
-Salin prompt di bawah saat minta AI mengonversi naskah. Hasilnya harus **mengganti / menulis ulang** `web/content/book.yaml`.
+### Sinkron inkremental (disarankan)
+
+Setelah `book.txt` berubah, jangan minta AI menulis ulang seluruh YAML dari naskah penuh. Pakai **basis `book.yaml` di HEAD** + **diff `book.txt` sejak commit sinkron YAML terakhir** (bukan riwayat 30 hari, bukan seluruh manuskrip).
+
+```sh
+cd web
+npm run book:sync-context | tee /tmp/book-sync-context.md
+```
+
+Pilih commit dasar / bandingkan seperti `git diff`:
+
+**Di situs (UI):** [Daftar isi → Bandingkan versi](/alat/bandingkan) — pilih commit *Dari* / *Ke*, lalu lihat diff `book.txt` atau `book.yaml`.
+
+**CLI (opsional):**
+
+```sh
+# daftar commit yang menyentuh book.txt atau book.yaml
+npm run book:commits
+
+# diff book.txt antara dua commit (default: book.txt saja)
+npm run book:compare -- --from bd06b79 --to HEAD
+npm run book:compare -- --from HEAD~3 --to HEAD --all   # txt + yaml
+npm run book:compare -- --from bd06b79 --to 48200c4 --yaml
+
+# interaktif: pilih commit dasar dari daftar (perlu terminal)
+npm run book:compare -- -i --to HEAD
+
+# hanya diff (tanpa bundel YAML untuk AI)
+npm run book:sync-context -- --compare --from bd06b79 --to HEAD
+npm run book:sync-context -- --from bd06b79 --to HEAD --yaml-diff
+```
+
+`--from` / `--to` juga dipakai `book:sync-context` untuk rentang diff `book.txt` (default `--from` = commit sinkron `book.yaml` terakhir).
+
+Salin output itu ke chat AI, lalu prompt:
+
+```text
+Kamu memperbarui book.yaml secara inkremental untuk situs booklet.
+
+Input:
+1. book.yaml basis (commit sinkron terakhir) — pertahankan struktur, slug, illustration, dan blok yang tidak tersentuh diff.
+2. Diff book.txt sejak commit itu — hanya bagian inilah yang harus tercermin di YAML.
+
+Aturan struktur naskah book.txt:
+- Sebelum "Chapter N" = bagian Pembuka (opsional)
+- "Chapter N" diikuti baris judul bab
+- Dua baris kosong = batas unit (puisi ↔ prosa)
+- Satu baris kosong di dalam puisi = jeda bait
+- Baris yang hanya ** atau *** = divider
+
+Aturan output YAML (ikuti skema di content/README.md):
+1. Tulis file YAML lengkap: meta + parts — tetapi isi tiap part/blok yang tidak berubah harus sama persis dengan basis (termasuk kind poetry/prose).
+2. Satu part per chapter (+ pembuka jika ada).
+3. slug: "pembuka" atau nomor chapter ("1","2",…).
+4. label: "Pembuka" atau "Chapter N".
+5. title: judul bab (bukan kata "Chapter").
+6. kind poetry → lines[] ("" untuk jeda bait). Jangan gabung jadi satu string.
+7. kind prose → text: | (paragraf utuh). Jangan pecah per kata.
+8. kind divider → hanya { kind: divider }.
+9. Klasifikasi presisi:
+   - Baris pendek berirama / patah-patah = poetry
+   - Kalimat naratif panjang = prose
+   - Jika ragu, utamakan makna: refleksi/narasi = prose; bait = poetry
+10. Pertahankan ejaan, tanda baca, dan Unicode (— ‘ ’ “ ” …) apa adanya.
+11. Jangan ringkas, jangan parafrase, jangan hilangkan teks.
+12. Jika part sudah punya `illustration`, pertahankan path-nya. Part baru saja → `illustrations/{slug}.svg`.
+
+Output: seluruh isi book.yaml yang sudah di-patch (tanpa markdown fence).
+```
+
+Commit sinkron kustom: `npm run book:sync-context -- --from HEAD~1` (lihat juga `npm run book:compare`).
+
+### Konversi penuh (hanya draft awal)
+
+Hanya untuk buku kosong / migrasi pertama. Hasilnya **mengganti / menulis ulang** `web/content/book.yaml`.
 
 ```text
 Kamu mengonversi naskah book.txt menjadi book.yaml untuk situs booklet.

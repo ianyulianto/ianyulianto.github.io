@@ -18,6 +18,14 @@ web/content/book.txt
 
 Dokumentasi skema & prompt konversi: [`content/README.md`](./content/README.md).
 
+Sinkron inkremental setelah edit `book.txt`:
+
+```sh
+npm run book:sync-context
+npm run book:commits          # pilih ref commit
+npm run book:compare -- --from <ref> --to HEAD
+```
+
 Setelah YAML: AI juga membuat SVG per bagian di `content/illustrations/` (feel & tone) — lihat prompt lanjutan di README konten.
 
 ## Develop
