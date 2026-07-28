@@ -86,6 +86,27 @@ cd web
 npm run book:sync-context | tee /tmp/book-sync-context.md
 ```
 
+Pilih commit dasar / bandingkan seperti `git diff`:
+
+```sh
+# daftar commit yang menyentuh book.txt atau book.yaml
+npm run book:commits
+
+# diff book.txt antara dua commit (default: book.txt saja)
+npm run book:compare -- --from bd06b79 --to HEAD
+npm run book:compare -- --from HEAD~3 --to HEAD --all   # txt + yaml
+npm run book:compare -- --from bd06b79 --to 48200c4 --yaml
+
+# interaktif: pilih commit dasar dari daftar (perlu terminal)
+npm run book:compare -- -i --to HEAD
+
+# hanya diff (tanpa bundel YAML untuk AI)
+npm run book:sync-context -- --compare --from bd06b79 --to HEAD
+npm run book:sync-context -- --from bd06b79 --to HEAD --yaml-diff
+```
+
+`--from` / `--to` juga dipakai `book:sync-context` untuk rentang diff `book.txt` (default `--from` = commit sinkron `book.yaml` terakhir).
+
 Salin output itu ke chat AI, lalu prompt:
 
 ```text
@@ -122,7 +143,7 @@ Aturan output YAML (ikuti skema di content/README.md):
 Output: seluruh isi book.yaml yang sudah di-patch (tanpa markdown fence).
 ```
 
-Commit sinkron kustom: `node scripts/book-sync-context.mjs HEAD~1`
+Commit sinkron kustom: `npm run book:sync-context -- --from HEAD~1` (lihat juga `npm run book:compare`).
 
 ### Konversi penuh (hanya draft awal)
 

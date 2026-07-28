@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "book:updates": "node scripts/book-updates-report.mjs",
-    "book:sync-context": "node scripts/book-sync-context.mjs"
+    "book:sync-context": "node scripts/book-sync-context.mjs",
+    "book:compare": "node scripts/book-compare.mjs compare",
+    "book:commits": "node scripts/book-compare.mjs list"
   },
   "dependencies": {
     "astro": "^5.17.1",
