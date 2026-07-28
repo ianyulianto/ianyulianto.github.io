@@ -3,6 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "predev": "node scripts/gen-book-commits.mjs",
+    "prebuild": "node scripts/gen-book-commits.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -14,6 +16,7 @@
   },
   "dependencies": {
     "astro": "^5.17.1",
+    "diff": "^8.0.4",
     "js-yaml": "^5.2.1"
   },
   "devDependencies": {

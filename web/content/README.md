@@ -88,6 +88,10 @@ npm run book:sync-context | tee /tmp/book-sync-context.md
 
 Pilih commit dasar / bandingkan seperti `git diff`:
 
+**Di situs (UI):** [Daftar isi → Bandingkan versi](/alat/bandingkan) — pilih commit *Dari* / *Ke*, lalu lihat diff `book.txt` atau `book.yaml`.
+
+**CLI (opsional):**
+
 ```sh
 # daftar commit yang menyentuh book.txt atau book.yaml
 npm run book:commits
