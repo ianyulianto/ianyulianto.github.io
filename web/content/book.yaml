@@ -60,14 +60,14 @@ parts:
     - di balik pintu?
   - kind: prose
     text: |
-      Aku benci membaca tiga kalimat itu. Mengapa harus sembunyi? Kalau ini adalah rumah kami, atau mereka? Aku ingin tenggelam di balik pintu—mendengarkan apa yang dipikirkan orang dewasa. Aku memang masih kecil, tapi katanya kami keluarga.
+      Aku benci membaca tiga kata itu. Mengapa harus sembunyi? Kalau ini adalah rumah kami, atau mereka? Aku ingin tenggelam di balik pintu—mendengarkan apa yang dipikirkan orang dewasa. Aku memang masih kecil, tapi katanya kami keluarga.
   - kind: poetry
     lines:
     - Aku bisa mendengar
     - jantungku berbicara sendirian
   - kind: prose
     text: |
-      Aku berharap aku tak mendengarnya. Aku tak ingin mereka juga mendengarnya. Aku tak ingin mereka mengetahui rahasiaku.
+      Setiap pukul setengah enam malam, aku suka mendengarkan suara adzan maghrib sambil makan malam. Aku duduk dekat-dekat jendela putih. Kalau jauh, nanti tidak kedengaran jelas. Tanpa sadar kakiku ikut bergoyang-goyang. Kadang sampai lama aku mengemut laukku. Aku menutup mataku.
   - kind: poetry
     lines:
     - Hari ini ulang tahunku
@@ -82,7 +82,7 @@ parts:
     - itu siapa?
   - kind: prose
     text: |
-      Kala aku bercermin, aku ingin itu bukan aku. Ingin kubawa semua rasa ini ke belakang rumah, menguburnya dalam-dalam di dekat sumur. Sekuntum bunga mentari telah lahir.
+      Aku berharap aku tak mendengarnya. Aku tak ingin mereka juga mendengarnya. Aku tak ingin mereka mengetahui rahasiaku. Ingin kubawa semua rasa ini ke belakang rumah, menguburnya dalam-dalam di dekat sumur. Sekuntum bunga mentari telah lahir.
   - kind: poetry
     lines:
     - Kue kesukaanku
@@ -127,7 +127,7 @@ parts:
     - ini memang acara milik mereka
   - kind: prose
     text: |
-      Tubuhku letih, terlalu banyak pamer gigi dan gusi. Aku terlalu hobi memaksa, karena aku tak suka menyimpan. Biarlah semua mengering bersama angan-anganku yang kusimpan di bawah bantal beraroma minyak kemiri.
+      Tubuhku letih, terlalu banyak pamer gigi dan gusi. Aku terlalu suka memaksa, karena aku tak suka menyimpan. Biarlah semua mengering bersama angan-anganku yang kusimpan di bawah bantal beraroma minyak kemiri.
   - kind: poetry
     lines:
     - Hal yang aku suka adalah membuka hadiah
@@ -147,7 +147,9 @@ parts:
     - aku lelah berharap lagi
   - kind: prose
     text: |
-      Waktu kecil aku tidak diajar bagaimana menyebut nama kalian—saat aku takut waktu dimarahi guru di sekolah, saat aku marah melihat anjing kesayanganku terlindas ban mobil, saat aku lapar belum makan sampai sore. Kalian suka lupa ajarkan aku itu, sampai lidahku kaku menyebut nama kalian. Hanya suka lihat-lihat, terka-terka, mana yang paling-paling, sendirian. Memang diriku banyak keluar jelek-jelek kata orang rumah. Semuanya selalu kata orang-orang, kapan-kapan kata aku juga.
+      Waktu kecil aku tidak diajari bagaimana menyebut nama kalian. Saat aku takut waktu dimarahi guru di sekolah, saat aku marah melihat anjing kesayanganku terlindas ban mobil, saat aku lapar belum makan sampai sore.
+
+      Kalian suka lupa ajarkan aku itu, sampai lidahku kaku menyebut nama kalian. Banyak keluar jelek-jelek kata orang rumah dari mulutku. Semuanya selalu kata orang-orang, kapan-kapan kata aku juga.
   - kind: poetry
     lines:
     - Kenapa harus aku?
@@ -156,7 +158,7 @@ parts:
     - yang lainnya?
   - kind: prose
     text: |
-      Semua suka membandingkanku dengan sepupuku. Katanya dia cantik, putih, manis, dan lucu. Untung sepupuku cuma satu saja. Aku pasti kesal kalau punya lebih banyak. Nanti aku harus sering-sering pakai terusan yang ada rendanya. Cuma itu yang aku tahu bisa buat aku lebih manis. Padahal es teh manis tidak usah pakai terusan sudah manis.
+      Aku punya sepupu yang katanya dia cantik, putih, manis, lucu, dan pintar berbicara. Tidak ada kata lebih dariku. Aku juga pasti senang kalau jadi dia. He.. he. Untung sepupuku cuma satu saja. Aku pasti kesal kalau punya banyak. Nanti terlalu banyak pakai terusan, rendanya jadi gampang lepas. Cuma itu caraku bisa lebih manis. Padahal es teh manis tidak pakai terusan sudah manis.
   - kind: poetry
     lines:
     - Pernahkah kalian berdoa
@@ -171,7 +173,11 @@ parts:
     - aku ada sesudah kalian
   - kind: prose
     text: |
-      Aku suka nasi goreng dengan dua telur mata sapi. Ayah suka nasi goreng yang setengah matang—tidak  mau lembek karena tidak suka katanya. Ibu suka nasi goreng yang banyak bawang gorengnya. Nenek suka nasi goreng yang sangat pedas—sampai dia tidak bisa berbicara lagi. Di piring tersisa dua telur mata sapi: satu matang, satu setengah matang. Kira-kira yang mana punyaku?
+      Aku suka nasi goreng dengan dua telur mata sapi. Ayah suka nasi goreng yang setengah matang. Katanya tidak suka yang lembek. Ibu suka nasi goreng yang banyak bawang gorengnya. Nenek suka nasi goreng yang sangat pedas, sampai dia tidak bisa berbicara lagi.
+
+      Di piring tersisa dua telur mata sapi: satu matang, satu setengah matang.
+
+      Kira-kira yang mana punyaku?
   - kind: poetry
     lines:
     - Tiap langkah
@@ -181,7 +187,7 @@ parts:
     - makan malam mereka
   - kind: prose
     text: |
-      Jangan sampai mengganggu, jangan sampai mengganggu, jangan sampai mengganggu. Aku ulang-ulang biar aku tak mengulang bodohku. Tapi susah juga menyembunyikannya, mereka selalu isi ulang bodoh, bodoh, bodoh, bodoh—sampai aku kekenyangan. Tidak apa-apa, biar langkahku lebih berat. Aku takut kepleset kulit kacang, yang lupa anaknya itu—eh, maksudku lupa isinya itu.
+      Jangan sampai mengganggu, jangan sampai mengganggu, jangan sampai mengganggu. Aku ulang-ulang biar aku tak mengulang bodohku. Tapi susah juga menyembunyikannya, mereka selalu isi ulang bodoh, bodoh, bodoh, bodoh—sampai aku kekenyangan. Tidak apa-apa, biar langkahku lebih berat. Aku takut kepleset kulit kacang. Yang lupa anaknya itu… eh kulitnya.
   - kind: poetry
     lines:
     - Sepiring nasi seperempat
@@ -197,7 +203,9 @@ parts:
     - mereka sedang makan
   - kind: prose
     text: |
-      Lagi-lagi, suaraku menyerbu tanpa aba-aba. Nanti kalau ibu marah gimana? Nanti kalau mereka marah gimana? Aku masih ingin makan tempe dan telur di piringku. Jari-jariku yang kecil iri melihat mereka makan memakai tangan, sepertinya enak sekali—apalagi saat menggigit krupuk, tidak perlu repot ganti sendok dan tangan. Aku ingin menjadi orang dewasa. Tidak usah takut kotor, ambil piring dan gelas sesukanya. Yang paling penting, aku tak perlu meminta sendok waktu aku lapar.
+      Lagi-lagi, suaraku menyerbu tanpa aba-aba. Nanti kalau ibu marah gimana? Nanti kalau mereka marah gimana? Aku masih ingin makan tempe dan telur di piringku.
+
+      Jari-jariku yang kecil ingin cepat-cepat besar. Melihat mereka makan memakai tangan, sepertinya enak sekali—apalagi saat menggigit krupuk. Tidak perlu takut kotor, ambil piring dan gelas sesukanya. Terus suka angkat kaki juga kayak ayah. Tapi tidak ada yang mengomelinya.
   - kind: poetry
     lines:
     - Kursi-kursi itu
@@ -320,6 +328,17 @@ parts:
       "Kamu kesepian ya? Aku juga."
 
       Apa karena dia melihatku? Atau karena hanya itu kalimat yang tersimpan olehku?
+  - kind: poetry
+    lines:
+    - Apa aku harus
+    - menelan ingin?
+    - ''
+    - sembari mengucap
+    - doa terus menerus
+    - agar lupa mauku
+  - kind: prose
+    text: |
+      Waktu aku mandi di kamar mandi yang begitu panjang. Saudara tante dari jauh tiba-tiba masuk. Badanku kaku dan masih banyak busanya. Padahal aku ingin bertemu dengannya memakai baju buatan nenek.
   - kind: poetry
     lines:
     - Setiap kali
@@ -771,6 +790,20 @@ parts:
   - kind: prose
     text: |
       Tanganku kecil. Banyak-banyak, nanti banyak yang hilang. Aku bingung mau pinjam tangan siapa kalau punya banyak. Aku lihat orang-orang kalau punya banyak sering dipuji hebat. Aku ingin punya tangan kayak gurita.
+  - kind: poetry
+    lines:
+    - Katanya aku
+    - lambat bicara
+    - ''
+    - padahal setiap
+    - suaraku keluar
+    - rumah jadi ribut
+    - ''
+    - apa suaraku
+    - sumbang?
+  - kind: prose
+    text: |
+      Waktu TK-B aku sudah kenal dengan kotak panjang dengan tombol hitam putih. Untung namanya mudah disebut cuma tiga suku kata, pi-a-no. Dari kecil aku tidak terlalu pandai mengeja. Mungkin nenek menyuruhku les musik agar aku bisa berdengung. Mestinya. aku belajar dari ratu lebah saja.
 - slug: '3'
   label: Chapter 3
   title: Apakah Ini Keahlianku?
@@ -1027,23 +1060,20 @@ parts:
     - ''
     - aku hanya tidak berhasil
     - membuat mereka tersenyum
-  - kind: poetry
-    lines:
-    - Apa aku harus
-    - menelan ingin?
-    - ''
-    - sembari mengucap
-    - doa terus menerus
-    - agar kenyang inginku
-    - atau lupa mauku
+  - kind: prose
+    text: |
+      Senyum mereka harganya mahal, lebih murah gulali kesukaanku. Pasti mereka akan jadi orang kaya. Katanya orang kaya lebih sering senang. Semoga  mereka bisa menunjukkan senyumnya padaku.
   - kind: poetry
     lines:
     - Pulang sekolah sendiri
     - hanya 15 langkah dari pagar
+    - ''
     - apakah ini
     - cara kalian menganggapku?
-    - ''
     - dewasa sebelum kalian
+  - kind: prose
+    text: |
+      Aku selalu berjalan sendiri ke sekolah sambil menghitung langkah. Saat langkah ke empat belas, aku selalu berhenti sebentar. Aku melihat temanku Lisa diantar ibunya dengan sepeda motor. Meski wajah ibunya kelihatan galak, aku ikut senang melihat mereka. Setelah itu kami masuk kelas bersama. Aku juga senang karena sudah menjadi anak yang mandiri.
   - kind: poetry
     lines:
     - Kalau ada satu permintaan
@@ -1059,6 +1089,9 @@ parts:
     - aku ingin main
     - petak umpet
     - kayak ayah
+  - kind: prose
+    text: |
+      Aku yang menghitung. Ayah yang sembunyi. Tapi aku sudah bilang maunya hitung sampai lima saja. Tapi ayah tidak muncul-muncul. Akhirnya, aku memilih sembunyi juga. Sambil menunggu ayah. Semoga ayah tidak lupa kalau aku masih menghitung.
   - kind: poetry
     lines:
     - Kalau saja
@@ -1066,6 +1099,9 @@ parts:
     - ''
     - mungkin
     - aku sudah dipamerkan
+  - kind: prose
+    text: |
+      Aku mengikuti kontes pakaian adat. Aku memilih kebaya warna hitam dengan banyak emas-emas. Bajunya gatal, tapi aku tidak bisa bicara. Bibirku langsung dipakaikan lipstik punya nenek, berwarna merah campur merah muda. Rambutku yang sedikit ditambah gumpalan rambut. Katanya namanya konde. Tapi aku tetap tidak secantik teman-temanku Apa karena itu ibu tidak datang melihatku? Aku cuma punya satu foto.
   - kind: poetry
     lines:
     - Jarak pandangku semakin jauh
@@ -1075,6 +1111,9 @@ parts:
     - ''
     - cukup begini saja
     - pisah-pisah sampai nanti
+  - kind: prose
+    text: |
+      Waktu pulang sekolah, aku senang melihat sandal ibu di depan rumah. Ibu datang. Aku langsung berlari menunjukkan gambar merwanaiku. Nilainya A. Ibu melihat sebentar, lalu kembali menonton sinetron kesukaannya. Ibu terus tertawa melihat televisi. Aku menyimpan gambar itu di dalam map. Biar kalau nanti ada yang mau lihat, aku masih bisa menunjukkannya.
   - kind: poetry
     lines:
     - Aku membeli anak ayam
@@ -1082,12 +1121,16 @@ parts:
     - kupilih dari sekian warna
     - yaitu kuning
     - ''
-    - lucunya
-    - cerianya
-    - cerewetnya
-    - ''
-    - akhirnya
-    - aku bisa memilikinya
+    - dia sendirian
+  - kind: prose
+    text: |
+      Dari dulu aku suka sedih kalau lihat anak ayam yang dijual di depan sekolah. Anak ayam warna-warni itu saling berdempetan, pasti sempit. Hampir semuanya diberi sumbo. Tinggal satu yang berwarna kuning. Dia berdiri sendiri di ujung kandang. Dia pasti kedinginan.
+
+      Aku membawanya pulang dan menaruhnya di dalam kardus.
+
+      “Pasti hangat ya kamu sekarang.” kataku.
+
+      “Kamu mau kuberi nama siapa? Yeyo aja ya? Kan warnamu memang kuning.”
   - kind: poetry
     lines:
     - Kenapa aku disuruh
@@ -1097,6 +1140,9 @@ parts:
     - les pelajaran
     - ''
     - apa mereka tidak mau melihatku?
+  - kind: prose
+    text: |
+      Katanya biar aku pintar. Tapi kalau banyak yang aku belajar, mana bisa tambah pintar?
   - kind: poetry
     lines:
     - Tidak apa-apa kalau marahnya diulang-ulang
