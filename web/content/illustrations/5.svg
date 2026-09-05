@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-labelledby="t5">
-  <title id="t5">Jalan pulang menuju cahaya pintu</title>
+  <title id="t5">Jalan pulang menuju cahaya pintu dan kunciran stroberi</title>
   <defs>
     <linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#efe8da"/>
@@ -12,25 +12,27 @@
     </radialGradient>
   </defs>
   <rect width="480" height="320" fill="url(#sky5)"/>
-  <!-- path -->
-  <path d="M210 320 C220 250 200 190 230 140 C250 108 268 96 280 88" fill="none" stroke="#b9a483" stroke-width="36" stroke-linecap="round"/>
-  <path d="M210 320 C220 250 200 190 230 140 C250 108 268 96 280 88" fill="none" stroke="#cbb99a" stroke-width="22" stroke-linecap="round"/>
-  <!-- doorway -->
+  <!-- path home -->
+  <path d="M196 320 C210 250 190 190 224 140 C246 108 266 96 280 88" fill="none" stroke="#b9a483" stroke-width="40" stroke-linecap="round"/>
+  <path d="M196 320 C210 250 190 190 224 140 C246 108 266 96 280 88" fill="none" stroke="#cbb99a" stroke-width="24" stroke-linecap="round"/>
+  <!-- doorway of light -->
   <rect x="248" y="48" width="72" height="110" rx="36 36 4 4" fill="#ebe4d6" stroke="#1c1a17" stroke-width="2"/>
   <ellipse cx="284" cy="98" rx="40" ry="48" fill="url(#doorlight)"/>
   <rect x="262" y="68" width="44" height="90" rx="22 22 2 2" fill="#f7f1e4" opacity="0.85"/>
-  <!-- balance / one word -->
-  <g transform="translate(86 86)" opacity="0.7">
-    <line x1="40" y1="8" x2="40" y2="48" stroke="#1c1a17" stroke-width="1.6"/>
-    <path d="M8 48 H72" stroke="#1c1a17" stroke-width="1.6" stroke-linecap="round"/>
-    <path d="M8 48 l-10 22 M72 48 l10 22" stroke="#2f5d56" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="40" cy="6" r="3" fill="#2f5d56"/>
-    <!-- single small leaf as the one word -->
-    <path d="M40 58 c8 2 14 10 10 16 c-6 2-14-4-16-12 c2-4 4-6 6-4z" fill="#2f5d56" opacity="0.8"/>
-  </g>
-  <!-- distant figure suggestion -->
+  <!-- distant small figure -->
   <g opacity="0.4" stroke="#1c1a17" stroke-width="1.5" fill="none" stroke-linecap="round">
-    <circle cx="284" cy="210" r="6"/>
-    <path d="M284 216 v22 M274 228 l10 -6 10 6 M284 238 l-6 16 M284 238 l6 16"/>
+    <circle cx="284" cy="206" r="6"/>
+    <path d="M284 212 v20 M275 222 l9 -5 9 5 M284 232 l-6 15 M284 232 l6 15"/>
+  </g>
+  <!-- strawberry hair tie left on the path -->
+  <g transform="translate(150 252)">
+    <ellipse cx="0" cy="0" rx="26" ry="13" fill="none" stroke="#c97878" stroke-width="3"/>
+    <circle cx="-26" cy="0" r="7" fill="#c97878" stroke="#1c1a17" stroke-width="1.4"/>
+    <circle cx="26" cy="0" r="7" fill="#c97878" stroke="#1c1a17" stroke-width="1.4"/>
+    <g transform="translate(0 -1)">
+      <path d="M0 -6 C10 -6 12 4 0 16 C-12 4 -10 -6 0 -6 Z" fill="#c97878" stroke="#1c1a17" stroke-width="1.4"/>
+      <path d="M-7 -6 L0 -12 L7 -6" fill="#2f5d56" stroke="#2f5d56" stroke-width="1.2" stroke-linejoin="round"/>
+      <g fill="#f8f3e8"><circle cx="-3" cy="3" r="1"/><circle cx="3" cy="3" r="1"/><circle cx="0" cy="8" r="1"/></g>
+    </g>
   </g>
 </svg>

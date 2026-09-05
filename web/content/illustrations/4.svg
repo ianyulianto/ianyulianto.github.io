@@ -1,33 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-labelledby="t4">
-  <title id="t4">Panggung kosong dan sepatu balet</title>
+  <title id="t4">Cermin dan terusan polkadot merah</title>
   <defs>
     <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#f3eee4"/>
-      <stop offset="55%" stop-color="#e9e1d1"/>
-      <stop offset="100%" stop-color="#d9d0be"/>
+      <stop offset="100%" stop-color="#ded4c1"/>
     </linearGradient>
-    <radialGradient id="spot" cx="50%" cy="28%" r="42%">
-      <stop offset="0%" stop-color="#fff8ea" stop-opacity="0.95"/>
-      <stop offset="55%" stop-color="#f3efe6" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#f3efe6" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="glass4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef1ec"/>
+      <stop offset="100%" stop-color="#d7d8cf"/>
+    </linearGradient>
   </defs>
   <rect width="480" height="320" fill="url(#sky4)"/>
-  <!-- curtains hint -->
-  <path d="M0 0 C40 40 40 120 0 180 Z" fill="#2f5d56" opacity="0.18"/>
-  <path d="M480 0 C440 40 440 120 480 180 Z" fill="#2f5d56" opacity="0.18"/>
-  <!-- spotlight -->
-  <ellipse cx="240" cy="120" rx="130" ry="100" fill="url(#spot)"/>
-  <!-- stage floor -->
-  <path d="M40 250 C160 228 320 228 440 250 L460 300 L20 300 Z" fill="#cbb99a" stroke="#1c1a17" stroke-width="1.5"/>
-  <path d="M70 252 C170 238 310 238 410 252" fill="none" stroke="#1c1a17" stroke-width="1" opacity="0.25"/>
-  <!-- ballet slipper -->
-  <g transform="translate(214 214)">
-    <path d="M8 28 C2 18 6 8 22 6 C42 4 58 14 54 28 C52 36 40 40 28 38 C18 36 12 34 8 28 Z" fill="#f3efe6" stroke="#1c1a17" stroke-width="1.6"/>
-    <path d="M18 10 C28 22 34 34 34 34" fill="none" stroke="#c97878" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M28 8 C36 20 44 32 44 32" fill="none" stroke="#c97878" stroke-width="1.8" stroke-linecap="round"/>
-    <circle cx="48" cy="22" r="2.2" fill="#c97878"/>
+  <!-- standing mirror -->
+  <g transform="translate(150 42)">
+    <rect x="-6" y="-6" width="132" height="212" rx="62" fill="#cbb99a" stroke="#1c1a17" stroke-width="2.4"/>
+    <rect x="6" y="6" width="108" height="188" rx="52" fill="url(#glass4)" stroke="#1c1a17" stroke-width="1.4"/>
+    <!-- stand -->
+    <path d="M22 206 l14 42 M98 206 l-14 42 M30 248 h60" fill="none" stroke="#1c1a17" stroke-width="2" stroke-linecap="round"/>
+    <!-- reflection that does not quite match -->
+    <g opacity="0.55">
+      <circle cx="60" cy="80" r="28" fill="#7a7366" opacity="0.4"/>
+      <path d="M60 108 v44 M38 128 q22 15 44 0" fill="none" stroke="#1c1a17" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    </g>
+    <!-- glass highlight -->
+    <path d="M30 28 C24 68 24 120 34 166" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
   </g>
-  <!-- faint silhouette stance -->
-  <path d="M240 148 c-10 18 -8 46 0 62 M240 148 c10 18 8 46 0 62 M240 210 v28" fill="none" stroke="#1c1a17" stroke-width="1.5" stroke-linecap="round" opacity="0.28"/>
+  <!-- polkadot dress on a hanger -->
+  <g transform="translate(320 74)">
+    <circle cx="40" cy="6" r="5" fill="none" stroke="#1c1a17" stroke-width="2"/>
+    <path d="M40 11 v9 M8 46 L40 20 L72 46" fill="none" stroke="#1c1a17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 42 L40 26 L62 42 L58 62 L74 152 C56 166 24 166 6 152 L22 62 Z" fill="#c97878" stroke="#1c1a17" stroke-width="2" stroke-linejoin="round"/>
+    <g fill="#f8f3e8">
+      <circle cx="30" cy="72" r="4"/><circle cx="52" cy="68" r="4"/>
+      <circle cx="40" cy="94" r="4"/><circle cx="22" cy="106" r="4"/>
+      <circle cx="58" cy="106" r="4"/><circle cx="40" cy="126" r="4"/>
+      <circle cx="26" cy="142" r="4"/><circle cx="56" cy="142" r="4"/>
+    </g>
+  </g>
 </svg>
