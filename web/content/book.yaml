@@ -865,6 +865,22 @@ parts:
       Sumur lagi, sumur lagi. Padahal, rumahku besar—tapi selalu sumur yang disebut-sebut. Apa aku memang anaknya momok? Katanya, aku lemot. Tidak pintar kayak sepupuku yang lainnya. Mungkin, memang dulu aku dikandung di dalam sumur bukan di dalam perut ibu? Jadi aku tidak tahu caranya jadi anak pintar.
   - kind: poetry
     lines:
+    - kalau aku jadi
+    - lampu lalu lintas
+    - ''
+    - aku ingin jadi
+    - lampu merah terus
+    - ''
+    - kalau lampu hijau
+    - aku bingung
+    - harus ke mana
+  - kind: prose
+    text: |
+      Kalau pulang ke rumah, kakek suka memanggil Putih. Suaranya dibuat sangat imut, seperti temanku, Lisa kalau sedang menggoda. Tapi aku malah takut mendengarnya. Suara kakek paling seram di rumah. Kadang tiba-tiba mendengus. Kadang tiba-tiba menekan klakson truk kencang-kencang waktu aku sedang telepon.
+
+      Aku paling takut kalau harus melewati kakek saat dia sedang menonton TV. Tapi aku harus lewat sana. Tidak ada jalan lain.
+  - kind: poetry
+    lines:
     - Bu,
     - aku hari ini
     - ''
@@ -1142,34 +1158,46 @@ parts:
     - apa mereka tidak mau melihatku?
   - kind: prose
     text: |
-      Katanya biar aku pintar. Tapi kalau banyak yang aku belajar, mana bisa tambah pintar?
+      Setiap pulang sekolah aku sudah capek. Nenek selalu membawaku ke tempat les yang berbeda-beda. Padahal aku capek harus gonta-ganti tas terus. Apa nenek tidak capek antar aku sekolah pakai motor robot yang suka mogok? Atau mungkin nenek lebih capek kalau temani aku menggambar? Aku kan suka menggambar. Tapi kok tidak pernah disuruh les menggambar?
   - kind: poetry
     lines:
-    - Tidak apa-apa kalau marahnya diulang-ulang
-    - tidak apa-apa kalau tegurnya diulang-ulang
-    - tidak apa-apa kalau sinisnya diulang-ulang
+    - Tidak apa-apa kalau
+    - marahnya diulang-ulang
+    - tidak apa-apa kalau
+    - tegurnya diulang-ulang
+    - tidak apa-apa kalau
+    - sinisnya diulang-ulang
     - ''
     - tidak apa-apa kalau akhirnya
     - hilang semua indra-indraku
-    - asal
-    - aku bisa merasakan disayang berulang-ulang
+    - asal aku bisa merasakan
+    - disayang berulang-ulang
+  - kind: prose
+    text: |
+      Aku suka makan es krim Walls yang pelangi. Warnanya cantik sekali. Ada warna biru, kuning, merah muda, hijau. Ada juga warna-warna lain yang aku tahu namanya karena campur-campur. Aku selalu memakannya di depan pintu ruang tamu, sambil menunggu mereka pulang ke rumah. Kalau mereka sudah pulang, aku mau bertanya warna yang belum aku tahu. Semoga mereka cepat pulang. Es krimku sudah leleh.
   - kind: poetry
     lines:
     - mana senyum mereka?
     - ''
     - apa aku harus antri
-    - masuk janin
+    - masuk perut
     - yang mau menerimaku
+  - kind: prose
+    text: |
+      Aku baru tahu sebelum jadi bayi, ibu harus mengandung selama sembilan bulan. Kata orang-orang namanya hamil. Aku tahu dari sinetron yang aku tonton bersama kakek. Apa ibu tidak capek membawaku kemana-mana selama sembilan bulan? Pasti berat sekali.
+
+      Aku pernah melihat fotoku waktu baru lahir. Gendut sekali. Pipiku seperti onde-onde, yang tidak ada wijennya. Sekarang tubuhku lebih kurus. Tapi kok ibu jarang membawaku ke mana-mana?
   - kind: poetry
     lines:
-    - pak, ayo pergi
+    - Pak, ayo pergi
     - antarkan anakmu
     - ''
     - apa aku salah ya?
-  - kind: poetry
-    lines:
-    - Makan sekenyang-kenyangnya
-    - hingga habis masa ingatku
+  - kind: prose
+    text: |
+      Kalau mau berangkat les, aku senang melihat ayah sudah pulang. Jadi aku tidak perlu naik becak. Aku mengambil tas dengan semangat. Tapi ayah hanya menoleh, lalu menyentak korannya kencang-kencang. Jangan-jangan korannya banyak ketombenya?
+
+      Aku takut melihat wajah ayah. Alisnya tebal sekali, seperti gambar orang marah di komik-komik. Dan tak lupa dia mendengus.
   - kind: poetry
     lines:
     - Banyak kamar
@@ -1181,6 +1209,9 @@ parts:
     - ''
     - kamu juga
     - jangan lupa cari aku ya
+  - kind: prose
+    text: |
+      Suaraku kecil. Mereka lebih sering tidak mendengarkanku. Putih saja jarang mendengarkanku, meski dia memang sedikit tuli. Coba kalau aku bisa menggonggong seperti Putih. Mungkin mereka datang membawa hati ayam. Atau malah memarahiku karena gonggonganku lebih jelek dari suara Putih.
   - kind: poetry
     lines:
     - Aku ingin main
@@ -1188,6 +1219,9 @@ parts:
     - ''
     - berkejaran
     - kayak orang-orang
+  - kind: prose
+    text: |
+      Kalau ajak nenek tidak mungkin, kakinya banyak sakit. Kalau ibu pasti alasan mau melihat sinetron. Ayah juga pulangnya malam terus. Mungkin kalau aku bawa nilai A, mereka mau ya? Tapi kapan?
   - kind: poetry
     lines:
     - Mata ku cuma dua
@@ -1195,30 +1229,42 @@ parts:
     - ''
     - jangan buat aku
     - ingin menambah indra lagi
+  - kind: prose
+    text: |
+      Kelinci suka melompat-lompat. Apa dia tidak capek? Padahal kakinya sama denganku, sama-sama punya dua.
   - kind: poetry
     lines:
     - Waktu susah
     - barulah ingat
     - ''
     - kalau senang?
+  - kind: prose
+    text: |
+      Aku ingin senang terus. Biar aku terbiasa. Kalau aku senang dan suka tersenyum, ayah dan ibu tidak perlu bertanya, pilih ayah atau ibu? Mengapa mereka suka memberiku pertanyaan seperti itu? Kenapa tidak tanya aku sedang suka kartun apa, sedang menggambar apa, atau mau makan apa?
   - kind: poetry
     lines:
     - Aku tidak diam
     - ''
     - aku cuma belajar
     - jadi kalian
+  - kind: prose
+    text: |
+      Lihat Jeremi, anaknya ramah dan sopan. Lihat Lisa, anaknya suka tersenyum. Aku disuruh melihat mereka terus-terusan. Kapan aku bisa berkaca ditemani ibu? Apa aku harus punya wajah seperti Lisa dan jadi anak seperti Jeremi? Memang lebih baik aku diam saja seperti Lala dan Lili.
   - kind: poetry
     lines:
     - Aku bermimpi
     - di lapangan dekat rumah
     - bermain sepak bola
-    - bersama ayah ibu
+    - bersama ayah
     - ''
     - aku tidak suka menang
     - aku maunya mereka saja yang menang
     - ''
     - biar mereka mau main lagi
     - terus-terusan
+  - kind: prose
+    text: |
+      Aku ingin bermain sepak bola di lapangan dekat rumah. Waktu aku ajak ayah, dia cuma bilang “Kamu aneh-aneh saja. Ayah sudah capek bekerja, malah diajak main.” Tidak lama, ayah ditelepon temannya dan diajak bermain golf. Aku tidak tahu golf itu seperti apa. Mungkin permainan untuk orang-orang tua. Mungkin juga lebih menyenangkan daripada sepak bola.
   - kind: poetry
     lines:
     - Pulang-pulang
@@ -1228,6 +1274,9 @@ parts:
     - dan meraih tanganku
     - ''
     - aku tidak mau bangun
+  - kind: prose
+    text: |
+      Aku pernah melihat kejadian seperti ini di telenovela kesukaan ibu. Aku bangga karena aku juga pernah mengalaminya. Meski badanku menjadi kotor, lalu pulang-pulang juga dimarahi ibu karena bajuku susah dibersihkan. Tapi aku tetap tersenyum karena ayahku membelaku. Entah mengapa hari itu, ayah begitu baik padaku. Apa karena persewaan VCD ayah kedatangan presiden? Bukan polisi seperti biasanya.
   - kind: poetry
     lines:
     - Aku suka
@@ -1237,11 +1286,15 @@ parts:
     - ''
     - aku bosan
     - rasa pahit
+  - kind: prose
+    text: |
+      Aku paling benci waktu makan jeruk, terus kedua ujung mulutku kena kulitnya. Rasanya sakit dan pahit. Aku suka minta nenek yang memotong jeruk untukku. Nenek lebih telaten. Aku tahu kalau kulit keruk pahit juga dari nenek. Apa nenek waktu dulu juga disiapkan jeruk seperti ini sama neneknya? kalau ibu nenek sepertinya tidak, karena sama-sama judes seperti ibuku.
   - kind: poetry
     lines:
     - Setiap tahun
     - aku selalu punya permohonan
     - pada Tuhan
+    - ''
     - agar tahun depan
     - tidak begini lagi
   - kind: poetry
@@ -1460,11 +1513,17 @@ parts:
       Kadang aku heran, ketika melangkah selalu banyak yang berteriak “awas jatuh”, “awas itu” entah apa saja yang dilihat, takut aku mengenainya. Sebenarnya, mereka bingung tentang aku atau tentang barang-barang itu?
   - kind: poetry
     lines:
-    - Di tangan kanan, krayon merah
-    - di tangan kiri, krayon kuning
+    - Tangan kanan memegang
+    - krayon warna merah
     - ''
-    - aku bingung
-    - pakai yang mana dulu
+    - tangan kiri memegang
+    - krayon warna hijau
+    - ''
+    - mana yang bisa buat
+    - ibu bangga dengan gambarku?
+  - kind: prose
+    text: |
+      Aku tahu aku tidak terlalu pintar mewarnai. Memilih warna pun kadang aku bingung. Aku hanya ingin ibu melihat gambarku. Meski gambarku itu-itu saja, kalau tidak gambar gunung, ya gambar rumah. Apa karena aku rindu rumah tempat aku dilahirkan?
   - kind: poetry
     lines:
     - Tanganku
@@ -1473,7 +1532,7 @@ parts:
     - banyak isinya
   - kind: prose
     text: |
-      Kalau aku tidur lama, jangan lupa bangunkan aku. Tidak usah bawa sarapan kayak di film-film. Cukup ingat bangunkan aku. Kadang aku malas tidur, karena aku menunggu kabar. Aku malas bangun lagi, karena tak ada cerita. Aku malas makan lagi, karena tak ada soto kesukaanku. Dan saat aku pergi, aku takut tak ada kata lagi.
+      Kalau aku tidur lama, jangan lupa bangunkan aku. Tidak usah bawa sarapan kayak di film-film. Cukup ingat bangunkan aku. Kadang aku malas tidur karena menunggu kabar. Aku malas bangun lagi karena tidak ada cerita. Aku malas makan lagi karena tidak ada soto kesukaanku. Dan saat aku pergi, aku takut tak ada kata lagi.
   - kind: poetry
     lines:
     - Kulitku memang hitam
@@ -1482,22 +1541,38 @@ parts:
     - ''
     - kalian jangan buatku ingin
     - tak memanggil namaku lagi
+  - kind: prose
+    text: |
+      Aku tidak seperti orang-orang rumah yang lain. Kalau disuruh mandi, susahnya minta ampun, kecuali ibu. Aku malah suka mandi. Aku suka mencoba sabun baru ibu, lulur baru ibu. Ibu punya banyak sekali. Kadang sabun mandi saja ada empat jenis. Belum lagi lulurnya. Hampir semuanya bertuliskan pemutih. Padahal kulit ibu sudah putih, tidak sepertiku. Apa karena itu kulit ibu putih ya? Kalau aku cuma punya sampo kemiri yang katanya melebatkan rambut dan sabun bayi.
+
+      Aku suka memakai semuanya diam-diam. Kadang tidak terasa aku begitu lama di dalam kamar mandi. Di depan cermin, aku suka berandai-andai kulitku bisa putih dan hidungku mancung juga seperti ibu. Kalau bibir sepertinya susah. Kalau tidak pakai lipstik.
   - kind: poetry
     lines:
-    - Apakah begitu mahal
+    - apakah begitu mahal
     - pujian untukku yang manis ini?
+    - aku lupa
+    - aku tidak manis
+    - maaf, lancang
     - ''
-    - Apakah begitu susah
+    - apakah begitu susah
     - lihat diriku yang kuat ini?
+    - aku lupa
+    - aku tidak kuat
+    - maaf, salah
     - ''
-    - Apakah begitu sibuk
-    - temani aku yang rupawan ini
-    - ''
-    - maaf
-    - lancang
+    - apakah begitu sibuk
+    - temani aku yang rupawan ini?
+    - aku lupa
+    - aku tidak rupawan
+    - maaf, ya
+  - kind: prose
+    text: |
+      Sejak dulu aku suka sekali bermain dengan warna. Waktu aku minta krayon yang lebih banyak warna, nenek cuma beli yang 24 warna. Katanya sudah cukup. Tidak perlu banyak-banyak. Katanya, gambarku begitu-begitu saja. Lebih baik bermain piano. Anak temannya bisa jadi guru les piano dan punya banyak uang.
+
+      Akhirnya, aku les piano dan ikut banyak lomba. Kadang aku dapat juara, meski cuma juara harapan. Kadang juga dapat tepuk tangan, tapi dari guru les yang nenek bayar.
   - kind: poetry
     lines:
-    - Aku dihadang bingung
+    - aku dihadang bingung
     - menyerbu tanpa aba-aba
     - ''
     - aku tak diberi senjata
@@ -1505,6 +1580,11 @@ parts:
     - ''
     - hanya secarik kertas
     - tanpa suara
+  - kind: prose
+    text: |
+      Aku paling tidak suka diajak pergi ramai-ramai, apalagi kalau ke luar kota. Ayah dan ibu biasanya tidak ikut, jadi aku cuma bersama nenek dan saudara-saudara yang lain. Kalau sudah sampai villa, biasanya kami cuma makan atau nonton TV. Aku bingung harus ngapain. Duduk saja dibilang pendiam, tidak ceria dan lari-lari seperti sepupuku yang selalu dibilang cantik. Kalau ikut nenek terus, aku dibilang kuper dan aneh. Kadang aku ingin ada ayah dan ibu seperti sepupuku, siapa tahu mereka membelaku.
+
+      Akhirnya, aku sembunyi di taman. Aku senang kalau ada ayunan. Aku bisa menggambar dan menulis apa pun yang aku mau.
   - kind: poetry
     lines:
     - Kalian cemari aku
@@ -1514,9 +1594,12 @@ parts:
     - dan aku lupa caranya
     - untuk bangun
     - lagi
+  - kind: prose
+    text: |
+      Kalau kakiku ada banyak, pasti aku pandai berlari kayak putih. Kalau kakiku kuat, pasti aku kuat untuk terus bangun. Sebenarnya aku tidak suka tidur atau menyendiri. Tapi aku takut mendengar kata-kata mereka kalau pulang kerja. Katanya aku masih kecil. Katanya aku tidak tahu apa-apa. Selain merepotkan.
   - kind: poetry
     lines:
-    - Apa aku terlalu kencang berlari
+    - apa aku terlalu kencang berlari
     - hingga kaki mati rasa
     - ''
     - dikejar waktu
@@ -1525,6 +1608,11 @@ parts:
     - aku tertelan
     - ekspektasi
     - yang banyak kosongnya
+  - kind: prose
+    text: |
+      Setiap tahun, kami merayakan imlek. Semua berkumpul di rumah nenek buyutku. Kami memakai baju serba merah. Memang ada senangnya karena aku menerima banyak angpao, meskipun harus banyak tersenyum dan menjadi anak yang baik dan sopan. Sampai akhirnya aku kelelahan dan menangis di kamar tamu.
+
+      Rasanya semua orang seperti tidak mengenalku Apa karena baju merahku sudah kusam? Apa karena kulitku tidak putih? Apa karena aku tidak pandai bicara?
   - kind: poetry
     lines:
     - Kupikir-pikir
@@ -1536,14 +1624,22 @@ parts:
     - aku menaruh permisi
     - ''
     - boleh?
+  - kind: prose
+    text: |
+      Aku anak pertama dari dua bersaudara. Aku lahir di desa. Adik lahir di kota. Katanya, nasib kami berbeda. Dia lahir setelah ibu dan ayah punya rumah bagus dan uang banyak. Sedangkan aku lahir saat mereka serba kurang. Jadi aku banyak dititipkan pada nenek. Mungkin bisa dibilang aku jadi anaknya nenek. Kebetulan nenek tidak punya anak perempuan.
+
+      Aku suka bingung sebenarnya aku anak siapa. Ayah dan ibu jarang ada di dekatku. Ada yang kadang mencariku sebagai anak ayah ibu. Ada juga yang bilang aku anaknya nenek karena aku anak manja. Aku bingung harus ada di mana. Padahal katanya rumahku ada dua.
   - kind: poetry
     lines:
     - Kata mereka
     - aku banyak cemberut
     - ''
-    - mau senang
+    - aku mau senang
     - cuma-cuma saja
-    - aku takut
+    - tapi aku takut
+  - kind: prose
+    text: |
+      Setiap lebaran, banyak anak-anak di sekitar rumahku menyalakan petasan. Anjing-anjingku menggonggong karena kaget. Aku juga. Aku pernah bilang takut dan datang minta peluk. Tapi katanya “Aku lembeng, gitu saja takut.” Akhirnya, aku cuma memeras-meras rok bagian bawah meskipun roknya tidak sedang basah, seperti yang dilakukan ART nenek. Mestinya aku malah inginnya hujan, biar tidak ada suara petasan. Kalau tidak berhenti, ya sudah aku ingin menangis saja. Biar tidak dibilang cengeng.
   - kind: poetry
     lines:
     - Aku terhempas mengikuti jalinan aksi
@@ -1561,17 +1657,25 @@ parts:
     - apa daya
     - aku belum cukup
     - seperti kemarin-kemarin
+  - kind: prose
+    text: |
+      Setiap hari senin, aku les renang di hotel dekat rumah. Aku bingung kenapa harus di hotel. Tapi aku cuma bisa menurut sama nenek. Setelah diantar, aku ditinggal bersama guru lesku. Sebenarnya aku takut sekali di kolam hotel ini karena dalam sekali. Apalagi kalau latihan bolak balik dengan gaya bebas. Aku takut kelelahan, terus nanti kakiku ditarik monster air.
+
+      Kenapa tidak les piano saja? Kenapa harus les renang juga? Apa nanti aku bakal tinggal di dalam air? Sama nenek? Tapi nenek tidak bisa berenang.
   - kind: poetry
     lines:
     - Kalau sudah besar,
     - aku ingin tidur nyenyak
     - ''
+    - kalau masih kecil,
     - aku ingin dihibur
     - dengan chiki
     - dan permen
-    - ''
-    - bukan dimarahi
-    - kayak lalu-lalu
+  - kind: prose
+    text: |
+      Kalau aku bertanya apa-apa, jawabannya selalu, “Tunggu kalau sudah besar.” Tapi kalau ibu berantem sama ayah, aku disuruh keluar kamar karena katanya masih kecil. Aku bingung, mereka maunya aku besar atau kecil.
+
+      Aku ingin jadi bola kapas saja.
   - kind: poetry
     lines:
     - Aku suka memakai
@@ -1580,6 +1684,9 @@ parts:
     - ''
     - biar banyak mata
     - melihatku
+  - kind: prose
+    text: |
+      Aku paling sering memakai terusan merah dengan polkadot putih. Polkadotnya banyak sekali dan ukurannya sama semua. Kadang aku ingin polkadot berlubang dua saja. Biar aku tidak memakai terusan ini terus. Nenek tidak pernah bosan melihatnya, karena memang baju yang dia beli. Aku ingin punya terusan warna kuning, seperti bunga matahari. Biar banyak mata melihatku.
   - kind: poetry
     lines:
     - Tanpa pesona
@@ -1848,6 +1955,18 @@ parts:
     - dan laku kalian
   - kind: poetry
     lines:
+    - Ayah dan ibu
+    - hanyalah sebuah title
+    - ''
+    - kita memainkan peran
+    - sebaik mungkin
+    - agar bisa elok dilihat
+    - manusia-manusia lain
+  - kind: prose
+    text: |
+      Ayah ibu terlalu sibuk menjadi keluarga cemara, tapi bayaran dari Tuannya tak pernah cukup. Panggung selesai. Raut wajah dikembalikan. Kostum peran disimpan rapi. Ingatan ayah ibu padaku juga selesai.
+  - kind: poetry
+    lines:
     - Mungkin ini kapasitas
     - atau ini memang batasnya
     - tidak dikasih lebih-lebih
@@ -1968,19 +2087,6 @@ parts:
       Aku ingin bebas.
 
       Apa bisa ya?
-  - kind: prose
-    text: |
-      Tidak ada anak yang ingin nakal.
-
-      Tidak ada anak yang ingin merepotkan.
-
-      Aku hanya ingin pulang ke rumah yang bahkan belum pernah kutinggali.
-
-      Tanpa aku minta, sudah memberiku gulali.
-
-      Tanpa aku menunjukkan nilai, sudah bilang aku hebat.
-
-      Tanpa aku berkata apa-apa, sudah tahu aku sedang sedih.
   - kind: poetry
     lines:
     - Aku lupa
